@@ -1,4 +1,5 @@
 export 'controller.dart';
+export 'glyph_resolver.dart';
 export 'source_resolver.dart';
 export 'sprite_source_resolver.dart';
 export 'style_provider.dart';

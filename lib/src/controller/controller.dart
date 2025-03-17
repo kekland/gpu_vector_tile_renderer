@@ -4,6 +4,7 @@ import 'package:flutter_map/flutter_map.dart' as fm;
 import 'package:gpu_vector_tile_renderer/_controller.dart';
 import 'package:gpu_vector_tile_renderer/_renderer.dart';
 import 'package:gpu_vector_tile_renderer/_spec.dart' as spec;
+import 'package:gpu_vector_tile_renderer/_glyphs.dart' as glyphs_pb;
 import 'package:gpu_vector_tile_renderer/src/debug/debug_attachment.dart';
 import 'package:gpu_vector_tile_renderer/src/utils/flutter_map/tile_bounds/tile_bounds.dart';
 import 'package:gpu_vector_tile_renderer/src/utils/flutter_map/tile_range_calculator.dart';
@@ -18,6 +19,7 @@ class VectorTileLayerController with ChangeNotifier {
     this.sourceResolver = defaultSourceResolver,
     this.vectorTileResolver = defaultVectorTileResolver,
     this.spriteSourceResolver = defaultSpriteSourceResolver,
+    this.glyphResolver = defaultGlyphResolver,
   }) : debugAttachment = DebugAttachment();
 
   /// A provider for the style.
@@ -37,6 +39,11 @@ class VectorTileLayerController with ChangeNotifier {
   ///
   /// See [defaultSpriteSourceResolver] for an example.
   final SpriteSourceResolverFn spriteSourceResolver;
+
+  /// A resolver for glyphs.
+  ///
+  /// See [defaultGlyphResolver] for an example.
+  final GlyphResolverFn glyphResolver;
 
   /// A ticker provider for internal animations.
   final TickerProvider tickerProvider;
@@ -70,6 +77,8 @@ class VectorTileLayerController with ChangeNotifier {
 
       debugAttachment.setup(this);
 
+      renderOrchestrator.loadGlyphs(spec.Formatted.fromJson('Hello, world!'), 'Open Sans');
+
       // Trigger camera changed to set the initial visible tiles
       if (_lastCamera != null) onCameraChanged(_lastCamera!, _lastTileSize!);
     } catch (e) {
@@ -94,6 +103,11 @@ class VectorTileLayerController with ChangeNotifier {
     );
 
     _style = _style!.copyWith(sources: resolvedSources);
+  }
+
+  /// Loads glyphs for a given string.
+  Future<glyphs_pb.glyphs> loadGlyphs(String fontstack, int blockStartFrom) async {
+    return glyphResolver(style.glyphs!, fontstack, blockStartFrom);
   }
 
   fm.MapCamera? _lastCamera;

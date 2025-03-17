@@ -39,6 +39,7 @@ abstract class $LineLayerRenderer extends SingleTileLayerRenderer<spec.LayerLine
 
     if (features.isEmpty) return;
 
+    // TODO: this has to be evaluated per-feature.
     final lineCap = specLayer.layout.lineCap.evaluate(context.eval);
 
     // TODO:

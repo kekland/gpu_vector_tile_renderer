@@ -3,6 +3,7 @@ import 'package:gpu_vector_tile_renderer/_controller.dart';
 import 'package:gpu_vector_tile_renderer/_spec.dart' hide Padding;
 import 'package:gpu_vector_tile_renderer/_widgets.dart';
 import 'package:gpu_vector_tile_renderer/src/debug/debug_attachment.dart';
+import 'package:gpu_vector_tile_renderer/src/debug/gpu_texture_debug_sheet.dart';
 import 'package:gpu_vector_tile_renderer/src/debug/widgets.dart';
 import 'package:gpu_vector_tile_renderer/src/renderer/render_orchestrator.dart';
 
@@ -136,6 +137,30 @@ class _FlutterGpuVectorTileLayerDebugPanelState extends State<FlutterGpuVectorTi
     ];
   }
 
+  List<Widget> _buildRenderOrchestratorSection(BuildContext context) {
+    return [
+      DebugExpansionTile(
+        title: Text('Glyph Atlas'),
+        child: Column(
+          children: [
+            ListTile(
+              title: Text('Glyphs'),
+              subtitle: Text('${orchestrator.glyphAtlas.length}'),
+            ),
+            ListTile(
+              onTap: () {
+                showGpuTextureDebugSheet(context, texture: orchestrator.glyphAtlas.texture);
+              },
+              title: Text('Texture'),
+              subtitle: Text('${orchestrator.glyphAtlas.textureWidth}x${orchestrator.glyphAtlas.textureHeight}'),
+              trailing: Icon(Icons.chevron_right_rounded),
+            ),
+          ],
+        ),
+      ),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     if (!_isReady) return const SizedBox.shrink();
@@ -154,6 +179,11 @@ class _FlutterGpuVectorTileLayerDebugPanelState extends State<FlutterGpuVectorTi
               leading: Icon(Icons.layers_rounded),
               title: Text('Controller'),
               child: SectionList(children: _buildControllerSection(context)),
+            ),
+            DebugExpansionTile(
+              leading: Icon(Icons.design_services_rounded),
+              title: Text('Render orchestrator'),
+              child: SectionList(children: _buildRenderOrchestratorSection(context)),
             ),
           ],
         ),
