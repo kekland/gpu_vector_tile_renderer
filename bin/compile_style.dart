@@ -91,7 +91,6 @@ Future<void> main(List<String> args) async {
       shaderBundleJson.removeWhere((key, _) {
         for (final ignore in shadersToIgnore) {
           if (key.startsWith(ignore)) {
-            print('removed $key');
             return true;
           }
         }
@@ -99,7 +98,6 @@ Future<void> main(List<String> args) async {
         return false;
       });
 
-      print(shaderBundleJson);
       shaderBundleCode = jsonEncode(shaderBundleJson);
     }
   }
@@ -124,32 +122,35 @@ Future<void> main(List<String> args) async {
 
     final fbShaders = <ShaderObjectBuilder>[];
 
-    void _addShader(Shader shader, {String? name}) {
+    void _addShader(Shader s, {String? name}) {
       fbShaders.add(
         ShaderObjectBuilder(
-          name: name ?? shader.name,
-          metalIos: _backendShaderObjectBuilderMapper(shader.metalIos),
-          metalDesktop: _backendShaderObjectBuilderMapper(shader.metalDesktop),
-          openglDesktop: _backendShaderObjectBuilderMapper(shader.openglDesktop),
-          openglEs: _backendShaderObjectBuilderMapper(shader.openglEs),
-          vulkan: _backendShaderObjectBuilderMapper(shader.vulkan),
+          name: name ?? s.name,
+          metalIos: _backendShaderObjectBuilderMapper(s.metalIos),
+          metalDesktop: _backendShaderObjectBuilderMapper(s.metalDesktop),
+          openglDesktop: _backendShaderObjectBuilderMapper(s.openglDesktop),
+          openglEs: _backendShaderObjectBuilderMapper(s.openglEs),
+          vulkan: _backendShaderObjectBuilderMapper(s.vulkan),
         ),
       );
     }
 
-    for (final oldShaders in oldShaderBundle.shaders!) {
-      final t = oldShaders;
-      final rawName = t.name!.split('#').first;
+    for (final shader in shaders) {
+      final ext = shader.type == ShaderType.vertex ? 'vert' : 'frag';
+      final rawName = '${shader.name}_$ext';
       final newName = '$rawName#$hotReloadSuffix';
 
-      if (shadersToIgnore.contains(rawName)) {
-        // Update hot reload suffix
-        _addShader(t, name: newName);
-      } else {
+      final oldShader = oldShaderBundle.shaders!.firstWhereOrNull((e) => e.name!.startsWith(rawName));
+      final newShader = newShaderBundle?.shaders!.firstWhereOrNull((e) => e.name!.startsWith(rawName));
+
+      if (newShader != null) {
         print('- Using new shader for $rawName: $newName');
-        // Use new shader
-        final newShader = newShaderBundle!.shaders!.firstWhere((e) => e.name == newName);
-        _addShader(newShader, name: newName);
+        _addShader(newShader);
+      } else if (oldShader != null) {
+        // Use old shader
+        _addShader(oldShader, name: newName);
+      } else {
+        throw Exception('Failed to find shader: $rawName');
       }
     }
 
@@ -252,8 +253,8 @@ List<ShaderUniformTextureObjectBuilder> _shaderUniformTextureObjectBuilderMapper
       .toList();
 }
 
-BackendShaderObjectBuilder _backendShaderObjectBuilderMapper(BackendShader? shader) {
-  if (shader == null) return BackendShaderObjectBuilder();
+BackendShaderObjectBuilder? _backendShaderObjectBuilderMapper(BackendShader? shader) {
+  if (shader == null) return null;
 
   return BackendShaderObjectBuilder(
     entrypoint: shader.entrypoint,

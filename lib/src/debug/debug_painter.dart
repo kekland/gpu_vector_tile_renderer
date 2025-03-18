@@ -75,7 +75,6 @@ void _drawLineStringFeature(Canvas canvas, Size size, vt.LineStringFeature featu
 }
 
 void _drawPolygonFeature(Canvas canvas, Size size, vt.PolygonFeature feature, Color color) {
-  print('hi!');
   for (final polygon in feature.polygons) {
     _drawLines(canvas, size, polygon.exterior.points, color, strokeWidth: 2);
 

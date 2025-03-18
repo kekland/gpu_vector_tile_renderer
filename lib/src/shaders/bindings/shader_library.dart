@@ -118,7 +118,7 @@ class HotReloadableShaderLibraryBindings extends WidgetsFlutterBinding {
       if (suffixSet.first == null) continue;
 
       final suffix = suffixSet.first;
-      if (kDebugMode) print('- Hot-reload suffix for $key: $suffix');
+      if (kDebugMode) print('- Hot-reload suffix for $key (${buffer.shaders?.length}): $suffix');
 
       if (_hotReloadSuffixes[key] != suffix) {
         if (kDebugMode) print('- HOT RELOAD: $key');

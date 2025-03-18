@@ -19,8 +19,8 @@ List<String> setUniformsGenerator(List<String> uniformEval, List<String> uniform
     '  pipeline.setUniforms(',
     '    cameraWorldToGl: cameraWorldToGl,',
     '    cameraZoom: cameraZoom,',
-    '    cameraPixelRatio: pixelRatio,'
-        '    tileLocalToGl: tileLocalToGl,',
+    '    cameraPixelRatio: pixelRatio,',
+    '    tileLocalToGl: tileLocalToGl,',
     '    tileSize: tileSize,',
     '    tileExtent: tileExtent,',
     '    tileOpacity: tileOpacity,',

@@ -5,7 +5,7 @@ const supportedLayerTypes = {
   spec.Layer$Type.background,
   spec.Layer$Type.fill,
   spec.Layer$Type.line,
-  // spec.Layer$Type.symbol,
+  spec.Layer$Type.symbol,
 };
 
 /// Returns whether the given layer is supported by the renderer.

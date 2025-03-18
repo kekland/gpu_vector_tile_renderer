@@ -176,7 +176,7 @@ void main() {
 
   v_uv = uv;
   
-  float scale = 2.0;
+  float scale = 1.0;
   gl_Position = project_tile_position((position * scale) + anchor);
 }
 ''',
@@ -257,7 +257,7 @@ out highp vec4 f_color;
 void main() {
   #pragma prop: resolve(...)
 
-  float line_position = v_line_length / width;
+  float line_position = project_pixel_length(v_line_length) / width;
   float dash_value = texture(dasharray_texture, vec2(line_position / dasharray_texture_size.x, 0.5)).r;
   if (dash_value < 0.5) discard;
 
