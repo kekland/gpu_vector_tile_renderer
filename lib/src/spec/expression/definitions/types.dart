@@ -7,7 +7,7 @@ import 'package:gpu_vector_tile_renderer/_spec.dart';
 @ExpressionAnnotation('LiteralExpression', rawName: 'literal', customFromJson: literalExpressionFromJsonImpl)
 T literalExpressionImpl<T>(EvaluationContext context, T value) => value;
 
-LiteralExpression<T> literalExpressionFromJsonImpl<T>(List<dynamic> args) {
+LiteralExpression<T> literalExpressionFromJsonImpl<T>(List<dynamic> args, {Type? type}) {
   assert(args[0] == 'literal');
 
   if (args.length != 2) {
@@ -29,7 +29,7 @@ LiteralExpression<T> literalExpressionFromJsonImpl<T>(List<dynamic> args) {
     return LiteralExpression<T>(value: args[1].cast<String>() as T);
   }
 
-  return LiteralExpression<T>(value: args[1] as T);
+  return LiteralExpression<T>(value: args[1] as T, type: type);
 }
 
 @ExpressionAnnotation('CollatorExpressionExpression', rawName: 'collator')

@@ -12,7 +12,7 @@ out highp float v_line_length;
 #pragma prop: declare(highp vec4 color)
 #pragma prop: declare(float opacity)
 #pragma prop: declare(float width)
-#pragma prop: declare(sampler2D dasharray)
+#pragma prop: declare(sampler2D dasharray_texture)
 
 void main() {
   #pragma prop: resolve(...)

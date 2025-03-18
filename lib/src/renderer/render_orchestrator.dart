@@ -12,13 +12,15 @@ import 'package:gpu_vector_tile_renderer/_shaders.dart';
 import 'package:gpu_vector_tile_renderer/_spec.dart' as spec;
 import 'package:gpu_vector_tile_renderer/_vector_tile.dart' as vt;
 import 'package:gpu_vector_tile_renderer/src/isolates/isolates.dart';
-import 'package:gpu_vector_tile_renderer/src/renderer/atlas/glyph_atlas.dart';
+import 'package:gpu_vector_tile_renderer/src/renderer/atlas/atlas.dart';
+import 'package:gpu_vector_tile_renderer/src/renderer/atlas/glyph_manager.dart';
 import 'package:gpu_vector_tile_renderer/src/utils/flutter_map/tile_scale_calculator.dart';
 import 'package:vector_math/vector_math.dart' as vm32;
 import 'package:gpu_vector_tile_renderer/_glyphs.dart' as glyphs_pb;
 
 typedef CreateSingleTileLayerRendererFn = SingleTileLayerRenderer? Function(
   ShaderLibraryProvider shaderLibraryProvider,
+  VectorTileLayerRenderOrchestrator orchestrator,
   fm.TileCoordinates coordinates,
   TileContainer container,
   spec.Layer specLayer,
@@ -38,7 +40,7 @@ class VectorTileLayerRenderOrchestrator with ChangeNotifier {
     controller.addTileUpdateListener(_onTilesChanged);
     controller.debugAttachment.addListener(_onDebugAttachmentChanged);
 
-    glyphAtlas = GlyphAtlas(width: 2048, height: 2048);
+    glyphManager = GlyphManager(width: 2048, height: 2048);
 
     SchedulerBinding.instance.addPersistentFrameCallback((_) {
       _reportDebugInfo();
@@ -55,9 +57,35 @@ class VectorTileLayerRenderOrchestrator with ChangeNotifier {
   final CreateSingleTileLayerRendererFn _createSingleTileLayerRenderer;
 
   /// Current glyph atlas.
-  late final GlyphAtlas glyphAtlas;
+  late final GlyphManager glyphManager;
 
-  FutureOr<List<glyphs_pb.glyph>> loadGlyphs(spec.Formatted formatted, String font) {
+  final _inProgressMissingGlyphFutures = <(String fontStack, int blockStart), Future<void>>{};
+
+  Future<void> _loadMissingGlyphs(Set<(String fontStack, int blockStart)> missingGlyphs) async {
+    final toLoad = missingGlyphs.difference(_inProgressMissingGlyphFutures.keys.toSet());
+
+    // Check for new glyphs to load and start loading them.
+    for (final key in toLoad) {
+      final future = controller.loadGlyphs(key.$1, key.$2).then((glyphs) {
+        glyphManager.addGlyphs(key.$1, glyphs);
+        glyphManager.flushTexture();
+      }).whenComplete(() {
+        _inProgressMissingGlyphFutures.remove(key);
+      });
+
+      _inProgressMissingGlyphFutures[key] = future;
+    }
+
+    final futures = <Future<void>>[];
+
+    for (final key in missingGlyphs) {
+      futures.add(_inProgressMissingGlyphFutures[key]!);
+    }
+
+    await futures.wait;
+  }
+
+  FutureOr<List<(glyphs_pb.glyph, AtlasUv)>> loadGlyphs(spec.Formatted formatted, String font) {
     final missingGlyphs = <(String fontStack, int blockStart)>{};
 
     for (final section in formatted.sections) {
@@ -67,12 +95,12 @@ class VectorTileLayerRenderOrchestrator with ChangeNotifier {
       final fontStack = section.fontStack ?? font;
 
       for (final rune in text.runes) {
-        if (!glyphAtlas.hasKey((fontStack, rune))) missingGlyphs.add((fontStack, (rune ~/ 256) * 256));
+        if (!glyphManager.hasKey((fontStack, rune))) missingGlyphs.add((fontStack, (rune ~/ 256) * 256));
       }
     }
 
-    List<glyphs_pb.glyph> construct() {
-      final result = <glyphs_pb.glyph>[];
+    List<(glyphs_pb.glyph, AtlasUv)> construct() {
+      final result = <(glyphs_pb.glyph, AtlasUv)>[];
       for (final section in formatted.sections) {
         if (section.text == null) continue;
 
@@ -80,8 +108,7 @@ class VectorTileLayerRenderOrchestrator with ChangeNotifier {
         final fontStack = section.fontStack ?? font;
 
         for (final rune in text.runes) {
-          final glyph = glyphAtlas.getMetrics((fontStack, rune));
-          result.add(glyph);
+          result.add(glyphManager.get((fontStack, rune)));
         }
       }
 
@@ -89,15 +116,7 @@ class VectorTileLayerRenderOrchestrator with ChangeNotifier {
     }
 
     if (missingGlyphs.isNotEmpty) {
-      final futures = missingGlyphs
-          .map((key) => controller.loadGlyphs(key.$1, key.$2).then((v) => glyphAtlas.addGlyphs(key.$1, v)))
-          .wait
-          .then((_) {
-        glyphAtlas.flushTexture();
-        return construct();
-      });
-
-      return futures;
+      return _loadMissingGlyphs(missingGlyphs).then((_) => construct());
     }
 
     return construct();
@@ -109,7 +128,7 @@ class VectorTileLayerRenderOrchestrator with ChangeNotifier {
     spec.Layer specLayer,
     vt.Layer vtLayer,
   ) {
-    return _createSingleTileLayerRenderer(shaderLibraryProvider, coordinates, container, specLayer, vtLayer);
+    return _createSingleTileLayerRenderer(shaderLibraryProvider, this, coordinates, container, specLayer, vtLayer);
   }
 
   List<LayerRenderer>? _layers;

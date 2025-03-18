@@ -24,6 +24,10 @@ List<LayerRenderer> createLayerRenderers(VectorTileLayerRenderOrchestrator orche
             orchestrator: orchestrator,
             specLayer: layer as spec.LayerLine,
           ),
+          spec.Layer$Type.symbol => TiledLayerRenderer<spec.LayerSymbol>(
+            orchestrator: orchestrator,
+            specLayer: layer as spec.LayerSymbol,
+          ),
           _ => throw UnimplementedError('Unsupported layer type: ${layer.type}'),
         },
       )
@@ -83,12 +87,14 @@ class TiledLayerRenderer<T extends spec.Layer> extends LayerRenderer<T> {
 
 abstract class SingleTileLayerRenderer<T extends spec.Layer> {
   SingleTileLayerRenderer({
+    required this.orchestrator,
     required this.coordinates,
     required this.container,
     required this.specLayer,
     required this.vtLayer,
   });
 
+  final VectorTileLayerRenderOrchestrator orchestrator;
   final TileCoordinates coordinates;
   final TileContainer container;
   final T specLayer;

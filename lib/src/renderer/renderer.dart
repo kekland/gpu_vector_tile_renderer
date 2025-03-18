@@ -7,3 +7,4 @@ export 'supported_layers.dart';
 export 'layers/background_layer_renderer.dart';
 export 'layers/fill_layer_renderer.dart';
 export 'layers/line_layer_renderer.dart';
+export 'layers/symbol_layer_renderer.dart';

@@ -1,1 +1,1 @@
-export 'src/style_precompiler_2/style_precompiler.dart';
+export 'src/style_precompiler/style_precompiler.dart';

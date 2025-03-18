@@ -1,5 +1,7 @@
 # shaders
 
+Outdated! Rewrite sometime soon.
+
 Pre-compiled versions of shaders. These shaders will be used as a template for the `style_compiler` to generate the final shaders for a given style.
 
 Paint properties are added to the shaders as follows:

@@ -223,10 +223,10 @@ List<String> _generateExpressionFromJsonCode(FunctionDeclaration decl) {
   final parameters = _getExpressionParameters(decl);
   final customFromJson = _getExpressionCustomFromJson(decl);
 
-  code.add('  factory ${annotation.name}.fromJson(List<dynamic> args) {');
+  code.add('  factory ${annotation.name}.fromJson(List<dynamic> args, {Type? type}) {');
 
   if (customFromJson != null) {
-    code.add('    return $customFromJson(args);');
+    code.add('    return $customFromJson(args, type: type);');
     code.add('  }');
     return code;
   }
@@ -286,6 +286,8 @@ List<String> _generateExpressionFromJsonCode(FunctionDeclaration decl) {
     for (final parameter in parameters) {
       code.add('      ${parameter.name}: arg${parameters.indexOf(parameter)},');
     }
+
+    code.add('      type: type,');
 
     code.add('    );');
   }

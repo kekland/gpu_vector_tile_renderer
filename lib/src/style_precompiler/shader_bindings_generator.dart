@@ -246,7 +246,7 @@ String _generateShaderPipelineUniformSetter(ParsedShader vertexShader, ParsedSha
   }
   for (var i = 0; i < samplers.length; i++) {
     final sampler = samplers.elementAt(i);
-    final paramName = nameToDartFieldName('${sampler.name}Texture');
+    final paramName = nameToDartFieldName(sampler.name);
     o.write('required gpu.Texture $paramName');
     o.write(', ');
     o.write('gpu.SamplerOptions? ${paramName}SamplerOptions');
@@ -265,7 +265,7 @@ String _generateShaderPipelineUniformSetter(ParsedShader vertexShader, ParsedSha
   }
 
   for (final sampler in samplers) {
-    final paramName = nameToDartFieldName('${sampler.name}Texture');
+    final paramName = nameToDartFieldName(sampler.name);
     o.writeln('    ${sampler.name}.setTexture($paramName, options: ${paramName}SamplerOptions);');
   }
 

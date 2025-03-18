@@ -12,9 +12,9 @@ import 'package:gpu_vector_tile_renderer/src/spec/utils/type_utils.dart';
 /// `lib/src/spec/expression/definitions`.
 abstract class Expression<T> with EquatableMixin {
   const Expression({Type? type, Set<ExpressionDependency>? ownDependencies, Iterable<Expression>? childrenExpressions})
-    : type = type ?? T,
-      ownDependencies = ownDependencies ?? const {},
-      childrenExpressions = childrenExpressions ?? const [];
+      : type = type ?? T,
+        ownDependencies = ownDependencies ?? const {},
+        childrenExpressions = childrenExpressions ?? const [];
 
   /// Parses an expression from a JSON-like object.
   ///
@@ -40,11 +40,12 @@ abstract class Expression<T> with EquatableMixin {
         return LiteralExpression<Formatted>(value: Formatted.fromJson(args)) as Expression<T>;
       }
 
-      // TODO: Improve this somehow
-      try {
-        return expressionFromJson<T>(args);
-      } catch (e) {
-        return _FormattedStringAdapterExpression(expressionFromJson<String>(args)) as Expression<T>;
+      final expression = expressionFromJson(args);
+
+      if (expression.type == Formatted) {
+        return expression as Expression<T>;
+      } else {
+        return _FormattedStringAdapterExpression(expression) as Expression<T>;
       }
     }
 
@@ -98,15 +99,14 @@ abstract class Expression<T> with EquatableMixin {
   T call(EvaluationContext context) => evaluate(context);
 }
 
-// TODO: Remove this
 class _FormattedStringAdapterExpression extends Expression<Formatted> {
-  _FormattedStringAdapterExpression(this.string) : super(childrenExpressions: [string]);
+  _FormattedStringAdapterExpression(this.expression) : super(childrenExpressions: [expression]);
 
-  final Expression<String> string;
-
-  @override
-  Formatted evaluate(EvaluationContext context) => Formatted.fromJson(string(context));
+  final Expression expression;
 
   @override
-  List<Object?> get props => [string];
+  Formatted evaluate(EvaluationContext context) => Formatted.fromJson(expression(context));
+
+  @override
+  List<Object?> get props => [expression];
 }

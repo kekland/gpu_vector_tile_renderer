@@ -1,4 +1,5 @@
 import 'package:flutter_gpu/gpu.dart' as gpu;
+import 'package:vector_math/vector_math_64.dart';
 
 /// An atlas stores a collection of images, their corresponding positions, and the metadata needed to layout/render
 /// them. The atlas will also manage creating and updating the images in the GPU.
@@ -15,6 +16,15 @@ abstract class Atlas<TKey, TMetrics> {
 
   bool hasKey(TKey key);
 
-  (int x, int y) getPosition(TKey key);
   TMetrics getMetrics(TKey key);
+  AtlasUv getUv(TKey key);
+
+  (TMetrics, AtlasUv) get(TKey key);
+}
+
+class AtlasUv {
+  AtlasUv({required this.uv0, required this.uv1});
+
+  final Vector2 uv0;
+  final Vector2 uv1;
 }

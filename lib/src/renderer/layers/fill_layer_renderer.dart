@@ -8,6 +8,7 @@ import 'package:vector_math/vector_math_64.dart';
 
 abstract class $FillLayerRenderer extends SingleTileLayerRenderer<spec.LayerFill> {
   $FillLayerRenderer({
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,

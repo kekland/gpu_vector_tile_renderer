@@ -207,6 +207,67 @@ class ShaderInput {
   String toString() {
     return 'ShaderInput{name: ${name}, location: ${location}, \$set: ${$set}, binding: ${binding}, type: ${type}, bitWidth: ${bitWidth}, vecSize: ${vecSize}, columns: ${columns}, offset: ${offset}}';
   }
+
+  ShaderInputT unpack() => ShaderInputT(
+      name: name,
+      location: location,
+      $set: $set,
+      binding: binding,
+      type: type,
+      bitWidth: bitWidth,
+      vecSize: vecSize,
+      columns: columns,
+      offset: offset);
+
+  static int pack(fb.Builder fbBuilder, ShaderInputT? object) {
+    if (object == null) return 0;
+    return object.pack(fbBuilder);
+  }
+}
+
+class ShaderInputT implements fb.Packable {
+  String? name;
+  int location;
+  int $set;
+  int binding;
+  InputDataType type;
+  int bitWidth;
+  int vecSize;
+  int columns;
+  int offset;
+
+  ShaderInputT({
+      this.name,
+      this.location = 0,
+      this.$set = 0,
+      this.binding = 0,
+      this.type = InputDataType.kBoolean,
+      this.bitWidth = 0,
+      this.vecSize = 0,
+      this.columns = 0,
+      this.offset = 0});
+
+  @override
+  int pack(fb.Builder fbBuilder) {
+    final int? nameOffset = name == null ? null
+        : fbBuilder.writeString(name!);
+    fbBuilder.startTable(9);
+    fbBuilder.addOffset(0, nameOffset);
+    fbBuilder.addUint64(1, location);
+    fbBuilder.addUint64(2, $set);
+    fbBuilder.addUint64(3, binding);
+    fbBuilder.addUint32(4, type.value);
+    fbBuilder.addUint64(5, bitWidth);
+    fbBuilder.addUint64(6, vecSize);
+    fbBuilder.addUint64(7, columns);
+    fbBuilder.addUint64(8, offset);
+    return fbBuilder.endTable();
+  }
+
+  @override
+  String toString() {
+    return 'ShaderInputT{name: ${name}, location: ${location}, \$set: ${$set}, binding: ${binding}, type: ${type}, bitWidth: ${bitWidth}, vecSize: ${vecSize}, columns: ${columns}, offset: ${offset}}';
+  }
 }
 
 class _ShaderInputReader extends fb.TableReader<ShaderInput> {
@@ -349,6 +410,55 @@ class ShaderUniformStructField {
   String toString() {
     return 'ShaderUniformStructField{name: ${name}, type: ${type}, offsetInBytes: ${offsetInBytes}, elementSizeInBytes: ${elementSizeInBytes}, totalSizeInBytes: ${totalSizeInBytes}, arrayElements: ${arrayElements}}';
   }
+
+  ShaderUniformStructFieldT unpack() => ShaderUniformStructFieldT(
+      name: name,
+      type: type,
+      offsetInBytes: offsetInBytes,
+      elementSizeInBytes: elementSizeInBytes,
+      totalSizeInBytes: totalSizeInBytes,
+      arrayElements: arrayElements);
+
+  static int pack(fb.Builder fbBuilder, ShaderUniformStructFieldT? object) {
+    if (object == null) return 0;
+    return object.pack(fbBuilder);
+  }
+}
+
+class ShaderUniformStructFieldT implements fb.Packable {
+  String? name;
+  UniformDataType type;
+  int offsetInBytes;
+  int elementSizeInBytes;
+  int totalSizeInBytes;
+  int arrayElements;
+
+  ShaderUniformStructFieldT({
+      this.name,
+      this.type = UniformDataType.kBoolean,
+      this.offsetInBytes = 0,
+      this.elementSizeInBytes = 0,
+      this.totalSizeInBytes = 0,
+      this.arrayElements = 0});
+
+  @override
+  int pack(fb.Builder fbBuilder) {
+    final int? nameOffset = name == null ? null
+        : fbBuilder.writeString(name!);
+    fbBuilder.startTable(6);
+    fbBuilder.addOffset(0, nameOffset);
+    fbBuilder.addUint32(1, type.value);
+    fbBuilder.addUint64(2, offsetInBytes);
+    fbBuilder.addUint64(3, elementSizeInBytes);
+    fbBuilder.addUint64(4, totalSizeInBytes);
+    fbBuilder.addUint64(5, arrayElements);
+    return fbBuilder.endTable();
+  }
+
+  @override
+  String toString() {
+    return 'ShaderUniformStructFieldT{name: ${name}, type: ${type}, offsetInBytes: ${offsetInBytes}, elementSizeInBytes: ${elementSizeInBytes}, totalSizeInBytes: ${totalSizeInBytes}, arrayElements: ${arrayElements}}';
+  }
 }
 
 class _ShaderUniformStructFieldReader extends fb.TableReader<ShaderUniformStructField> {
@@ -466,6 +576,57 @@ class ShaderUniformStruct {
   @override
   String toString() {
     return 'ShaderUniformStruct{name: ${name}, extRes0: ${extRes0}, \$set: ${$set}, binding: ${binding}, sizeInBytes: ${sizeInBytes}, fields: ${fields}}';
+  }
+
+  ShaderUniformStructT unpack() => ShaderUniformStructT(
+      name: name,
+      extRes0: extRes0,
+      $set: $set,
+      binding: binding,
+      sizeInBytes: sizeInBytes,
+      fields: fields?.map((e) => e.unpack()).toList());
+
+  static int pack(fb.Builder fbBuilder, ShaderUniformStructT? object) {
+    if (object == null) return 0;
+    return object.pack(fbBuilder);
+  }
+}
+
+class ShaderUniformStructT implements fb.Packable {
+  String? name;
+  int extRes0;
+  int $set;
+  int binding;
+  int sizeInBytes;
+  List<ShaderUniformStructFieldT>? fields;
+
+  ShaderUniformStructT({
+      this.name,
+      this.extRes0 = 0,
+      this.$set = 0,
+      this.binding = 0,
+      this.sizeInBytes = 0,
+      this.fields});
+
+  @override
+  int pack(fb.Builder fbBuilder) {
+    final int? nameOffset = name == null ? null
+        : fbBuilder.writeString(name!);
+    final int? fieldsOffset = fields == null ? null
+        : fbBuilder.writeList(fields!.map((b) => b.pack(fbBuilder)).toList());
+    fbBuilder.startTable(6);
+    fbBuilder.addOffset(0, nameOffset);
+    fbBuilder.addUint64(1, extRes0);
+    fbBuilder.addUint64(2, $set);
+    fbBuilder.addUint64(3, binding);
+    fbBuilder.addUint64(4, sizeInBytes);
+    fbBuilder.addOffset(5, fieldsOffset);
+    return fbBuilder.endTable();
+  }
+
+  @override
+  String toString() {
+    return 'ShaderUniformStructT{name: ${name}, extRes0: ${extRes0}, \$set: ${$set}, binding: ${binding}, sizeInBytes: ${sizeInBytes}, fields: ${fields}}';
   }
 }
 
@@ -585,6 +746,47 @@ class ShaderUniformTexture {
   String toString() {
     return 'ShaderUniformTexture{name: ${name}, extRes0: ${extRes0}, \$set: ${$set}, binding: ${binding}}';
   }
+
+  ShaderUniformTextureT unpack() => ShaderUniformTextureT(
+      name: name,
+      extRes0: extRes0,
+      $set: $set,
+      binding: binding);
+
+  static int pack(fb.Builder fbBuilder, ShaderUniformTextureT? object) {
+    if (object == null) return 0;
+    return object.pack(fbBuilder);
+  }
+}
+
+class ShaderUniformTextureT implements fb.Packable {
+  String? name;
+  int extRes0;
+  int $set;
+  int binding;
+
+  ShaderUniformTextureT({
+      this.name,
+      this.extRes0 = 0,
+      this.$set = 0,
+      this.binding = 0});
+
+  @override
+  int pack(fb.Builder fbBuilder) {
+    final int? nameOffset = name == null ? null
+        : fbBuilder.writeString(name!);
+    fbBuilder.startTable(4);
+    fbBuilder.addOffset(0, nameOffset);
+    fbBuilder.addUint64(1, extRes0);
+    fbBuilder.addUint64(2, $set);
+    fbBuilder.addUint64(3, binding);
+    return fbBuilder.endTable();
+  }
+
+  @override
+  String toString() {
+    return 'ShaderUniformTextureT{name: ${name}, extRes0: ${extRes0}, \$set: ${$set}, binding: ${binding}}';
+  }
 }
 
 class _ShaderUniformTextureReader extends fb.TableReader<ShaderUniformTexture> {
@@ -686,6 +888,63 @@ class BackendShader {
   @override
   String toString() {
     return 'BackendShader{stage: ${stage}, entrypoint: ${entrypoint}, inputs: ${inputs}, uniformStructs: ${uniformStructs}, uniformTextures: ${uniformTextures}, shader: ${shader}}';
+  }
+
+  BackendShaderT unpack() => BackendShaderT(
+      stage: stage,
+      entrypoint: entrypoint,
+      inputs: inputs?.map((e) => e.unpack()).toList(),
+      uniformStructs: uniformStructs?.map((e) => e.unpack()).toList(),
+      uniformTextures: uniformTextures?.map((e) => e.unpack()).toList(),
+      shader: const fb.Uint8ListReader(lazy: false).vTableGetNullable(_bc, _bcOffset, 14));
+
+  static int pack(fb.Builder fbBuilder, BackendShaderT? object) {
+    if (object == null) return 0;
+    return object.pack(fbBuilder);
+  }
+}
+
+class BackendShaderT implements fb.Packable {
+  ShaderStage stage;
+  String? entrypoint;
+  List<ShaderInputT>? inputs;
+  List<ShaderUniformStructT>? uniformStructs;
+  List<ShaderUniformTextureT>? uniformTextures;
+  List<int>? shader;
+
+  BackendShaderT({
+      this.stage = ShaderStage.kVertex,
+      this.entrypoint,
+      this.inputs,
+      this.uniformStructs,
+      this.uniformTextures,
+      this.shader});
+
+  @override
+  int pack(fb.Builder fbBuilder) {
+    final int? entrypointOffset = entrypoint == null ? null
+        : fbBuilder.writeString(entrypoint!);
+    final int? inputsOffset = inputs == null ? null
+        : fbBuilder.writeList(inputs!.map((b) => b.pack(fbBuilder)).toList());
+    final int? uniformStructsOffset = uniformStructs == null ? null
+        : fbBuilder.writeList(uniformStructs!.map((b) => b.pack(fbBuilder)).toList());
+    final int? uniformTexturesOffset = uniformTextures == null ? null
+        : fbBuilder.writeList(uniformTextures!.map((b) => b.pack(fbBuilder)).toList());
+    final int? shaderOffset = shader == null ? null
+        : fbBuilder.writeListUint8(shader!);
+    fbBuilder.startTable(6);
+    fbBuilder.addInt8(0, stage.value);
+    fbBuilder.addOffset(1, entrypointOffset);
+    fbBuilder.addOffset(2, inputsOffset);
+    fbBuilder.addOffset(3, uniformStructsOffset);
+    fbBuilder.addOffset(4, uniformTexturesOffset);
+    fbBuilder.addOffset(5, shaderOffset);
+    return fbBuilder.endTable();
+  }
+
+  @override
+  String toString() {
+    return 'BackendShaderT{stage: ${stage}, entrypoint: ${entrypoint}, inputs: ${inputs}, uniformStructs: ${uniformStructs}, uniformTextures: ${uniformTextures}, shader: ${shader}}';
   }
 }
 
@@ -813,6 +1072,60 @@ class Shader {
   String toString() {
     return 'Shader{name: ${name}, metalIos: ${metalIos}, metalDesktop: ${metalDesktop}, openglEs: ${openglEs}, openglDesktop: ${openglDesktop}, vulkan: ${vulkan}}';
   }
+
+  ShaderT unpack() => ShaderT(
+      name: name,
+      metalIos: metalIos?.unpack(),
+      metalDesktop: metalDesktop?.unpack(),
+      openglEs: openglEs?.unpack(),
+      openglDesktop: openglDesktop?.unpack(),
+      vulkan: vulkan?.unpack());
+
+  static int pack(fb.Builder fbBuilder, ShaderT? object) {
+    if (object == null) return 0;
+    return object.pack(fbBuilder);
+  }
+}
+
+class ShaderT implements fb.Packable {
+  String? name;
+  BackendShaderT? metalIos;
+  BackendShaderT? metalDesktop;
+  BackendShaderT? openglEs;
+  BackendShaderT? openglDesktop;
+  BackendShaderT? vulkan;
+
+  ShaderT({
+      this.name,
+      this.metalIos,
+      this.metalDesktop,
+      this.openglEs,
+      this.openglDesktop,
+      this.vulkan});
+
+  @override
+  int pack(fb.Builder fbBuilder) {
+    final int? nameOffset = name == null ? null
+        : fbBuilder.writeString(name!);
+    final int? metalIosOffset = metalIos?.pack(fbBuilder);
+    final int? metalDesktopOffset = metalDesktop?.pack(fbBuilder);
+    final int? openglEsOffset = openglEs?.pack(fbBuilder);
+    final int? openglDesktopOffset = openglDesktop?.pack(fbBuilder);
+    final int? vulkanOffset = vulkan?.pack(fbBuilder);
+    fbBuilder.startTable(6);
+    fbBuilder.addOffset(0, nameOffset);
+    fbBuilder.addOffset(1, metalIosOffset);
+    fbBuilder.addOffset(2, metalDesktopOffset);
+    fbBuilder.addOffset(3, openglEsOffset);
+    fbBuilder.addOffset(4, openglDesktopOffset);
+    fbBuilder.addOffset(5, vulkanOffset);
+    return fbBuilder.endTable();
+  }
+
+  @override
+  String toString() {
+    return 'ShaderT{name: ${name}, metalIos: ${metalIos}, metalDesktop: ${metalDesktop}, openglEs: ${openglEs}, openglDesktop: ${openglDesktop}, vulkan: ${vulkan}}';
+  }
 }
 
 class _ShaderReader extends fb.TableReader<Shader> {
@@ -930,6 +1243,35 @@ class ShaderBundle {
   @override
   String toString() {
     return 'ShaderBundle{shaders: ${shaders}}';
+  }
+
+  ShaderBundleT unpack() => ShaderBundleT(
+      shaders: shaders?.map((e) => e.unpack()).toList());
+
+  static int pack(fb.Builder fbBuilder, ShaderBundleT? object) {
+    if (object == null) return 0;
+    return object.pack(fbBuilder);
+  }
+}
+
+class ShaderBundleT implements fb.Packable {
+  List<ShaderT>? shaders;
+
+  ShaderBundleT({
+      this.shaders});
+
+  @override
+  int pack(fb.Builder fbBuilder) {
+    final int? shadersOffset = shaders == null ? null
+        : fbBuilder.writeList(shaders!.map((b) => b.pack(fbBuilder)).toList());
+    fbBuilder.startTable(1);
+    fbBuilder.addOffset(0, shadersOffset);
+    return fbBuilder.endTable();
+  }
+
+  @override
+  String toString() {
+    return 'ShaderBundleT{shaders: ${shaders}}';
   }
 }
 

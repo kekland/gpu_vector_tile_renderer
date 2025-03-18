@@ -6,9 +6,9 @@ void main() => generateShaders();
 
 // TODO: Rewrite this to be more concise
 
-void generateShaders() {
+void generateShaders({bool isCallingFromExec = false}) {
   final scriptPath = Platform.script.path;
-  final rootDirectory = File(scriptPath).parent.parent.parent;
+  final rootDirectory = isCallingFromExec ? File(scriptPath).parent.parent : File(scriptPath).parent.parent.parent;
   final shadersDirectory = Directory('${rootDirectory.path}/lib/src/shaders');
   final outputFile = File('${rootDirectory.path}/lib/src/shaders/gen/shader_templates.gen.dart');
 

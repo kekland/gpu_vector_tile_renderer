@@ -20,7 +20,7 @@ List<String> setUniformsGenerator(List<String> uniformEval, List<String> uniform
     '    cameraWorldToGl: cameraWorldToGl,',
     '    cameraZoom: cameraZoom,',
     '    cameraPixelRatio: pixelRatio,'
-    '    tileLocalToGl: tileLocalToGl,',
+        '    tileLocalToGl: tileLocalToGl,',
     '    tileSize: tileSize,',
     '    tileExtent: tileExtent,',
     '    tileOpacity: tileOpacity,',
@@ -98,7 +98,6 @@ List<String> lineLayerRendererSetFeatureVerticesGenerator(List<String> vertexEva
   ];
 }
 
-
 List<String> lineDashedLayerRendererSetFeatureVerticesGenerator(List<String> vertexEval, List<String> vertexSetters) {
   return [
     'int setFeatureVertices(',
@@ -122,6 +121,50 @@ List<String> lineDashedLayerRendererSetFeatureVerticesGenerator(List<String> ver
     '  }',
     '',
     '  return index + vertexData.length;',
+    '}',
+  ];
+}
+
+List<String> symbolLayerRendererSetFeatureVerticesGenerator(List<String> vertexEval, List<String> vertexSetters) {
+  return [
+    'int setFeatureVertices(',
+    '  spec.EvaluationContext eval,',
+    '  vt.PointFeature feature,',
+    '  Iterable<Vector2> anchors,',
+    '  SymbolLayoutData layoutData,',
+    '  int index,',
+    ') {',
+    '  final paint = specLayer.paint;',
+    ...vertexEval.map((v) => '      $v'),
+    '',
+    '  var vertexIndex = index;',
+    '  for (final glyph in layoutData.glyphs) {',
+    '    final pos0 = Vector2(glyph.x, glyph.y);',
+    '    final pos1 = Vector2(glyph.x + glyph.width, glyph.y);',
+    '    final pos2 = Vector2(glyph.x + glyph.width, glyph.y + glyph.height);',
+    '    final pos3 = Vector2(glyph.x, glyph.y + glyph.height);',
+    '',
+    '    final uv0 = glyph.uv.uv0;',
+    '    final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);',
+    '    final uv2 = glyph.uv.uv1;',
+    '    final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);',
+    '',
+    '    for (final anchor in anchors) {',
+    for (var i = 0; i < 4; i++) ...[
+      '      pipeline.vertex.setVertex(',
+      '        vertexIndex + $i,',
+      '        position: pos$i,',
+      '        uv: uv$i,',
+      '        anchor: anchor,',
+      ...vertexSetters.map((v) => '        $v,'),
+      '      );',
+      '',
+    ],
+    '      vertexIndex += 4;',
+    '    }',
+    '  }',
+    '',
+    '  return vertexIndex;',
     '}',
   ];
 }

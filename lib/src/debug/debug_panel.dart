@@ -145,14 +145,14 @@ class _FlutterGpuVectorTileLayerDebugPanelState extends State<FlutterGpuVectorTi
           children: [
             ListTile(
               title: Text('Glyphs'),
-              subtitle: Text('${orchestrator.glyphAtlas.length}'),
+              subtitle: Text('${orchestrator.glyphManager.length}'),
             ),
             ListTile(
               onTap: () {
-                showGpuTextureDebugSheet(context, texture: orchestrator.glyphAtlas.texture);
+                showGpuTextureDebugSheet(context, texture: orchestrator.glyphManager.texture);
               },
               title: Text('Texture'),
-              subtitle: Text('${orchestrator.glyphAtlas.textureWidth}x${orchestrator.glyphAtlas.textureHeight}'),
+              subtitle: Text('${orchestrator.glyphManager.textureWidth}x${orchestrator.glyphManager.textureHeight}'),
               trailing: Icon(Icons.chevron_right_rounded),
             ),
           ],

@@ -13,6 +13,7 @@ const _kLineCapRoundSegments = 16;
 
 abstract class $LineLayerRenderer extends SingleTileLayerRenderer<spec.LayerLine> {
   $LineLayerRenderer({
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -189,7 +190,7 @@ abstract class $LineLayerRenderer extends SingleTileLayerRenderer<spec.LayerLine
     double tileOpacity,
   );
 
-  gpu.Texture? lineDasharrayTexture;
+  gpu.Texture? dasharrayTexture;
 
   @override
   void draw(RenderContext context) {
@@ -197,10 +198,9 @@ abstract class $LineLayerRenderer extends SingleTileLayerRenderer<spec.LayerLine
 
     final tileSize = context.getScaledTileSize(coordinates);
     final extent = vtLayer.extent.toDouble();
-    final tileLocalToWorld =
-        Matrix4.identity()
-          ..translate(coordinates.x * tileSize, coordinates.y * tileSize)
-          ..scale(tileSize / extent);
+    final tileLocalToWorld = Matrix4.identity()
+      ..translate(coordinates.x * tileSize, coordinates.y * tileSize)
+      ..scale(tileSize / extent);
 
     // Dasharray evaluation
     if (specLayer.paint.lineDasharray != null) {
@@ -208,8 +208,8 @@ abstract class $LineLayerRenderer extends SingleTileLayerRenderer<spec.LayerLine
       final dasharrayLength = dasharray.fold(0.0, (acc, v) => acc + v);
       final textureWidth = dasharrayLength.ceil();
 
-      if (lineDasharrayTexture?.width != textureWidth) {
-        lineDasharrayTexture = gpu.gpuContext.createTexture(
+      if (dasharrayTexture?.width != textureWidth) {
+        dasharrayTexture = gpu.gpuContext.createTexture(
           gpu.StorageMode.hostVisible,
           textureWidth,
           1,
@@ -234,7 +234,7 @@ abstract class $LineLayerRenderer extends SingleTileLayerRenderer<spec.LayerLine
         isGap = !isGap;
       }
 
-      lineDasharrayTexture!.overwrite(data.buffer.asByteData());
+      dasharrayTexture!.overwrite(data.buffer.asByteData());
     }
 
     setUniforms(

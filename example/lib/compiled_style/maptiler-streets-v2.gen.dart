@@ -237,14 +237,17 @@ class RiverTunnelUbo extends UniformBufferObjectBindings {
   RiverTunnelUbo({required super.vertexShader, required super.fragmentShader})
     : super(name: 'RiverTunnelUbo');
 
-  void set({required Vector2 widthStops, required Vector2 dasharraySize}) {
+  void set({
+    required Vector2 widthStops,
+    required Vector2 dasharrayTextureSize,
+  }) {
     if (slot == null) return;
 
     set_vec2(get_member_offset(slot!, 'width_stops'), $setData, widthStops);
     set_vec2(
-      get_member_offset(slot!, 'dasharray_size'),
+      get_member_offset(slot!, 'dasharray_texture_size'),
       $setData,
-      dasharraySize,
+      dasharrayTextureSize,
     );
 
     setInternal();
@@ -288,7 +291,7 @@ class FerryLineUbo extends UniformBufferObjectBindings {
     required Vector2 colorStops,
     required Vector2 opacityStops,
     required Vector2 widthStops,
-    required Vector2 dasharraySize,
+    required Vector2 dasharrayTextureSize,
   }) {
     if (slot == null) return;
 
@@ -296,9 +299,9 @@ class FerryLineUbo extends UniformBufferObjectBindings {
     set_vec2(get_member_offset(slot!, 'opacity_stops'), $setData, opacityStops);
     set_vec2(get_member_offset(slot!, 'width_stops'), $setData, widthStops);
     set_vec2(
-      get_member_offset(slot!, 'dasharray_size'),
+      get_member_offset(slot!, 'dasharray_texture_size'),
       $setData,
-      dasharraySize,
+      dasharrayTextureSize,
     );
 
     setInternal();
@@ -310,14 +313,17 @@ class TunnelOutlineUbo extends UniformBufferObjectBindings {
   TunnelOutlineUbo({required super.vertexShader, required super.fragmentShader})
     : super(name: 'TunnelOutlineUbo');
 
-  void set({required Vector2 widthStops, required Vector2 dasharraySize}) {
+  void set({
+    required Vector2 widthStops,
+    required Vector2 dasharrayTextureSize,
+  }) {
     if (slot == null) return;
 
     set_vec2(get_member_offset(slot!, 'width_stops'), $setData, widthStops);
     set_vec2(
-      get_member_offset(slot!, 'dasharray_size'),
+      get_member_offset(slot!, 'dasharray_texture_size'),
       $setData,
-      dasharraySize,
+      dasharrayTextureSize,
     );
 
     setInternal();
@@ -359,14 +365,17 @@ class RailwayTunnelHatchingUbo extends UniformBufferObjectBindings {
     required super.fragmentShader,
   }) : super(name: 'RailwayTunnelHatchingUbo');
 
-  void set({required Vector2 widthStops, required Vector2 dasharraySize}) {
+  void set({
+    required Vector2 widthStops,
+    required Vector2 dasharrayTextureSize,
+  }) {
     if (slot == null) return;
 
     set_vec2(get_member_offset(slot!, 'width_stops'), $setData, widthStops);
     set_vec2(
-      get_member_offset(slot!, 'dasharray_size'),
+      get_member_offset(slot!, 'dasharray_texture_size'),
       $setData,
-      dasharraySize,
+      dasharrayTextureSize,
     );
 
     setInternal();
@@ -394,14 +403,17 @@ class FootwayTunnelUbo extends UniformBufferObjectBindings {
   FootwayTunnelUbo({required super.vertexShader, required super.fragmentShader})
     : super(name: 'FootwayTunnelUbo');
 
-  void set({required Vector2 widthStops, required Vector2 dasharraySize}) {
+  void set({
+    required Vector2 widthStops,
+    required Vector2 dasharrayTextureSize,
+  }) {
     if (slot == null) return;
 
     set_vec2(get_member_offset(slot!, 'width_stops'), $setData, widthStops);
     set_vec2(
-      get_member_offset(slot!, 'dasharray_size'),
+      get_member_offset(slot!, 'dasharray_texture_size'),
       $setData,
-      dasharraySize,
+      dasharrayTextureSize,
     );
 
     setInternal();
@@ -477,14 +489,17 @@ class RoadUnderConstructionUbo extends UniformBufferObjectBindings {
     required super.fragmentShader,
   }) : super(name: 'RoadUnderConstructionUbo');
 
-  void set({required Vector2 widthStops, required Vector2 dasharraySize}) {
+  void set({
+    required Vector2 widthStops,
+    required Vector2 dasharrayTextureSize,
+  }) {
     if (slot == null) return;
 
     set_vec2(get_member_offset(slot!, 'width_stops'), $setData, widthStops);
     set_vec2(
-      get_member_offset(slot!, 'dasharray_size'),
+      get_member_offset(slot!, 'dasharray_texture_size'),
       $setData,
-      dasharraySize,
+      dasharrayTextureSize,
     );
 
     setInternal();
@@ -552,14 +567,17 @@ class PathUbo extends UniformBufferObjectBindings {
   PathUbo({required super.vertexShader, required super.fragmentShader})
     : super(name: 'PathUbo');
 
-  void set({required Vector2 widthStops, required Vector2 dasharraySize}) {
+  void set({
+    required Vector2 widthStops,
+    required Vector2 dasharrayTextureSize,
+  }) {
     if (slot == null) return;
 
     set_vec2(get_member_offset(slot!, 'width_stops'), $setData, widthStops);
     set_vec2(
-      get_member_offset(slot!, 'dasharray_size'),
+      get_member_offset(slot!, 'dasharray_texture_size'),
       $setData,
-      dasharraySize,
+      dasharrayTextureSize,
     );
 
     setInternal();
@@ -588,14 +606,17 @@ class MajorRailHatchingUbo extends UniformBufferObjectBindings {
     required super.fragmentShader,
   }) : super(name: 'MajorRailHatchingUbo');
 
-  void set({required Vector2 widthStops, required Vector2 dasharraySize}) {
+  void set({
+    required Vector2 widthStops,
+    required Vector2 dasharrayTextureSize,
+  }) {
     if (slot == null) return;
 
     set_vec2(get_member_offset(slot!, 'width_stops'), $setData, widthStops);
     set_vec2(
-      get_member_offset(slot!, 'dasharray_size'),
+      get_member_offset(slot!, 'dasharray_texture_size'),
       $setData,
-      dasharraySize,
+      dasharrayTextureSize,
     );
 
     setInternal();
@@ -623,14 +644,17 @@ class MinorRailHatchingUbo extends UniformBufferObjectBindings {
     required super.fragmentShader,
   }) : super(name: 'MinorRailHatchingUbo');
 
-  void set({required Vector2 widthStops, required Vector2 dasharraySize}) {
+  void set({
+    required Vector2 widthStops,
+    required Vector2 dasharrayTextureSize,
+  }) {
     if (slot == null) return;
 
     set_vec2(get_member_offset(slot!, 'width_stops'), $setData, widthStops);
     set_vec2(
-      get_member_offset(slot!, 'dasharray_size'),
+      get_member_offset(slot!, 'dasharray_texture_size'),
       $setData,
-      dasharraySize,
+      dasharrayTextureSize,
     );
 
     setInternal();
@@ -686,14 +710,17 @@ class CablecarDashUbo extends UniformBufferObjectBindings {
   CablecarDashUbo({required super.vertexShader, required super.fragmentShader})
     : super(name: 'CablecarDashUbo');
 
-  void set({required Vector2 widthStops, required Vector2 dasharraySize}) {
+  void set({
+    required Vector2 widthStops,
+    required Vector2 dasharrayTextureSize,
+  }) {
     if (slot == null) return;
 
     set_vec2(get_member_offset(slot!, 'width_stops'), $setData, widthStops);
     set_vec2(
-      get_member_offset(slot!, 'dasharray_size'),
+      get_member_offset(slot!, 'dasharray_texture_size'),
       $setData,
-      dasharraySize,
+      dasharrayTextureSize,
     );
 
     setInternal();
@@ -705,14 +732,17 @@ class OtherBorderUbo extends UniformBufferObjectBindings {
   OtherBorderUbo({required super.vertexShader, required super.fragmentShader})
     : super(name: 'OtherBorderUbo');
 
-  void set({required Vector2 widthStops, required Vector2 dasharraySize}) {
+  void set({
+    required Vector2 widthStops,
+    required Vector2 dasharrayTextureSize,
+  }) {
     if (slot == null) return;
 
     set_vec2(get_member_offset(slot!, 'width_stops'), $setData, widthStops);
     set_vec2(
-      get_member_offset(slot!, 'dasharray_size'),
+      get_member_offset(slot!, 'dasharray_texture_size'),
       $setData,
-      dasharraySize,
+      dasharrayTextureSize,
     );
 
     setInternal();
@@ -726,14 +756,17 @@ class DisputedBorderUbo extends UniformBufferObjectBindings {
     required super.fragmentShader,
   }) : super(name: 'DisputedBorderUbo');
 
-  void set({required Vector2 widthStops, required Vector2 dasharraySize}) {
+  void set({
+    required Vector2 widthStops,
+    required Vector2 dasharrayTextureSize,
+  }) {
     if (slot == null) return;
 
     set_vec2(get_member_offset(slot!, 'width_stops'), $setData, widthStops);
     set_vec2(
-      get_member_offset(slot!, 'dasharray_size'),
+      get_member_offset(slot!, 'dasharray_texture_size'),
       $setData,
-      dasharraySize,
+      dasharrayTextureSize,
     );
 
     setInternal();
@@ -749,6 +782,242 @@ class CountryBorderUbo extends UniformBufferObjectBindings {
     if (slot == null) return;
 
     set_vec2(get_member_offset(slot!, 'width_stops'), $setData, widthStops);
+
+    setInternal();
+  }
+}
+
+/// Generated UBO bindings for `RiverLabelsUbo`
+class RiverLabelsUbo extends UniformBufferObjectBindings {
+  RiverLabelsUbo({required super.vertexShader, required super.fragmentShader})
+    : super(name: 'RiverLabelsUbo');
+
+  void set({required Vector2 glyphSdfTextureSize}) {
+    if (slot == null) return;
+
+    set_vec2(
+      get_member_offset(slot!, 'glyph_sdf_texture_size'),
+      $setData,
+      glyphSdfTextureSize,
+    );
+
+    setInternal();
+  }
+}
+
+/// Generated UBO bindings for `OceanLabelsUbo`
+class OceanLabelsUbo extends UniformBufferObjectBindings {
+  OceanLabelsUbo({required super.vertexShader, required super.fragmentShader})
+    : super(name: 'OceanLabelsUbo');
+
+  void set({
+    required Vector2 colorStops,
+    required Vector2 opacityStops,
+    required Vector2 glyphSdfTextureSize,
+  }) {
+    if (slot == null) return;
+
+    set_vec2(get_member_offset(slot!, 'color_stops'), $setData, colorStops);
+    set_vec2(get_member_offset(slot!, 'opacity_stops'), $setData, opacityStops);
+    set_vec2(
+      get_member_offset(slot!, 'glyph_sdf_texture_size'),
+      $setData,
+      glyphSdfTextureSize,
+    );
+
+    setInternal();
+  }
+}
+
+/// Generated UBO bindings for `LakeLabelsUbo`
+class LakeLabelsUbo extends UniformBufferObjectBindings {
+  LakeLabelsUbo({required super.vertexShader, required super.fragmentShader})
+    : super(name: 'LakeLabelsUbo');
+
+  void set({required Vector2 glyphSdfTextureSize}) {
+    if (slot == null) return;
+
+    set_vec2(
+      get_member_offset(slot!, 'glyph_sdf_texture_size'),
+      $setData,
+      glyphSdfTextureSize,
+    );
+
+    setInternal();
+  }
+}
+
+/// Generated UBO bindings for `HousenumberUbo`
+class HousenumberUbo extends UniformBufferObjectBindings {
+  HousenumberUbo({required super.vertexShader, required super.fragmentShader})
+    : super(name: 'HousenumberUbo');
+
+  void set({required Vector2 glyphSdfTextureSize}) {
+    if (slot == null) return;
+
+    set_vec2(
+      get_member_offset(slot!, 'glyph_sdf_texture_size'),
+      $setData,
+      glyphSdfTextureSize,
+    );
+
+    setInternal();
+  }
+}
+
+/// Generated UBO bindings for `GondolaUbo`
+class GondolaUbo extends UniformBufferObjectBindings {
+  GondolaUbo({required super.vertexShader, required super.fragmentShader})
+    : super(name: 'GondolaUbo');
+
+  void set({required Vector2 glyphSdfTextureSize}) {
+    if (slot == null) return;
+
+    set_vec2(
+      get_member_offset(slot!, 'glyph_sdf_texture_size'),
+      $setData,
+      glyphSdfTextureSize,
+    );
+
+    setInternal();
+  }
+}
+
+/// Generated UBO bindings for `FerryUbo`
+class FerryUbo extends UniformBufferObjectBindings {
+  FerryUbo({required super.vertexShader, required super.fragmentShader})
+    : super(name: 'FerryUbo');
+
+  void set({required Vector2 glyphSdfTextureSize}) {
+    if (slot == null) return;
+
+    set_vec2(
+      get_member_offset(slot!, 'glyph_sdf_texture_size'),
+      $setData,
+      glyphSdfTextureSize,
+    );
+
+    setInternal();
+  }
+}
+
+/// Generated UBO bindings for `RoadLabelsUbo`
+class RoadLabelsUbo extends UniformBufferObjectBindings {
+  RoadLabelsUbo({required super.vertexShader, required super.fragmentShader})
+    : super(name: 'RoadLabelsUbo');
+
+  void set({required Vector2 glyphSdfTextureSize}) {
+    if (slot == null) return;
+
+    set_vec2(
+      get_member_offset(slot!, 'glyph_sdf_texture_size'),
+      $setData,
+      glyphSdfTextureSize,
+    );
+
+    setInternal();
+  }
+}
+
+/// Generated UBO bindings for `PlaceLabelsUbo`
+class PlaceLabelsUbo extends UniformBufferObjectBindings {
+  PlaceLabelsUbo({required super.vertexShader, required super.fragmentShader})
+    : super(name: 'PlaceLabelsUbo');
+
+  void set({
+    required Vector2 opacityStops,
+    required Vector2 glyphSdfTextureSize,
+  }) {
+    if (slot == null) return;
+
+    set_vec2(get_member_offset(slot!, 'opacity_stops'), $setData, opacityStops);
+    set_vec2(
+      get_member_offset(slot!, 'glyph_sdf_texture_size'),
+      $setData,
+      glyphSdfTextureSize,
+    );
+
+    setInternal();
+  }
+}
+
+/// Generated UBO bindings for `AirportGateUbo`
+class AirportGateUbo extends UniformBufferObjectBindings {
+  AirportGateUbo({required super.vertexShader, required super.fragmentShader})
+    : super(name: 'AirportGateUbo');
+
+  void set({required Vector2 glyphSdfTextureSize}) {
+    if (slot == null) return;
+
+    set_vec2(
+      get_member_offset(slot!, 'glyph_sdf_texture_size'),
+      $setData,
+      glyphSdfTextureSize,
+    );
+
+    setInternal();
+  }
+}
+
+/// Generated UBO bindings for `StateLabelsUbo`
+class StateLabelsUbo extends UniformBufferObjectBindings {
+  StateLabelsUbo({required super.vertexShader, required super.fragmentShader})
+    : super(name: 'StateLabelsUbo');
+
+  void set({
+    required Vector2 opacityStops,
+    required Vector2 glyphSdfTextureSize,
+  }) {
+    if (slot == null) return;
+
+    set_vec2(get_member_offset(slot!, 'opacity_stops'), $setData, opacityStops);
+    set_vec2(
+      get_member_offset(slot!, 'glyph_sdf_texture_size'),
+      $setData,
+      glyphSdfTextureSize,
+    );
+
+    setInternal();
+  }
+}
+
+/// Generated UBO bindings for `CountryLabelsUbo`
+class CountryLabelsUbo extends UniformBufferObjectBindings {
+  CountryLabelsUbo({required super.vertexShader, required super.fragmentShader})
+    : super(name: 'CountryLabelsUbo');
+
+  void set({
+    required Vector2 opacityStops,
+    required Vector2 glyphSdfTextureSize,
+  }) {
+    if (slot == null) return;
+
+    set_vec2(get_member_offset(slot!, 'opacity_stops'), $setData, opacityStops);
+    set_vec2(
+      get_member_offset(slot!, 'glyph_sdf_texture_size'),
+      $setData,
+      glyphSdfTextureSize,
+    );
+
+    setInternal();
+  }
+}
+
+/// Generated UBO bindings for `ContinentLabelsUbo`
+class ContinentLabelsUbo extends UniformBufferObjectBindings {
+  ContinentLabelsUbo({
+    required super.vertexShader,
+    required super.fragmentShader,
+  }) : super(name: 'ContinentLabelsUbo');
+
+  void set({required Vector2 glyphSdfTextureSize}) {
+    if (slot == null) return;
+
+    set_vec2(
+      get_member_offset(slot!, 'glyph_sdf_texture_size'),
+      $setData,
+      glyphSdfTextureSize,
+    );
 
     setInternal();
   }
@@ -2230,7 +2499,7 @@ class RiverTunnelRenderPipelineBindings
         ],
         samplers: [
           UniformSamplerBindings(
-            name: 'dasharray',
+            name: 'dasharray_texture',
             vertexShader: shaderLibraryProvider['river_tunnel_vert']!,
             fragmentShader: shaderLibraryProvider['river_tunnel_frag']!,
           ),
@@ -2241,12 +2510,12 @@ class RiverTunnelRenderPipelineBindings
   late final TileUbo tileUbo = ubos[1] as TileUbo;
   late final CameraUbo cameraUbo = ubos[2] as CameraUbo;
 
-  late final UniformSamplerBindings dasharray = samplers[0];
+  late final UniformSamplerBindings dasharray_texture = samplers[0];
 
   /// Sets the uniforms for this shader.
   void setUniforms({
     required Vector2 riverTunnelUboWidthStops,
-    required Vector2 riverTunnelUboDasharraySize,
+    required Vector2 riverTunnelUboDasharrayTextureSize,
     required Matrix4 tileLocalToGl,
     required double tileSize,
     required double tileExtent,
@@ -2259,7 +2528,7 @@ class RiverTunnelRenderPipelineBindings
   }) {
     riverTunnelUbo.set(
       widthStops: riverTunnelUboWidthStops,
-      dasharraySize: riverTunnelUboDasharraySize,
+      dasharrayTextureSize: riverTunnelUboDasharrayTextureSize,
     );
     tileUbo.set(
       localToGl: tileLocalToGl,
@@ -2272,7 +2541,7 @@ class RiverTunnelRenderPipelineBindings
       zoom: cameraZoom,
       pixelRatio: cameraPixelRatio,
     );
-    dasharray.setTexture(
+    dasharray_texture.setTexture(
       dasharrayTexture,
       options: dasharrayTextureSamplerOptions,
     );
@@ -2754,7 +3023,7 @@ class FerryLineRenderPipelineBindings
         ],
         samplers: [
           UniformSamplerBindings(
-            name: 'dasharray',
+            name: 'dasharray_texture',
             vertexShader: shaderLibraryProvider['ferry_line_vert']!,
             fragmentShader: shaderLibraryProvider['ferry_line_frag']!,
           ),
@@ -2765,14 +3034,14 @@ class FerryLineRenderPipelineBindings
   late final TileUbo tileUbo = ubos[1] as TileUbo;
   late final CameraUbo cameraUbo = ubos[2] as CameraUbo;
 
-  late final UniformSamplerBindings dasharray = samplers[0];
+  late final UniformSamplerBindings dasharray_texture = samplers[0];
 
   /// Sets the uniforms for this shader.
   void setUniforms({
     required Vector2 ferryLineUboColorStops,
     required Vector2 ferryLineUboOpacityStops,
     required Vector2 ferryLineUboWidthStops,
-    required Vector2 ferryLineUboDasharraySize,
+    required Vector2 ferryLineUboDasharrayTextureSize,
     required Matrix4 tileLocalToGl,
     required double tileSize,
     required double tileExtent,
@@ -2787,7 +3056,7 @@ class FerryLineRenderPipelineBindings
       colorStops: ferryLineUboColorStops,
       opacityStops: ferryLineUboOpacityStops,
       widthStops: ferryLineUboWidthStops,
-      dasharraySize: ferryLineUboDasharraySize,
+      dasharrayTextureSize: ferryLineUboDasharrayTextureSize,
     );
     tileUbo.set(
       localToGl: tileLocalToGl,
@@ -2800,7 +3069,7 @@ class FerryLineRenderPipelineBindings
       zoom: cameraZoom,
       pixelRatio: cameraPixelRatio,
     );
-    dasharray.setTexture(
+    dasharray_texture.setTexture(
       dasharrayTexture,
       options: dasharrayTextureSamplerOptions,
     );
@@ -2873,7 +3142,7 @@ class TunnelOutlineRenderPipelineBindings
         ],
         samplers: [
           UniformSamplerBindings(
-            name: 'dasharray',
+            name: 'dasharray_texture',
             vertexShader: shaderLibraryProvider['tunnel_outline_vert']!,
             fragmentShader: shaderLibraryProvider['tunnel_outline_frag']!,
           ),
@@ -2884,12 +3153,12 @@ class TunnelOutlineRenderPipelineBindings
   late final TileUbo tileUbo = ubos[1] as TileUbo;
   late final CameraUbo cameraUbo = ubos[2] as CameraUbo;
 
-  late final UniformSamplerBindings dasharray = samplers[0];
+  late final UniformSamplerBindings dasharray_texture = samplers[0];
 
   /// Sets the uniforms for this shader.
   void setUniforms({
     required Vector2 tunnelOutlineUboWidthStops,
-    required Vector2 tunnelOutlineUboDasharraySize,
+    required Vector2 tunnelOutlineUboDasharrayTextureSize,
     required Matrix4 tileLocalToGl,
     required double tileSize,
     required double tileExtent,
@@ -2902,7 +3171,7 @@ class TunnelOutlineRenderPipelineBindings
   }) {
     tunnelOutlineUbo.set(
       widthStops: tunnelOutlineUboWidthStops,
-      dasharraySize: tunnelOutlineUboDasharraySize,
+      dasharrayTextureSize: tunnelOutlineUboDasharrayTextureSize,
     );
     tileUbo.set(
       localToGl: tileLocalToGl,
@@ -2915,7 +3184,7 @@ class TunnelOutlineRenderPipelineBindings
       zoom: cameraZoom,
       pixelRatio: cameraPixelRatio,
     );
-    dasharray.setTexture(
+    dasharray_texture.setTexture(
       dasharrayTexture,
       options: dasharrayTextureSamplerOptions,
     );
@@ -3181,7 +3450,7 @@ class RailwayTunnelHatchingRenderPipelineBindings
         ],
         samplers: [
           UniformSamplerBindings(
-            name: 'dasharray',
+            name: 'dasharray_texture',
             vertexShader:
                 shaderLibraryProvider['railway_tunnel_hatching_vert']!,
             fragmentShader:
@@ -3195,12 +3464,12 @@ class RailwayTunnelHatchingRenderPipelineBindings
   late final TileUbo tileUbo = ubos[1] as TileUbo;
   late final CameraUbo cameraUbo = ubos[2] as CameraUbo;
 
-  late final UniformSamplerBindings dasharray = samplers[0];
+  late final UniformSamplerBindings dasharray_texture = samplers[0];
 
   /// Sets the uniforms for this shader.
   void setUniforms({
     required Vector2 railwayTunnelHatchingUboWidthStops,
-    required Vector2 railwayTunnelHatchingUboDasharraySize,
+    required Vector2 railwayTunnelHatchingUboDasharrayTextureSize,
     required Matrix4 tileLocalToGl,
     required double tileSize,
     required double tileExtent,
@@ -3213,7 +3482,7 @@ class RailwayTunnelHatchingRenderPipelineBindings
   }) {
     railwayTunnelHatchingUbo.set(
       widthStops: railwayTunnelHatchingUboWidthStops,
-      dasharraySize: railwayTunnelHatchingUboDasharraySize,
+      dasharrayTextureSize: railwayTunnelHatchingUboDasharrayTextureSize,
     );
     tileUbo.set(
       localToGl: tileLocalToGl,
@@ -3226,7 +3495,7 @@ class RailwayTunnelHatchingRenderPipelineBindings
       zoom: cameraZoom,
       pixelRatio: cameraPixelRatio,
     );
-    dasharray.setTexture(
+    dasharray_texture.setTexture(
       dasharrayTexture,
       options: dasharrayTextureSamplerOptions,
     );
@@ -3398,7 +3667,7 @@ class FootwayTunnelRenderPipelineBindings
         ],
         samplers: [
           UniformSamplerBindings(
-            name: 'dasharray',
+            name: 'dasharray_texture',
             vertexShader: shaderLibraryProvider['footway_tunnel_vert']!,
             fragmentShader: shaderLibraryProvider['footway_tunnel_frag']!,
           ),
@@ -3409,12 +3678,12 @@ class FootwayTunnelRenderPipelineBindings
   late final TileUbo tileUbo = ubos[1] as TileUbo;
   late final CameraUbo cameraUbo = ubos[2] as CameraUbo;
 
-  late final UniformSamplerBindings dasharray = samplers[0];
+  late final UniformSamplerBindings dasharray_texture = samplers[0];
 
   /// Sets the uniforms for this shader.
   void setUniforms({
     required Vector2 footwayTunnelUboWidthStops,
-    required Vector2 footwayTunnelUboDasharraySize,
+    required Vector2 footwayTunnelUboDasharrayTextureSize,
     required Matrix4 tileLocalToGl,
     required double tileSize,
     required double tileExtent,
@@ -3427,7 +3696,7 @@ class FootwayTunnelRenderPipelineBindings
   }) {
     footwayTunnelUbo.set(
       widthStops: footwayTunnelUboWidthStops,
-      dasharraySize: footwayTunnelUboDasharraySize,
+      dasharrayTextureSize: footwayTunnelUboDasharrayTextureSize,
     );
     tileUbo.set(
       localToGl: tileLocalToGl,
@@ -3440,7 +3709,7 @@ class FootwayTunnelRenderPipelineBindings
       zoom: cameraZoom,
       pixelRatio: cameraPixelRatio,
     );
-    dasharray.setTexture(
+    dasharray_texture.setTexture(
       dasharrayTexture,
       options: dasharrayTextureSamplerOptions,
     );
@@ -4044,7 +4313,7 @@ class RoadUnderConstructionRenderPipelineBindings
         ],
         samplers: [
           UniformSamplerBindings(
-            name: 'dasharray',
+            name: 'dasharray_texture',
             vertexShader:
                 shaderLibraryProvider['road_under_construction_vert']!,
             fragmentShader:
@@ -4058,12 +4327,12 @@ class RoadUnderConstructionRenderPipelineBindings
   late final TileUbo tileUbo = ubos[1] as TileUbo;
   late final CameraUbo cameraUbo = ubos[2] as CameraUbo;
 
-  late final UniformSamplerBindings dasharray = samplers[0];
+  late final UniformSamplerBindings dasharray_texture = samplers[0];
 
   /// Sets the uniforms for this shader.
   void setUniforms({
     required Vector2 roadUnderConstructionUboWidthStops,
-    required Vector2 roadUnderConstructionUboDasharraySize,
+    required Vector2 roadUnderConstructionUboDasharrayTextureSize,
     required Matrix4 tileLocalToGl,
     required double tileSize,
     required double tileExtent,
@@ -4076,7 +4345,7 @@ class RoadUnderConstructionRenderPipelineBindings
   }) {
     roadUnderConstructionUbo.set(
       widthStops: roadUnderConstructionUboWidthStops,
-      dasharraySize: roadUnderConstructionUboDasharraySize,
+      dasharrayTextureSize: roadUnderConstructionUboDasharrayTextureSize,
     );
     tileUbo.set(
       localToGl: tileLocalToGl,
@@ -4089,7 +4358,7 @@ class RoadUnderConstructionRenderPipelineBindings
       zoom: cameraZoom,
       pixelRatio: cameraPixelRatio,
     );
-    dasharray.setTexture(
+    dasharray_texture.setTexture(
       dasharrayTexture,
       options: dasharrayTextureSamplerOptions,
     );
@@ -4516,7 +4785,7 @@ class PathRenderPipelineBindings
         ],
         samplers: [
           UniformSamplerBindings(
-            name: 'dasharray',
+            name: 'dasharray_texture',
             vertexShader: shaderLibraryProvider['path_vert']!,
             fragmentShader: shaderLibraryProvider['path_frag']!,
           ),
@@ -4527,12 +4796,12 @@ class PathRenderPipelineBindings
   late final TileUbo tileUbo = ubos[1] as TileUbo;
   late final CameraUbo cameraUbo = ubos[2] as CameraUbo;
 
-  late final UniformSamplerBindings dasharray = samplers[0];
+  late final UniformSamplerBindings dasharray_texture = samplers[0];
 
   /// Sets the uniforms for this shader.
   void setUniforms({
     required Vector2 pathUboWidthStops,
-    required Vector2 pathUboDasharraySize,
+    required Vector2 pathUboDasharrayTextureSize,
     required Matrix4 tileLocalToGl,
     required double tileSize,
     required double tileExtent,
@@ -4545,7 +4814,7 @@ class PathRenderPipelineBindings
   }) {
     pathUbo.set(
       widthStops: pathUboWidthStops,
-      dasharraySize: pathUboDasharraySize,
+      dasharrayTextureSize: pathUboDasharrayTextureSize,
     );
     tileUbo.set(
       localToGl: tileLocalToGl,
@@ -4558,7 +4827,7 @@ class PathRenderPipelineBindings
       zoom: cameraZoom,
       pixelRatio: cameraPixelRatio,
     );
-    dasharray.setTexture(
+    dasharray_texture.setTexture(
       dasharrayTexture,
       options: dasharrayTextureSamplerOptions,
     );
@@ -4735,7 +5004,7 @@ class MajorRailHatchingRenderPipelineBindings
         ],
         samplers: [
           UniformSamplerBindings(
-            name: 'dasharray',
+            name: 'dasharray_texture',
             vertexShader: shaderLibraryProvider['major_rail_hatching_vert']!,
             fragmentShader: shaderLibraryProvider['major_rail_hatching_frag']!,
           ),
@@ -4747,12 +5016,12 @@ class MajorRailHatchingRenderPipelineBindings
   late final TileUbo tileUbo = ubos[1] as TileUbo;
   late final CameraUbo cameraUbo = ubos[2] as CameraUbo;
 
-  late final UniformSamplerBindings dasharray = samplers[0];
+  late final UniformSamplerBindings dasharray_texture = samplers[0];
 
   /// Sets the uniforms for this shader.
   void setUniforms({
     required Vector2 majorRailHatchingUboWidthStops,
-    required Vector2 majorRailHatchingUboDasharraySize,
+    required Vector2 majorRailHatchingUboDasharrayTextureSize,
     required Matrix4 tileLocalToGl,
     required double tileSize,
     required double tileExtent,
@@ -4765,7 +5034,7 @@ class MajorRailHatchingRenderPipelineBindings
   }) {
     majorRailHatchingUbo.set(
       widthStops: majorRailHatchingUboWidthStops,
-      dasharraySize: majorRailHatchingUboDasharraySize,
+      dasharrayTextureSize: majorRailHatchingUboDasharrayTextureSize,
     );
     tileUbo.set(
       localToGl: tileLocalToGl,
@@ -4778,7 +5047,7 @@ class MajorRailHatchingRenderPipelineBindings
       zoom: cameraZoom,
       pixelRatio: cameraPixelRatio,
     );
-    dasharray.setTexture(
+    dasharray_texture.setTexture(
       dasharrayTexture,
       options: dasharrayTextureSamplerOptions,
     );
@@ -4943,7 +5212,7 @@ class MinorRailHatchingRenderPipelineBindings
         ],
         samplers: [
           UniformSamplerBindings(
-            name: 'dasharray',
+            name: 'dasharray_texture',
             vertexShader: shaderLibraryProvider['minor_rail_hatching_vert']!,
             fragmentShader: shaderLibraryProvider['minor_rail_hatching_frag']!,
           ),
@@ -4955,12 +5224,12 @@ class MinorRailHatchingRenderPipelineBindings
   late final TileUbo tileUbo = ubos[1] as TileUbo;
   late final CameraUbo cameraUbo = ubos[2] as CameraUbo;
 
-  late final UniformSamplerBindings dasharray = samplers[0];
+  late final UniformSamplerBindings dasharray_texture = samplers[0];
 
   /// Sets the uniforms for this shader.
   void setUniforms({
     required Vector2 minorRailHatchingUboWidthStops,
-    required Vector2 minorRailHatchingUboDasharraySize,
+    required Vector2 minorRailHatchingUboDasharrayTextureSize,
     required Matrix4 tileLocalToGl,
     required double tileSize,
     required double tileExtent,
@@ -4973,7 +5242,7 @@ class MinorRailHatchingRenderPipelineBindings
   }) {
     minorRailHatchingUbo.set(
       widthStops: minorRailHatchingUboWidthStops,
-      dasharraySize: minorRailHatchingUboDasharraySize,
+      dasharrayTextureSize: minorRailHatchingUboDasharrayTextureSize,
     );
     tileUbo.set(
       localToGl: tileLocalToGl,
@@ -4986,7 +5255,7 @@ class MinorRailHatchingRenderPipelineBindings
       zoom: cameraZoom,
       pixelRatio: cameraPixelRatio,
     );
-    dasharray.setTexture(
+    dasharray_texture.setTexture(
       dasharrayTexture,
       options: dasharrayTextureSamplerOptions,
     );
@@ -5406,7 +5675,7 @@ class CablecarDashRenderPipelineBindings
         ],
         samplers: [
           UniformSamplerBindings(
-            name: 'dasharray',
+            name: 'dasharray_texture',
             vertexShader: shaderLibraryProvider['cablecar_dash_vert']!,
             fragmentShader: shaderLibraryProvider['cablecar_dash_frag']!,
           ),
@@ -5417,12 +5686,12 @@ class CablecarDashRenderPipelineBindings
   late final TileUbo tileUbo = ubos[1] as TileUbo;
   late final CameraUbo cameraUbo = ubos[2] as CameraUbo;
 
-  late final UniformSamplerBindings dasharray = samplers[0];
+  late final UniformSamplerBindings dasharray_texture = samplers[0];
 
   /// Sets the uniforms for this shader.
   void setUniforms({
     required Vector2 cablecarDashUboWidthStops,
-    required Vector2 cablecarDashUboDasharraySize,
+    required Vector2 cablecarDashUboDasharrayTextureSize,
     required Matrix4 tileLocalToGl,
     required double tileSize,
     required double tileExtent,
@@ -5435,7 +5704,7 @@ class CablecarDashRenderPipelineBindings
   }) {
     cablecarDashUbo.set(
       widthStops: cablecarDashUboWidthStops,
-      dasharraySize: cablecarDashUboDasharraySize,
+      dasharrayTextureSize: cablecarDashUboDasharrayTextureSize,
     );
     tileUbo.set(
       localToGl: tileLocalToGl,
@@ -5448,7 +5717,7 @@ class CablecarDashRenderPipelineBindings
       zoom: cameraZoom,
       pixelRatio: cameraPixelRatio,
     );
-    dasharray.setTexture(
+    dasharray_texture.setTexture(
       dasharrayTexture,
       options: dasharrayTextureSamplerOptions,
     );
@@ -5517,7 +5786,7 @@ class OtherBorderRenderPipelineBindings
         ],
         samplers: [
           UniformSamplerBindings(
-            name: 'dasharray',
+            name: 'dasharray_texture',
             vertexShader: shaderLibraryProvider['other_border_vert']!,
             fragmentShader: shaderLibraryProvider['other_border_frag']!,
           ),
@@ -5528,12 +5797,12 @@ class OtherBorderRenderPipelineBindings
   late final TileUbo tileUbo = ubos[1] as TileUbo;
   late final CameraUbo cameraUbo = ubos[2] as CameraUbo;
 
-  late final UniformSamplerBindings dasharray = samplers[0];
+  late final UniformSamplerBindings dasharray_texture = samplers[0];
 
   /// Sets the uniforms for this shader.
   void setUniforms({
     required Vector2 otherBorderUboWidthStops,
-    required Vector2 otherBorderUboDasharraySize,
+    required Vector2 otherBorderUboDasharrayTextureSize,
     required Matrix4 tileLocalToGl,
     required double tileSize,
     required double tileExtent,
@@ -5546,7 +5815,7 @@ class OtherBorderRenderPipelineBindings
   }) {
     otherBorderUbo.set(
       widthStops: otherBorderUboWidthStops,
-      dasharraySize: otherBorderUboDasharraySize,
+      dasharrayTextureSize: otherBorderUboDasharrayTextureSize,
     );
     tileUbo.set(
       localToGl: tileLocalToGl,
@@ -5559,7 +5828,7 @@ class OtherBorderRenderPipelineBindings
       zoom: cameraZoom,
       pixelRatio: cameraPixelRatio,
     );
-    dasharray.setTexture(
+    dasharray_texture.setTexture(
       dasharrayTexture,
       options: dasharrayTextureSamplerOptions,
     );
@@ -5631,7 +5900,7 @@ class DisputedBorderRenderPipelineBindings
         ],
         samplers: [
           UniformSamplerBindings(
-            name: 'dasharray',
+            name: 'dasharray_texture',
             vertexShader: shaderLibraryProvider['disputed_border_vert']!,
             fragmentShader: shaderLibraryProvider['disputed_border_frag']!,
           ),
@@ -5642,12 +5911,12 @@ class DisputedBorderRenderPipelineBindings
   late final TileUbo tileUbo = ubos[1] as TileUbo;
   late final CameraUbo cameraUbo = ubos[2] as CameraUbo;
 
-  late final UniformSamplerBindings dasharray = samplers[0];
+  late final UniformSamplerBindings dasharray_texture = samplers[0];
 
   /// Sets the uniforms for this shader.
   void setUniforms({
     required Vector2 disputedBorderUboWidthStops,
-    required Vector2 disputedBorderUboDasharraySize,
+    required Vector2 disputedBorderUboDasharrayTextureSize,
     required Matrix4 tileLocalToGl,
     required double tileSize,
     required double tileExtent,
@@ -5660,7 +5929,7 @@ class DisputedBorderRenderPipelineBindings
   }) {
     disputedBorderUbo.set(
       widthStops: disputedBorderUboWidthStops,
-      dasharraySize: disputedBorderUboDasharraySize,
+      dasharrayTextureSize: disputedBorderUboDasharrayTextureSize,
     );
     tileUbo.set(
       localToGl: tileLocalToGl,
@@ -5673,7 +5942,7 @@ class DisputedBorderRenderPipelineBindings
       zoom: cameraZoom,
       pixelRatio: cameraPixelRatio,
     );
-    dasharray.setTexture(
+    dasharray_texture.setTexture(
       dasharrayTexture,
       options: dasharrayTextureSamplerOptions,
     );
@@ -5773,8 +6042,1285 @@ class CountryBorderRenderPipelineBindings
   }
 }
 
+/// Generated bindings for the vertex shader `river_labels`
+class RiverLabelsVertexShaderBindings extends VertexShaderBindings {
+  RiverLabelsVertexShaderBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(
+        bytesPerVertex: 24,
+        shader: shaderLibraryProvider['river_labels_vert']!,
+      );
+
+  /// Sets attributes for a vertex at [index].
+  ///
+  /// Ensure that [allocateVertices] has been called before calling this method.
+  void setVertex(
+    int index, {
+    required Vector2 position,
+    required Vector2 anchor,
+    required Vector2 uv,
+  }) {
+    set_vec2(0, $setVertexData, position);
+    set_vec2(8, $setVertexData, anchor);
+    set_vec2(16, $setVertexData, uv);
+
+    setVertexInternal(index);
+  }
+}
+
+/// Generated bindings for the fragment shader `river_labels`
+class RiverLabelsFragmentShaderBindings extends FragmentShaderBindings {
+  RiverLabelsFragmentShaderBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(shader: shaderLibraryProvider['river_labels_frag']!);
+}
+
+/// Generated bindings for the render pipeline `river_labels`
+class RiverLabelsRenderPipelineBindings
+    extends
+        RenderPipelineBindings<
+          RiverLabelsVertexShaderBindings,
+          RiverLabelsFragmentShaderBindings
+        > {
+  RiverLabelsRenderPipelineBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(
+        vertex: RiverLabelsVertexShaderBindings(shaderLibraryProvider),
+        fragment: RiverLabelsFragmentShaderBindings(shaderLibraryProvider),
+        ubos: [
+          RiverLabelsUbo(
+            vertexShader: shaderLibraryProvider['river_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['river_labels_frag']!,
+          ),
+          TileUbo(
+            vertexShader: shaderLibraryProvider['river_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['river_labels_frag']!,
+          ),
+          CameraUbo(
+            vertexShader: shaderLibraryProvider['river_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['river_labels_frag']!,
+          ),
+        ],
+        samplers: [
+          UniformSamplerBindings(
+            name: 'glyph_sdf_texture',
+            vertexShader: shaderLibraryProvider['river_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['river_labels_frag']!,
+          ),
+        ],
+      );
+
+  late final RiverLabelsUbo riverLabelsUbo = ubos[0] as RiverLabelsUbo;
+  late final TileUbo tileUbo = ubos[1] as TileUbo;
+  late final CameraUbo cameraUbo = ubos[2] as CameraUbo;
+
+  late final UniformSamplerBindings glyph_sdf_texture = samplers[0];
+
+  /// Sets the uniforms for this shader.
+  void setUniforms({
+    required Vector2 riverLabelsUboGlyphSdfTextureSize,
+    required Matrix4 tileLocalToGl,
+    required double tileSize,
+    required double tileExtent,
+    required double tileOpacity,
+    required Matrix4 cameraWorldToGl,
+    required double cameraZoom,
+    required double cameraPixelRatio,
+    required gpu.Texture glyphSdfTexture,
+    gpu.SamplerOptions? glyphSdfTextureSamplerOptions,
+  }) {
+    riverLabelsUbo.set(glyphSdfTextureSize: riverLabelsUboGlyphSdfTextureSize);
+    tileUbo.set(
+      localToGl: tileLocalToGl,
+      size: tileSize,
+      extent: tileExtent,
+      opacity: tileOpacity,
+    );
+    cameraUbo.set(
+      worldToGl: cameraWorldToGl,
+      zoom: cameraZoom,
+      pixelRatio: cameraPixelRatio,
+    );
+    glyph_sdf_texture.setTexture(
+      glyphSdfTexture,
+      options: glyphSdfTextureSamplerOptions,
+    );
+  }
+}
+
+/// Generated bindings for the vertex shader `ocean_labels`
+class OceanLabelsVertexShaderBindings extends VertexShaderBindings {
+  OceanLabelsVertexShaderBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(
+        bytesPerVertex: 64,
+        shader: shaderLibraryProvider['ocean_labels_vert']!,
+      );
+
+  /// Sets attributes for a vertex at [index].
+  ///
+  /// Ensure that [allocateVertices] has been called before calling this method.
+  void setVertex(
+    int index, {
+    required Vector2 position,
+    required Vector2 anchor,
+    required Vector2 uv,
+    required Vector4 colorStartValue,
+    required Vector4 colorEndValue,
+    required double opacityStartValue,
+    required double opacityEndValue,
+  }) {
+    set_vec2(0, $setVertexData, position);
+    set_vec2(8, $setVertexData, anchor);
+    set_vec2(16, $setVertexData, uv);
+    set_vec4(24, $setVertexData, colorStartValue);
+    set_vec4(40, $setVertexData, colorEndValue);
+    set_float(56, $setVertexData, opacityStartValue);
+    set_float(60, $setVertexData, opacityEndValue);
+
+    setVertexInternal(index);
+  }
+}
+
+/// Generated bindings for the fragment shader `ocean_labels`
+class OceanLabelsFragmentShaderBindings extends FragmentShaderBindings {
+  OceanLabelsFragmentShaderBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(shader: shaderLibraryProvider['ocean_labels_frag']!);
+}
+
+/// Generated bindings for the render pipeline `ocean_labels`
+class OceanLabelsRenderPipelineBindings
+    extends
+        RenderPipelineBindings<
+          OceanLabelsVertexShaderBindings,
+          OceanLabelsFragmentShaderBindings
+        > {
+  OceanLabelsRenderPipelineBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(
+        vertex: OceanLabelsVertexShaderBindings(shaderLibraryProvider),
+        fragment: OceanLabelsFragmentShaderBindings(shaderLibraryProvider),
+        ubos: [
+          OceanLabelsUbo(
+            vertexShader: shaderLibraryProvider['ocean_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['ocean_labels_frag']!,
+          ),
+          TileUbo(
+            vertexShader: shaderLibraryProvider['ocean_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['ocean_labels_frag']!,
+          ),
+          CameraUbo(
+            vertexShader: shaderLibraryProvider['ocean_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['ocean_labels_frag']!,
+          ),
+        ],
+        samplers: [
+          UniformSamplerBindings(
+            name: 'glyph_sdf_texture',
+            vertexShader: shaderLibraryProvider['ocean_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['ocean_labels_frag']!,
+          ),
+        ],
+      );
+
+  late final OceanLabelsUbo oceanLabelsUbo = ubos[0] as OceanLabelsUbo;
+  late final TileUbo tileUbo = ubos[1] as TileUbo;
+  late final CameraUbo cameraUbo = ubos[2] as CameraUbo;
+
+  late final UniformSamplerBindings glyph_sdf_texture = samplers[0];
+
+  /// Sets the uniforms for this shader.
+  void setUniforms({
+    required Vector2 oceanLabelsUboColorStops,
+    required Vector2 oceanLabelsUboOpacityStops,
+    required Vector2 oceanLabelsUboGlyphSdfTextureSize,
+    required Matrix4 tileLocalToGl,
+    required double tileSize,
+    required double tileExtent,
+    required double tileOpacity,
+    required Matrix4 cameraWorldToGl,
+    required double cameraZoom,
+    required double cameraPixelRatio,
+    required gpu.Texture glyphSdfTexture,
+    gpu.SamplerOptions? glyphSdfTextureSamplerOptions,
+  }) {
+    oceanLabelsUbo.set(
+      colorStops: oceanLabelsUboColorStops,
+      opacityStops: oceanLabelsUboOpacityStops,
+      glyphSdfTextureSize: oceanLabelsUboGlyphSdfTextureSize,
+    );
+    tileUbo.set(
+      localToGl: tileLocalToGl,
+      size: tileSize,
+      extent: tileExtent,
+      opacity: tileOpacity,
+    );
+    cameraUbo.set(
+      worldToGl: cameraWorldToGl,
+      zoom: cameraZoom,
+      pixelRatio: cameraPixelRatio,
+    );
+    glyph_sdf_texture.setTexture(
+      glyphSdfTexture,
+      options: glyphSdfTextureSamplerOptions,
+    );
+  }
+}
+
+/// Generated bindings for the vertex shader `lake_labels`
+class LakeLabelsVertexShaderBindings extends VertexShaderBindings {
+  LakeLabelsVertexShaderBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(
+        bytesPerVertex: 24,
+        shader: shaderLibraryProvider['lake_labels_vert']!,
+      );
+
+  /// Sets attributes for a vertex at [index].
+  ///
+  /// Ensure that [allocateVertices] has been called before calling this method.
+  void setVertex(
+    int index, {
+    required Vector2 position,
+    required Vector2 anchor,
+    required Vector2 uv,
+  }) {
+    set_vec2(0, $setVertexData, position);
+    set_vec2(8, $setVertexData, anchor);
+    set_vec2(16, $setVertexData, uv);
+
+    setVertexInternal(index);
+  }
+}
+
+/// Generated bindings for the fragment shader `lake_labels`
+class LakeLabelsFragmentShaderBindings extends FragmentShaderBindings {
+  LakeLabelsFragmentShaderBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(shader: shaderLibraryProvider['lake_labels_frag']!);
+}
+
+/// Generated bindings for the render pipeline `lake_labels`
+class LakeLabelsRenderPipelineBindings
+    extends
+        RenderPipelineBindings<
+          LakeLabelsVertexShaderBindings,
+          LakeLabelsFragmentShaderBindings
+        > {
+  LakeLabelsRenderPipelineBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(
+        vertex: LakeLabelsVertexShaderBindings(shaderLibraryProvider),
+        fragment: LakeLabelsFragmentShaderBindings(shaderLibraryProvider),
+        ubos: [
+          LakeLabelsUbo(
+            vertexShader: shaderLibraryProvider['lake_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['lake_labels_frag']!,
+          ),
+          TileUbo(
+            vertexShader: shaderLibraryProvider['lake_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['lake_labels_frag']!,
+          ),
+          CameraUbo(
+            vertexShader: shaderLibraryProvider['lake_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['lake_labels_frag']!,
+          ),
+        ],
+        samplers: [
+          UniformSamplerBindings(
+            name: 'glyph_sdf_texture',
+            vertexShader: shaderLibraryProvider['lake_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['lake_labels_frag']!,
+          ),
+        ],
+      );
+
+  late final LakeLabelsUbo lakeLabelsUbo = ubos[0] as LakeLabelsUbo;
+  late final TileUbo tileUbo = ubos[1] as TileUbo;
+  late final CameraUbo cameraUbo = ubos[2] as CameraUbo;
+
+  late final UniformSamplerBindings glyph_sdf_texture = samplers[0];
+
+  /// Sets the uniforms for this shader.
+  void setUniforms({
+    required Vector2 lakeLabelsUboGlyphSdfTextureSize,
+    required Matrix4 tileLocalToGl,
+    required double tileSize,
+    required double tileExtent,
+    required double tileOpacity,
+    required Matrix4 cameraWorldToGl,
+    required double cameraZoom,
+    required double cameraPixelRatio,
+    required gpu.Texture glyphSdfTexture,
+    gpu.SamplerOptions? glyphSdfTextureSamplerOptions,
+  }) {
+    lakeLabelsUbo.set(glyphSdfTextureSize: lakeLabelsUboGlyphSdfTextureSize);
+    tileUbo.set(
+      localToGl: tileLocalToGl,
+      size: tileSize,
+      extent: tileExtent,
+      opacity: tileOpacity,
+    );
+    cameraUbo.set(
+      worldToGl: cameraWorldToGl,
+      zoom: cameraZoom,
+      pixelRatio: cameraPixelRatio,
+    );
+    glyph_sdf_texture.setTexture(
+      glyphSdfTexture,
+      options: glyphSdfTextureSamplerOptions,
+    );
+  }
+}
+
+/// Generated bindings for the vertex shader `housenumber`
+class HousenumberVertexShaderBindings extends VertexShaderBindings {
+  HousenumberVertexShaderBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(
+        bytesPerVertex: 24,
+        shader: shaderLibraryProvider['housenumber_vert']!,
+      );
+
+  /// Sets attributes for a vertex at [index].
+  ///
+  /// Ensure that [allocateVertices] has been called before calling this method.
+  void setVertex(
+    int index, {
+    required Vector2 position,
+    required Vector2 anchor,
+    required Vector2 uv,
+  }) {
+    set_vec2(0, $setVertexData, position);
+    set_vec2(8, $setVertexData, anchor);
+    set_vec2(16, $setVertexData, uv);
+
+    setVertexInternal(index);
+  }
+}
+
+/// Generated bindings for the fragment shader `housenumber`
+class HousenumberFragmentShaderBindings extends FragmentShaderBindings {
+  HousenumberFragmentShaderBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(shader: shaderLibraryProvider['housenumber_frag']!);
+}
+
+/// Generated bindings for the render pipeline `housenumber`
+class HousenumberRenderPipelineBindings
+    extends
+        RenderPipelineBindings<
+          HousenumberVertexShaderBindings,
+          HousenumberFragmentShaderBindings
+        > {
+  HousenumberRenderPipelineBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(
+        vertex: HousenumberVertexShaderBindings(shaderLibraryProvider),
+        fragment: HousenumberFragmentShaderBindings(shaderLibraryProvider),
+        ubos: [
+          HousenumberUbo(
+            vertexShader: shaderLibraryProvider['housenumber_vert']!,
+            fragmentShader: shaderLibraryProvider['housenumber_frag']!,
+          ),
+          TileUbo(
+            vertexShader: shaderLibraryProvider['housenumber_vert']!,
+            fragmentShader: shaderLibraryProvider['housenumber_frag']!,
+          ),
+          CameraUbo(
+            vertexShader: shaderLibraryProvider['housenumber_vert']!,
+            fragmentShader: shaderLibraryProvider['housenumber_frag']!,
+          ),
+        ],
+        samplers: [
+          UniformSamplerBindings(
+            name: 'glyph_sdf_texture',
+            vertexShader: shaderLibraryProvider['housenumber_vert']!,
+            fragmentShader: shaderLibraryProvider['housenumber_frag']!,
+          ),
+        ],
+      );
+
+  late final HousenumberUbo housenumberUbo = ubos[0] as HousenumberUbo;
+  late final TileUbo tileUbo = ubos[1] as TileUbo;
+  late final CameraUbo cameraUbo = ubos[2] as CameraUbo;
+
+  late final UniformSamplerBindings glyph_sdf_texture = samplers[0];
+
+  /// Sets the uniforms for this shader.
+  void setUniforms({
+    required Vector2 housenumberUboGlyphSdfTextureSize,
+    required Matrix4 tileLocalToGl,
+    required double tileSize,
+    required double tileExtent,
+    required double tileOpacity,
+    required Matrix4 cameraWorldToGl,
+    required double cameraZoom,
+    required double cameraPixelRatio,
+    required gpu.Texture glyphSdfTexture,
+    gpu.SamplerOptions? glyphSdfTextureSamplerOptions,
+  }) {
+    housenumberUbo.set(glyphSdfTextureSize: housenumberUboGlyphSdfTextureSize);
+    tileUbo.set(
+      localToGl: tileLocalToGl,
+      size: tileSize,
+      extent: tileExtent,
+      opacity: tileOpacity,
+    );
+    cameraUbo.set(
+      worldToGl: cameraWorldToGl,
+      zoom: cameraZoom,
+      pixelRatio: cameraPixelRatio,
+    );
+    glyph_sdf_texture.setTexture(
+      glyphSdfTexture,
+      options: glyphSdfTextureSamplerOptions,
+    );
+  }
+}
+
+/// Generated bindings for the vertex shader `gondola`
+class GondolaVertexShaderBindings extends VertexShaderBindings {
+  GondolaVertexShaderBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(bytesPerVertex: 24, shader: shaderLibraryProvider['gondola_vert']!);
+
+  /// Sets attributes for a vertex at [index].
+  ///
+  /// Ensure that [allocateVertices] has been called before calling this method.
+  void setVertex(
+    int index, {
+    required Vector2 position,
+    required Vector2 anchor,
+    required Vector2 uv,
+  }) {
+    set_vec2(0, $setVertexData, position);
+    set_vec2(8, $setVertexData, anchor);
+    set_vec2(16, $setVertexData, uv);
+
+    setVertexInternal(index);
+  }
+}
+
+/// Generated bindings for the fragment shader `gondola`
+class GondolaFragmentShaderBindings extends FragmentShaderBindings {
+  GondolaFragmentShaderBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(shader: shaderLibraryProvider['gondola_frag']!);
+}
+
+/// Generated bindings for the render pipeline `gondola`
+class GondolaRenderPipelineBindings
+    extends
+        RenderPipelineBindings<
+          GondolaVertexShaderBindings,
+          GondolaFragmentShaderBindings
+        > {
+  GondolaRenderPipelineBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(
+        vertex: GondolaVertexShaderBindings(shaderLibraryProvider),
+        fragment: GondolaFragmentShaderBindings(shaderLibraryProvider),
+        ubos: [
+          GondolaUbo(
+            vertexShader: shaderLibraryProvider['gondola_vert']!,
+            fragmentShader: shaderLibraryProvider['gondola_frag']!,
+          ),
+          TileUbo(
+            vertexShader: shaderLibraryProvider['gondola_vert']!,
+            fragmentShader: shaderLibraryProvider['gondola_frag']!,
+          ),
+          CameraUbo(
+            vertexShader: shaderLibraryProvider['gondola_vert']!,
+            fragmentShader: shaderLibraryProvider['gondola_frag']!,
+          ),
+        ],
+        samplers: [
+          UniformSamplerBindings(
+            name: 'glyph_sdf_texture',
+            vertexShader: shaderLibraryProvider['gondola_vert']!,
+            fragmentShader: shaderLibraryProvider['gondola_frag']!,
+          ),
+        ],
+      );
+
+  late final GondolaUbo gondolaUbo = ubos[0] as GondolaUbo;
+  late final TileUbo tileUbo = ubos[1] as TileUbo;
+  late final CameraUbo cameraUbo = ubos[2] as CameraUbo;
+
+  late final UniformSamplerBindings glyph_sdf_texture = samplers[0];
+
+  /// Sets the uniforms for this shader.
+  void setUniforms({
+    required Vector2 gondolaUboGlyphSdfTextureSize,
+    required Matrix4 tileLocalToGl,
+    required double tileSize,
+    required double tileExtent,
+    required double tileOpacity,
+    required Matrix4 cameraWorldToGl,
+    required double cameraZoom,
+    required double cameraPixelRatio,
+    required gpu.Texture glyphSdfTexture,
+    gpu.SamplerOptions? glyphSdfTextureSamplerOptions,
+  }) {
+    gondolaUbo.set(glyphSdfTextureSize: gondolaUboGlyphSdfTextureSize);
+    tileUbo.set(
+      localToGl: tileLocalToGl,
+      size: tileSize,
+      extent: tileExtent,
+      opacity: tileOpacity,
+    );
+    cameraUbo.set(
+      worldToGl: cameraWorldToGl,
+      zoom: cameraZoom,
+      pixelRatio: cameraPixelRatio,
+    );
+    glyph_sdf_texture.setTexture(
+      glyphSdfTexture,
+      options: glyphSdfTextureSamplerOptions,
+    );
+  }
+}
+
+/// Generated bindings for the vertex shader `ferry`
+class FerryVertexShaderBindings extends VertexShaderBindings {
+  FerryVertexShaderBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(bytesPerVertex: 24, shader: shaderLibraryProvider['ferry_vert']!);
+
+  /// Sets attributes for a vertex at [index].
+  ///
+  /// Ensure that [allocateVertices] has been called before calling this method.
+  void setVertex(
+    int index, {
+    required Vector2 position,
+    required Vector2 anchor,
+    required Vector2 uv,
+  }) {
+    set_vec2(0, $setVertexData, position);
+    set_vec2(8, $setVertexData, anchor);
+    set_vec2(16, $setVertexData, uv);
+
+    setVertexInternal(index);
+  }
+}
+
+/// Generated bindings for the fragment shader `ferry`
+class FerryFragmentShaderBindings extends FragmentShaderBindings {
+  FerryFragmentShaderBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(shader: shaderLibraryProvider['ferry_frag']!);
+}
+
+/// Generated bindings for the render pipeline `ferry`
+class FerryRenderPipelineBindings
+    extends
+        RenderPipelineBindings<
+          FerryVertexShaderBindings,
+          FerryFragmentShaderBindings
+        > {
+  FerryRenderPipelineBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(
+        vertex: FerryVertexShaderBindings(shaderLibraryProvider),
+        fragment: FerryFragmentShaderBindings(shaderLibraryProvider),
+        ubos: [
+          FerryUbo(
+            vertexShader: shaderLibraryProvider['ferry_vert']!,
+            fragmentShader: shaderLibraryProvider['ferry_frag']!,
+          ),
+          TileUbo(
+            vertexShader: shaderLibraryProvider['ferry_vert']!,
+            fragmentShader: shaderLibraryProvider['ferry_frag']!,
+          ),
+          CameraUbo(
+            vertexShader: shaderLibraryProvider['ferry_vert']!,
+            fragmentShader: shaderLibraryProvider['ferry_frag']!,
+          ),
+        ],
+        samplers: [
+          UniformSamplerBindings(
+            name: 'glyph_sdf_texture',
+            vertexShader: shaderLibraryProvider['ferry_vert']!,
+            fragmentShader: shaderLibraryProvider['ferry_frag']!,
+          ),
+        ],
+      );
+
+  late final FerryUbo ferryUbo = ubos[0] as FerryUbo;
+  late final TileUbo tileUbo = ubos[1] as TileUbo;
+  late final CameraUbo cameraUbo = ubos[2] as CameraUbo;
+
+  late final UniformSamplerBindings glyph_sdf_texture = samplers[0];
+
+  /// Sets the uniforms for this shader.
+  void setUniforms({
+    required Vector2 ferryUboGlyphSdfTextureSize,
+    required Matrix4 tileLocalToGl,
+    required double tileSize,
+    required double tileExtent,
+    required double tileOpacity,
+    required Matrix4 cameraWorldToGl,
+    required double cameraZoom,
+    required double cameraPixelRatio,
+    required gpu.Texture glyphSdfTexture,
+    gpu.SamplerOptions? glyphSdfTextureSamplerOptions,
+  }) {
+    ferryUbo.set(glyphSdfTextureSize: ferryUboGlyphSdfTextureSize);
+    tileUbo.set(
+      localToGl: tileLocalToGl,
+      size: tileSize,
+      extent: tileExtent,
+      opacity: tileOpacity,
+    );
+    cameraUbo.set(
+      worldToGl: cameraWorldToGl,
+      zoom: cameraZoom,
+      pixelRatio: cameraPixelRatio,
+    );
+    glyph_sdf_texture.setTexture(
+      glyphSdfTexture,
+      options: glyphSdfTextureSamplerOptions,
+    );
+  }
+}
+
+/// Generated bindings for the vertex shader `road_labels`
+class RoadLabelsVertexShaderBindings extends VertexShaderBindings {
+  RoadLabelsVertexShaderBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(
+        bytesPerVertex: 24,
+        shader: shaderLibraryProvider['road_labels_vert']!,
+      );
+
+  /// Sets attributes for a vertex at [index].
+  ///
+  /// Ensure that [allocateVertices] has been called before calling this method.
+  void setVertex(
+    int index, {
+    required Vector2 position,
+    required Vector2 anchor,
+    required Vector2 uv,
+  }) {
+    set_vec2(0, $setVertexData, position);
+    set_vec2(8, $setVertexData, anchor);
+    set_vec2(16, $setVertexData, uv);
+
+    setVertexInternal(index);
+  }
+}
+
+/// Generated bindings for the fragment shader `road_labels`
+class RoadLabelsFragmentShaderBindings extends FragmentShaderBindings {
+  RoadLabelsFragmentShaderBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(shader: shaderLibraryProvider['road_labels_frag']!);
+}
+
+/// Generated bindings for the render pipeline `road_labels`
+class RoadLabelsRenderPipelineBindings
+    extends
+        RenderPipelineBindings<
+          RoadLabelsVertexShaderBindings,
+          RoadLabelsFragmentShaderBindings
+        > {
+  RoadLabelsRenderPipelineBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(
+        vertex: RoadLabelsVertexShaderBindings(shaderLibraryProvider),
+        fragment: RoadLabelsFragmentShaderBindings(shaderLibraryProvider),
+        ubos: [
+          RoadLabelsUbo(
+            vertexShader: shaderLibraryProvider['road_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['road_labels_frag']!,
+          ),
+          TileUbo(
+            vertexShader: shaderLibraryProvider['road_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['road_labels_frag']!,
+          ),
+          CameraUbo(
+            vertexShader: shaderLibraryProvider['road_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['road_labels_frag']!,
+          ),
+        ],
+        samplers: [
+          UniformSamplerBindings(
+            name: 'glyph_sdf_texture',
+            vertexShader: shaderLibraryProvider['road_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['road_labels_frag']!,
+          ),
+        ],
+      );
+
+  late final RoadLabelsUbo roadLabelsUbo = ubos[0] as RoadLabelsUbo;
+  late final TileUbo tileUbo = ubos[1] as TileUbo;
+  late final CameraUbo cameraUbo = ubos[2] as CameraUbo;
+
+  late final UniformSamplerBindings glyph_sdf_texture = samplers[0];
+
+  /// Sets the uniforms for this shader.
+  void setUniforms({
+    required Vector2 roadLabelsUboGlyphSdfTextureSize,
+    required Matrix4 tileLocalToGl,
+    required double tileSize,
+    required double tileExtent,
+    required double tileOpacity,
+    required Matrix4 cameraWorldToGl,
+    required double cameraZoom,
+    required double cameraPixelRatio,
+    required gpu.Texture glyphSdfTexture,
+    gpu.SamplerOptions? glyphSdfTextureSamplerOptions,
+  }) {
+    roadLabelsUbo.set(glyphSdfTextureSize: roadLabelsUboGlyphSdfTextureSize);
+    tileUbo.set(
+      localToGl: tileLocalToGl,
+      size: tileSize,
+      extent: tileExtent,
+      opacity: tileOpacity,
+    );
+    cameraUbo.set(
+      worldToGl: cameraWorldToGl,
+      zoom: cameraZoom,
+      pixelRatio: cameraPixelRatio,
+    );
+    glyph_sdf_texture.setTexture(
+      glyphSdfTexture,
+      options: glyphSdfTextureSamplerOptions,
+    );
+  }
+}
+
+/// Generated bindings for the vertex shader `place_labels`
+class PlaceLabelsVertexShaderBindings extends VertexShaderBindings {
+  PlaceLabelsVertexShaderBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(
+        bytesPerVertex: 32,
+        shader: shaderLibraryProvider['place_labels_vert']!,
+      );
+
+  /// Sets attributes for a vertex at [index].
+  ///
+  /// Ensure that [allocateVertices] has been called before calling this method.
+  void setVertex(
+    int index, {
+    required Vector2 position,
+    required Vector2 anchor,
+    required Vector2 uv,
+    required double opacityStartValue,
+    required double opacityEndValue,
+  }) {
+    set_vec2(0, $setVertexData, position);
+    set_vec2(8, $setVertexData, anchor);
+    set_vec2(16, $setVertexData, uv);
+    set_float(24, $setVertexData, opacityStartValue);
+    set_float(28, $setVertexData, opacityEndValue);
+
+    setVertexInternal(index);
+  }
+}
+
+/// Generated bindings for the fragment shader `place_labels`
+class PlaceLabelsFragmentShaderBindings extends FragmentShaderBindings {
+  PlaceLabelsFragmentShaderBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(shader: shaderLibraryProvider['place_labels_frag']!);
+}
+
+/// Generated bindings for the render pipeline `place_labels`
+class PlaceLabelsRenderPipelineBindings
+    extends
+        RenderPipelineBindings<
+          PlaceLabelsVertexShaderBindings,
+          PlaceLabelsFragmentShaderBindings
+        > {
+  PlaceLabelsRenderPipelineBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(
+        vertex: PlaceLabelsVertexShaderBindings(shaderLibraryProvider),
+        fragment: PlaceLabelsFragmentShaderBindings(shaderLibraryProvider),
+        ubos: [
+          PlaceLabelsUbo(
+            vertexShader: shaderLibraryProvider['place_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['place_labels_frag']!,
+          ),
+          TileUbo(
+            vertexShader: shaderLibraryProvider['place_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['place_labels_frag']!,
+          ),
+          CameraUbo(
+            vertexShader: shaderLibraryProvider['place_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['place_labels_frag']!,
+          ),
+        ],
+        samplers: [
+          UniformSamplerBindings(
+            name: 'glyph_sdf_texture',
+            vertexShader: shaderLibraryProvider['place_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['place_labels_frag']!,
+          ),
+        ],
+      );
+
+  late final PlaceLabelsUbo placeLabelsUbo = ubos[0] as PlaceLabelsUbo;
+  late final TileUbo tileUbo = ubos[1] as TileUbo;
+  late final CameraUbo cameraUbo = ubos[2] as CameraUbo;
+
+  late final UniformSamplerBindings glyph_sdf_texture = samplers[0];
+
+  /// Sets the uniforms for this shader.
+  void setUniforms({
+    required Vector2 placeLabelsUboOpacityStops,
+    required Vector2 placeLabelsUboGlyphSdfTextureSize,
+    required Matrix4 tileLocalToGl,
+    required double tileSize,
+    required double tileExtent,
+    required double tileOpacity,
+    required Matrix4 cameraWorldToGl,
+    required double cameraZoom,
+    required double cameraPixelRatio,
+    required gpu.Texture glyphSdfTexture,
+    gpu.SamplerOptions? glyphSdfTextureSamplerOptions,
+  }) {
+    placeLabelsUbo.set(
+      opacityStops: placeLabelsUboOpacityStops,
+      glyphSdfTextureSize: placeLabelsUboGlyphSdfTextureSize,
+    );
+    tileUbo.set(
+      localToGl: tileLocalToGl,
+      size: tileSize,
+      extent: tileExtent,
+      opacity: tileOpacity,
+    );
+    cameraUbo.set(
+      worldToGl: cameraWorldToGl,
+      zoom: cameraZoom,
+      pixelRatio: cameraPixelRatio,
+    );
+    glyph_sdf_texture.setTexture(
+      glyphSdfTexture,
+      options: glyphSdfTextureSamplerOptions,
+    );
+  }
+}
+
+/// Generated bindings for the vertex shader `airport_gate`
+class AirportGateVertexShaderBindings extends VertexShaderBindings {
+  AirportGateVertexShaderBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(
+        bytesPerVertex: 24,
+        shader: shaderLibraryProvider['airport_gate_vert']!,
+      );
+
+  /// Sets attributes for a vertex at [index].
+  ///
+  /// Ensure that [allocateVertices] has been called before calling this method.
+  void setVertex(
+    int index, {
+    required Vector2 position,
+    required Vector2 anchor,
+    required Vector2 uv,
+  }) {
+    set_vec2(0, $setVertexData, position);
+    set_vec2(8, $setVertexData, anchor);
+    set_vec2(16, $setVertexData, uv);
+
+    setVertexInternal(index);
+  }
+}
+
+/// Generated bindings for the fragment shader `airport_gate`
+class AirportGateFragmentShaderBindings extends FragmentShaderBindings {
+  AirportGateFragmentShaderBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(shader: shaderLibraryProvider['airport_gate_frag']!);
+}
+
+/// Generated bindings for the render pipeline `airport_gate`
+class AirportGateRenderPipelineBindings
+    extends
+        RenderPipelineBindings<
+          AirportGateVertexShaderBindings,
+          AirportGateFragmentShaderBindings
+        > {
+  AirportGateRenderPipelineBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(
+        vertex: AirportGateVertexShaderBindings(shaderLibraryProvider),
+        fragment: AirportGateFragmentShaderBindings(shaderLibraryProvider),
+        ubos: [
+          AirportGateUbo(
+            vertexShader: shaderLibraryProvider['airport_gate_vert']!,
+            fragmentShader: shaderLibraryProvider['airport_gate_frag']!,
+          ),
+          TileUbo(
+            vertexShader: shaderLibraryProvider['airport_gate_vert']!,
+            fragmentShader: shaderLibraryProvider['airport_gate_frag']!,
+          ),
+          CameraUbo(
+            vertexShader: shaderLibraryProvider['airport_gate_vert']!,
+            fragmentShader: shaderLibraryProvider['airport_gate_frag']!,
+          ),
+        ],
+        samplers: [
+          UniformSamplerBindings(
+            name: 'glyph_sdf_texture',
+            vertexShader: shaderLibraryProvider['airport_gate_vert']!,
+            fragmentShader: shaderLibraryProvider['airport_gate_frag']!,
+          ),
+        ],
+      );
+
+  late final AirportGateUbo airportGateUbo = ubos[0] as AirportGateUbo;
+  late final TileUbo tileUbo = ubos[1] as TileUbo;
+  late final CameraUbo cameraUbo = ubos[2] as CameraUbo;
+
+  late final UniformSamplerBindings glyph_sdf_texture = samplers[0];
+
+  /// Sets the uniforms for this shader.
+  void setUniforms({
+    required Vector2 airportGateUboGlyphSdfTextureSize,
+    required Matrix4 tileLocalToGl,
+    required double tileSize,
+    required double tileExtent,
+    required double tileOpacity,
+    required Matrix4 cameraWorldToGl,
+    required double cameraZoom,
+    required double cameraPixelRatio,
+    required gpu.Texture glyphSdfTexture,
+    gpu.SamplerOptions? glyphSdfTextureSamplerOptions,
+  }) {
+    airportGateUbo.set(glyphSdfTextureSize: airportGateUboGlyphSdfTextureSize);
+    tileUbo.set(
+      localToGl: tileLocalToGl,
+      size: tileSize,
+      extent: tileExtent,
+      opacity: tileOpacity,
+    );
+    cameraUbo.set(
+      worldToGl: cameraWorldToGl,
+      zoom: cameraZoom,
+      pixelRatio: cameraPixelRatio,
+    );
+    glyph_sdf_texture.setTexture(
+      glyphSdfTexture,
+      options: glyphSdfTextureSamplerOptions,
+    );
+  }
+}
+
+/// Generated bindings for the vertex shader `state_labels`
+class StateLabelsVertexShaderBindings extends VertexShaderBindings {
+  StateLabelsVertexShaderBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(
+        bytesPerVertex: 32,
+        shader: shaderLibraryProvider['state_labels_vert']!,
+      );
+
+  /// Sets attributes for a vertex at [index].
+  ///
+  /// Ensure that [allocateVertices] has been called before calling this method.
+  void setVertex(
+    int index, {
+    required Vector2 position,
+    required Vector2 anchor,
+    required Vector2 uv,
+    required double opacityStartValue,
+    required double opacityEndValue,
+  }) {
+    set_vec2(0, $setVertexData, position);
+    set_vec2(8, $setVertexData, anchor);
+    set_vec2(16, $setVertexData, uv);
+    set_float(24, $setVertexData, opacityStartValue);
+    set_float(28, $setVertexData, opacityEndValue);
+
+    setVertexInternal(index);
+  }
+}
+
+/// Generated bindings for the fragment shader `state_labels`
+class StateLabelsFragmentShaderBindings extends FragmentShaderBindings {
+  StateLabelsFragmentShaderBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(shader: shaderLibraryProvider['state_labels_frag']!);
+}
+
+/// Generated bindings for the render pipeline `state_labels`
+class StateLabelsRenderPipelineBindings
+    extends
+        RenderPipelineBindings<
+          StateLabelsVertexShaderBindings,
+          StateLabelsFragmentShaderBindings
+        > {
+  StateLabelsRenderPipelineBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(
+        vertex: StateLabelsVertexShaderBindings(shaderLibraryProvider),
+        fragment: StateLabelsFragmentShaderBindings(shaderLibraryProvider),
+        ubos: [
+          StateLabelsUbo(
+            vertexShader: shaderLibraryProvider['state_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['state_labels_frag']!,
+          ),
+          TileUbo(
+            vertexShader: shaderLibraryProvider['state_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['state_labels_frag']!,
+          ),
+          CameraUbo(
+            vertexShader: shaderLibraryProvider['state_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['state_labels_frag']!,
+          ),
+        ],
+        samplers: [
+          UniformSamplerBindings(
+            name: 'glyph_sdf_texture',
+            vertexShader: shaderLibraryProvider['state_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['state_labels_frag']!,
+          ),
+        ],
+      );
+
+  late final StateLabelsUbo stateLabelsUbo = ubos[0] as StateLabelsUbo;
+  late final TileUbo tileUbo = ubos[1] as TileUbo;
+  late final CameraUbo cameraUbo = ubos[2] as CameraUbo;
+
+  late final UniformSamplerBindings glyph_sdf_texture = samplers[0];
+
+  /// Sets the uniforms for this shader.
+  void setUniforms({
+    required Vector2 stateLabelsUboOpacityStops,
+    required Vector2 stateLabelsUboGlyphSdfTextureSize,
+    required Matrix4 tileLocalToGl,
+    required double tileSize,
+    required double tileExtent,
+    required double tileOpacity,
+    required Matrix4 cameraWorldToGl,
+    required double cameraZoom,
+    required double cameraPixelRatio,
+    required gpu.Texture glyphSdfTexture,
+    gpu.SamplerOptions? glyphSdfTextureSamplerOptions,
+  }) {
+    stateLabelsUbo.set(
+      opacityStops: stateLabelsUboOpacityStops,
+      glyphSdfTextureSize: stateLabelsUboGlyphSdfTextureSize,
+    );
+    tileUbo.set(
+      localToGl: tileLocalToGl,
+      size: tileSize,
+      extent: tileExtent,
+      opacity: tileOpacity,
+    );
+    cameraUbo.set(
+      worldToGl: cameraWorldToGl,
+      zoom: cameraZoom,
+      pixelRatio: cameraPixelRatio,
+    );
+    glyph_sdf_texture.setTexture(
+      glyphSdfTexture,
+      options: glyphSdfTextureSamplerOptions,
+    );
+  }
+}
+
+/// Generated bindings for the vertex shader `country_labels`
+class CountryLabelsVertexShaderBindings extends VertexShaderBindings {
+  CountryLabelsVertexShaderBindings(ShaderLibraryProvider shaderLibraryProvider)
+    : super(
+        bytesPerVertex: 32,
+        shader: shaderLibraryProvider['country_labels_vert']!,
+      );
+
+  /// Sets attributes for a vertex at [index].
+  ///
+  /// Ensure that [allocateVertices] has been called before calling this method.
+  void setVertex(
+    int index, {
+    required Vector2 position,
+    required Vector2 anchor,
+    required Vector2 uv,
+    required double opacityStartValue,
+    required double opacityEndValue,
+  }) {
+    set_vec2(0, $setVertexData, position);
+    set_vec2(8, $setVertexData, anchor);
+    set_vec2(16, $setVertexData, uv);
+    set_float(24, $setVertexData, opacityStartValue);
+    set_float(28, $setVertexData, opacityEndValue);
+
+    setVertexInternal(index);
+  }
+}
+
+/// Generated bindings for the fragment shader `country_labels`
+class CountryLabelsFragmentShaderBindings extends FragmentShaderBindings {
+  CountryLabelsFragmentShaderBindings(
+    ShaderLibraryProvider shaderLibraryProvider,
+  ) : super(shader: shaderLibraryProvider['country_labels_frag']!);
+}
+
+/// Generated bindings for the render pipeline `country_labels`
+class CountryLabelsRenderPipelineBindings
+    extends
+        RenderPipelineBindings<
+          CountryLabelsVertexShaderBindings,
+          CountryLabelsFragmentShaderBindings
+        > {
+  CountryLabelsRenderPipelineBindings(
+    ShaderLibraryProvider shaderLibraryProvider,
+  ) : super(
+        vertex: CountryLabelsVertexShaderBindings(shaderLibraryProvider),
+        fragment: CountryLabelsFragmentShaderBindings(shaderLibraryProvider),
+        ubos: [
+          CountryLabelsUbo(
+            vertexShader: shaderLibraryProvider['country_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['country_labels_frag']!,
+          ),
+          TileUbo(
+            vertexShader: shaderLibraryProvider['country_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['country_labels_frag']!,
+          ),
+          CameraUbo(
+            vertexShader: shaderLibraryProvider['country_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['country_labels_frag']!,
+          ),
+        ],
+        samplers: [
+          UniformSamplerBindings(
+            name: 'glyph_sdf_texture',
+            vertexShader: shaderLibraryProvider['country_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['country_labels_frag']!,
+          ),
+        ],
+      );
+
+  late final CountryLabelsUbo countryLabelsUbo = ubos[0] as CountryLabelsUbo;
+  late final TileUbo tileUbo = ubos[1] as TileUbo;
+  late final CameraUbo cameraUbo = ubos[2] as CameraUbo;
+
+  late final UniformSamplerBindings glyph_sdf_texture = samplers[0];
+
+  /// Sets the uniforms for this shader.
+  void setUniforms({
+    required Vector2 countryLabelsUboOpacityStops,
+    required Vector2 countryLabelsUboGlyphSdfTextureSize,
+    required Matrix4 tileLocalToGl,
+    required double tileSize,
+    required double tileExtent,
+    required double tileOpacity,
+    required Matrix4 cameraWorldToGl,
+    required double cameraZoom,
+    required double cameraPixelRatio,
+    required gpu.Texture glyphSdfTexture,
+    gpu.SamplerOptions? glyphSdfTextureSamplerOptions,
+  }) {
+    countryLabelsUbo.set(
+      opacityStops: countryLabelsUboOpacityStops,
+      glyphSdfTextureSize: countryLabelsUboGlyphSdfTextureSize,
+    );
+    tileUbo.set(
+      localToGl: tileLocalToGl,
+      size: tileSize,
+      extent: tileExtent,
+      opacity: tileOpacity,
+    );
+    cameraUbo.set(
+      worldToGl: cameraWorldToGl,
+      zoom: cameraZoom,
+      pixelRatio: cameraPixelRatio,
+    );
+    glyph_sdf_texture.setTexture(
+      glyphSdfTexture,
+      options: glyphSdfTextureSamplerOptions,
+    );
+  }
+}
+
+/// Generated bindings for the vertex shader `continent_labels`
+class ContinentLabelsVertexShaderBindings extends VertexShaderBindings {
+  ContinentLabelsVertexShaderBindings(
+    ShaderLibraryProvider shaderLibraryProvider,
+  ) : super(
+        bytesPerVertex: 24,
+        shader: shaderLibraryProvider['continent_labels_vert']!,
+      );
+
+  /// Sets attributes for a vertex at [index].
+  ///
+  /// Ensure that [allocateVertices] has been called before calling this method.
+  void setVertex(
+    int index, {
+    required Vector2 position,
+    required Vector2 anchor,
+    required Vector2 uv,
+  }) {
+    set_vec2(0, $setVertexData, position);
+    set_vec2(8, $setVertexData, anchor);
+    set_vec2(16, $setVertexData, uv);
+
+    setVertexInternal(index);
+  }
+}
+
+/// Generated bindings for the fragment shader `continent_labels`
+class ContinentLabelsFragmentShaderBindings extends FragmentShaderBindings {
+  ContinentLabelsFragmentShaderBindings(
+    ShaderLibraryProvider shaderLibraryProvider,
+  ) : super(shader: shaderLibraryProvider['continent_labels_frag']!);
+}
+
+/// Generated bindings for the render pipeline `continent_labels`
+class ContinentLabelsRenderPipelineBindings
+    extends
+        RenderPipelineBindings<
+          ContinentLabelsVertexShaderBindings,
+          ContinentLabelsFragmentShaderBindings
+        > {
+  ContinentLabelsRenderPipelineBindings(
+    ShaderLibraryProvider shaderLibraryProvider,
+  ) : super(
+        vertex: ContinentLabelsVertexShaderBindings(shaderLibraryProvider),
+        fragment: ContinentLabelsFragmentShaderBindings(shaderLibraryProvider),
+        ubos: [
+          ContinentLabelsUbo(
+            vertexShader: shaderLibraryProvider['continent_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['continent_labels_frag']!,
+          ),
+          TileUbo(
+            vertexShader: shaderLibraryProvider['continent_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['continent_labels_frag']!,
+          ),
+          CameraUbo(
+            vertexShader: shaderLibraryProvider['continent_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['continent_labels_frag']!,
+          ),
+        ],
+        samplers: [
+          UniformSamplerBindings(
+            name: 'glyph_sdf_texture',
+            vertexShader: shaderLibraryProvider['continent_labels_vert']!,
+            fragmentShader: shaderLibraryProvider['continent_labels_frag']!,
+          ),
+        ],
+      );
+
+  late final ContinentLabelsUbo continentLabelsUbo =
+      ubos[0] as ContinentLabelsUbo;
+  late final TileUbo tileUbo = ubos[1] as TileUbo;
+  late final CameraUbo cameraUbo = ubos[2] as CameraUbo;
+
+  late final UniformSamplerBindings glyph_sdf_texture = samplers[0];
+
+  /// Sets the uniforms for this shader.
+  void setUniforms({
+    required Vector2 continentLabelsUboGlyphSdfTextureSize,
+    required Matrix4 tileLocalToGl,
+    required double tileSize,
+    required double tileExtent,
+    required double tileOpacity,
+    required Matrix4 cameraWorldToGl,
+    required double cameraZoom,
+    required double cameraPixelRatio,
+    required gpu.Texture glyphSdfTexture,
+    gpu.SamplerOptions? glyphSdfTextureSamplerOptions,
+  }) {
+    continentLabelsUbo.set(
+      glyphSdfTextureSize: continentLabelsUboGlyphSdfTextureSize,
+    );
+    tileUbo.set(
+      localToGl: tileLocalToGl,
+      size: tileSize,
+      extent: tileExtent,
+      opacity: tileOpacity,
+    );
+    cameraUbo.set(
+      worldToGl: cameraWorldToGl,
+      zoom: cameraZoom,
+      pixelRatio: cameraPixelRatio,
+    );
+    glyph_sdf_texture.setTexture(
+      glyphSdfTexture,
+      options: glyphSdfTextureSamplerOptions,
+    );
+  }
+}
+
 SingleTileLayerRenderer? createSingleTileLayerRenderer(
   ShaderLibraryProvider shaderLibraryProvider,
+  VectorTileLayerRenderOrchestrator orchestrator,
   TileCoordinates coordinates,
   TileContainer container,
   spec.Layer specLayer,
@@ -5783,6 +7329,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
   return switch (specLayer.id) {
     'Background' => BackgroundLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5790,6 +7337,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Meadow' => MeadowLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5797,6 +7345,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Scrub' => ScrubLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5804,6 +7353,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Crop' => CropLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5811,6 +7361,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Glacier' => GlacierLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5818,6 +7369,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Forest' => ForestLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5825,6 +7377,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Sand' => SandLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5832,6 +7385,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Wood' => WoodLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5839,6 +7393,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Residential' => ResidentialLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5846,6 +7401,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Industrial' => IndustrialLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5853,6 +7409,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Grass' => GrassLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5860,6 +7417,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Airport zone' => AirportZoneLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5867,6 +7425,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Pedestrian' => PedestrianLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5874,6 +7433,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Cemetery' => CemeteryLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5881,6 +7441,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Hospital' => HospitalLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5888,6 +7449,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Stadium' => StadiumLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5895,6 +7457,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'School' => SchoolLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5902,6 +7465,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'River tunnel' => RiverTunnelLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5909,6 +7473,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'River' => RiverLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5916,6 +7481,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Water intermittent' => WaterIntermittentLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5923,6 +7489,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Water' => WaterLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5930,6 +7497,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Aeroway' => AerowayLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5937,6 +7505,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Heliport' => HeliportLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5944,6 +7513,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Ferry line' => FerryLineLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5951,6 +7521,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Tunnel outline' => TunnelOutlineLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5958,6 +7529,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Tunnel' => TunnelLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5965,6 +7537,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Railway tunnel' => RailwayTunnelLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5972,6 +7545,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Railway tunnel hatching' => RailwayTunnelHatchingLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5979,6 +7553,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Footway tunnel outline' => FootwayTunnelOutlineLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5986,6 +7561,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Footway tunnel' => FootwayTunnelLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -5993,6 +7569,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Pier' => PierLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -6000,6 +7577,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Pier road' => PierRoadLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -6007,6 +7585,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Bridge' => BridgeLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -6014,6 +7593,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Minor road outline' => MinorRoadOutlineLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -6021,6 +7601,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Major road outline' => MajorRoadOutlineLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -6028,6 +7609,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Highway outline' => HighwayOutlineLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -6035,6 +7617,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Road under construction' => RoadUnderConstructionLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -6042,6 +7625,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Minor road' => MinorRoadLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -6049,6 +7633,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Major road' => MajorRoadLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -6056,6 +7641,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Highway' => HighwayLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -6063,6 +7649,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Path outline' => PathOutlineLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -6070,6 +7657,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Path' => PathLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -6077,6 +7665,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Major rail' => MajorRailLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -6084,6 +7673,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Major rail hatching' => MajorRailHatchingLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -6091,6 +7681,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Minor rail' => MinorRailLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -6098,6 +7689,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Minor rail hatching' => MinorRailHatchingLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -6105,6 +7697,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Building' => BuildingLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -6112,6 +7705,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Aqueduct outline' => AqueductOutlineLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -6119,6 +7713,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Aqueduct' => AqueductLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -6126,6 +7721,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Cablecar' => CablecarLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -6133,6 +7729,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Cablecar dash' => CablecarDashLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -6140,6 +7737,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Other border' => OtherBorderLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -6147,6 +7745,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Disputed border' => DisputedBorderLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -6154,6 +7753,103 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
     ),
     'Country border' => CountryBorderLayerRenderer(
       shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
+      coordinates: coordinates,
+      container: container,
+      specLayer: specLayer as dynamic,
+      vtLayer: vtLayer,
+    ),
+    'River labels' => RiverLabelsLayerRenderer(
+      shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
+      coordinates: coordinates,
+      container: container,
+      specLayer: specLayer as dynamic,
+      vtLayer: vtLayer,
+    ),
+    'Ocean labels' => OceanLabelsLayerRenderer(
+      shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
+      coordinates: coordinates,
+      container: container,
+      specLayer: specLayer as dynamic,
+      vtLayer: vtLayer,
+    ),
+    'Lake labels' => LakeLabelsLayerRenderer(
+      shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
+      coordinates: coordinates,
+      container: container,
+      specLayer: specLayer as dynamic,
+      vtLayer: vtLayer,
+    ),
+    'Housenumber' => HousenumberLayerRenderer(
+      shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
+      coordinates: coordinates,
+      container: container,
+      specLayer: specLayer as dynamic,
+      vtLayer: vtLayer,
+    ),
+    'Gondola' => GondolaLayerRenderer(
+      shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
+      coordinates: coordinates,
+      container: container,
+      specLayer: specLayer as dynamic,
+      vtLayer: vtLayer,
+    ),
+    'Ferry' => FerryLayerRenderer(
+      shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
+      coordinates: coordinates,
+      container: container,
+      specLayer: specLayer as dynamic,
+      vtLayer: vtLayer,
+    ),
+    'Road labels' => RoadLabelsLayerRenderer(
+      shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
+      coordinates: coordinates,
+      container: container,
+      specLayer: specLayer as dynamic,
+      vtLayer: vtLayer,
+    ),
+    'Place labels' => PlaceLabelsLayerRenderer(
+      shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
+      coordinates: coordinates,
+      container: container,
+      specLayer: specLayer as dynamic,
+      vtLayer: vtLayer,
+    ),
+    'Airport gate' => AirportGateLayerRenderer(
+      shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
+      coordinates: coordinates,
+      container: container,
+      specLayer: specLayer as dynamic,
+      vtLayer: vtLayer,
+    ),
+    'State labels' => StateLabelsLayerRenderer(
+      shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
+      coordinates: coordinates,
+      container: container,
+      specLayer: specLayer as dynamic,
+      vtLayer: vtLayer,
+    ),
+    'Country labels' => CountryLabelsLayerRenderer(
+      shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
+      coordinates: coordinates,
+      container: container,
+      specLayer: specLayer as dynamic,
+      vtLayer: vtLayer,
+    ),
+    'Continent labels' => ContinentLabelsLayerRenderer(
+      shaderLibraryProvider: shaderLibraryProvider,
+      orchestrator: orchestrator,
       coordinates: coordinates,
       container: container,
       specLayer: specLayer as dynamic,
@@ -6166,6 +7862,7 @@ SingleTileLayerRenderer? createSingleTileLayerRenderer(
 class BackgroundLayerRenderer extends $BackgroundLayerRenderer {
   BackgroundLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -6219,6 +7916,7 @@ class BackgroundLayerRenderer extends $BackgroundLayerRenderer {
 class MeadowLayerRenderer extends $FillLayerRenderer {
   MeadowLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -6302,6 +8000,7 @@ class MeadowLayerRenderer extends $FillLayerRenderer {
 class ScrubLayerRenderer extends $FillLayerRenderer {
   ScrubLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -6385,6 +8084,7 @@ class ScrubLayerRenderer extends $FillLayerRenderer {
 class CropLayerRenderer extends $FillLayerRenderer {
   CropLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -6468,6 +8168,7 @@ class CropLayerRenderer extends $FillLayerRenderer {
 class GlacierLayerRenderer extends $FillLayerRenderer {
   GlacierLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -6551,6 +8252,7 @@ class GlacierLayerRenderer extends $FillLayerRenderer {
 class ForestLayerRenderer extends $FillLayerRenderer {
   ForestLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -6634,6 +8336,7 @@ class ForestLayerRenderer extends $FillLayerRenderer {
 class SandLayerRenderer extends $FillLayerRenderer {
   SandLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -6690,6 +8393,7 @@ class SandLayerRenderer extends $FillLayerRenderer {
 class WoodLayerRenderer extends $FillLayerRenderer {
   WoodLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -6746,6 +8450,7 @@ class WoodLayerRenderer extends $FillLayerRenderer {
 class ResidentialLayerRenderer extends $FillLayerRenderer {
   ResidentialLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -6829,6 +8534,7 @@ class ResidentialLayerRenderer extends $FillLayerRenderer {
 class IndustrialLayerRenderer extends $FillLayerRenderer {
   IndustrialLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -6935,6 +8641,7 @@ class IndustrialLayerRenderer extends $FillLayerRenderer {
 class GrassLayerRenderer extends $FillLayerRenderer {
   GrassLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -6991,6 +8698,7 @@ class GrassLayerRenderer extends $FillLayerRenderer {
 class AirportZoneLayerRenderer extends $FillLayerRenderer {
   AirportZoneLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -7047,6 +8755,7 @@ class AirportZoneLayerRenderer extends $FillLayerRenderer {
 class PedestrianLayerRenderer extends $FillLayerRenderer {
   PedestrianLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -7103,6 +8812,7 @@ class PedestrianLayerRenderer extends $FillLayerRenderer {
 class CemeteryLayerRenderer extends $FillLayerRenderer {
   CemeteryLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -7186,6 +8896,7 @@ class CemeteryLayerRenderer extends $FillLayerRenderer {
 class HospitalLayerRenderer extends $FillLayerRenderer {
   HospitalLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -7269,6 +8980,7 @@ class HospitalLayerRenderer extends $FillLayerRenderer {
 class StadiumLayerRenderer extends $FillLayerRenderer {
   StadiumLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -7352,6 +9064,7 @@ class StadiumLayerRenderer extends $FillLayerRenderer {
 class SchoolLayerRenderer extends $FillLayerRenderer {
   SchoolLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -7435,6 +9148,7 @@ class SchoolLayerRenderer extends $FillLayerRenderer {
 class RiverTunnelLayerRenderer extends $LineLayerRenderer {
   RiverTunnelLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -7512,10 +9226,10 @@ class RiverTunnelLayerRenderer extends $LineLayerRenderer {
       tileExtent: tileExtent,
       tileOpacity: tileOpacity,
       riverTunnelUboWidthStops: width_stops,
-      dasharrayTexture: lineDasharrayTexture!,
-      riverTunnelUboDasharraySize: Vector2(
-        lineDasharrayTexture!.width.toDouble(),
-        lineDasharrayTexture!.height.toDouble(),
+      dasharrayTexture: dasharrayTexture!,
+      riverTunnelUboDasharrayTextureSize: Vector2(
+        dasharrayTexture!.width.toDouble(),
+        dasharrayTexture!.height.toDouble(),
       ),
     );
   }
@@ -7524,6 +9238,7 @@ class RiverTunnelLayerRenderer extends $LineLayerRenderer {
 class RiverLayerRenderer extends $LineLayerRenderer {
   RiverLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -7607,6 +9322,7 @@ class RiverLayerRenderer extends $LineLayerRenderer {
 class WaterIntermittentLayerRenderer extends $FillLayerRenderer {
   WaterIntermittentLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -7665,6 +9381,7 @@ class WaterIntermittentLayerRenderer extends $FillLayerRenderer {
 class WaterLayerRenderer extends $FillLayerRenderer {
   WaterLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -7726,6 +9443,7 @@ class WaterLayerRenderer extends $FillLayerRenderer {
 class AerowayLayerRenderer extends $LineLayerRenderer {
   AerowayLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -7809,6 +9527,7 @@ class AerowayLayerRenderer extends $LineLayerRenderer {
 class HeliportLayerRenderer extends $FillLayerRenderer {
   HeliportLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -7865,6 +9584,7 @@ class HeliportLayerRenderer extends $FillLayerRenderer {
 class FerryLineLayerRenderer extends $LineLayerRenderer {
   FerryLineLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -7988,10 +9708,10 @@ class FerryLineLayerRenderer extends $LineLayerRenderer {
       ferryLineUboColorStops: color_stops,
       ferryLineUboOpacityStops: opacity_stops,
       ferryLineUboWidthStops: width_stops,
-      dasharrayTexture: lineDasharrayTexture!,
-      ferryLineUboDasharraySize: Vector2(
-        lineDasharrayTexture!.width.toDouble(),
-        lineDasharrayTexture!.height.toDouble(),
+      dasharrayTexture: dasharrayTexture!,
+      ferryLineUboDasharrayTextureSize: Vector2(
+        dasharrayTexture!.width.toDouble(),
+        dasharrayTexture!.height.toDouble(),
       ),
     );
   }
@@ -8000,6 +9720,7 @@ class FerryLineLayerRenderer extends $LineLayerRenderer {
 class TunnelOutlineLayerRenderer extends $LineLayerRenderer {
   TunnelOutlineLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -8111,10 +9832,10 @@ class TunnelOutlineLayerRenderer extends $LineLayerRenderer {
       tileExtent: tileExtent,
       tileOpacity: tileOpacity,
       tunnelOutlineUboWidthStops: width_stops,
-      dasharrayTexture: lineDasharrayTexture!,
-      tunnelOutlineUboDasharraySize: Vector2(
-        lineDasharrayTexture!.width.toDouble(),
-        lineDasharrayTexture!.height.toDouble(),
+      dasharrayTexture: dasharrayTexture!,
+      tunnelOutlineUboDasharrayTextureSize: Vector2(
+        dasharrayTexture!.width.toDouble(),
+        dasharrayTexture!.height.toDouble(),
       ),
     );
   }
@@ -8123,6 +9844,7 @@ class TunnelOutlineLayerRenderer extends $LineLayerRenderer {
 class TunnelLayerRenderer extends $LineLayerRenderer {
   TunnelLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -8240,6 +9962,7 @@ class TunnelLayerRenderer extends $LineLayerRenderer {
 class RailwayTunnelLayerRenderer extends $LineLayerRenderer {
   RailwayTunnelLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -8323,6 +10046,7 @@ class RailwayTunnelLayerRenderer extends $LineLayerRenderer {
 class RailwayTunnelHatchingLayerRenderer extends $LineLayerRenderer {
   RailwayTunnelHatchingLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -8402,10 +10126,10 @@ class RailwayTunnelHatchingLayerRenderer extends $LineLayerRenderer {
       tileExtent: tileExtent,
       tileOpacity: tileOpacity,
       railwayTunnelHatchingUboWidthStops: width_stops,
-      dasharrayTexture: lineDasharrayTexture!,
-      railwayTunnelHatchingUboDasharraySize: Vector2(
-        lineDasharrayTexture!.width.toDouble(),
-        lineDasharrayTexture!.height.toDouble(),
+      dasharrayTexture: dasharrayTexture!,
+      railwayTunnelHatchingUboDasharrayTextureSize: Vector2(
+        dasharrayTexture!.width.toDouble(),
+        dasharrayTexture!.height.toDouble(),
       ),
     );
   }
@@ -8414,6 +10138,7 @@ class RailwayTunnelHatchingLayerRenderer extends $LineLayerRenderer {
 class FootwayTunnelOutlineLayerRenderer extends $LineLayerRenderer {
   FootwayTunnelOutlineLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -8499,6 +10224,7 @@ class FootwayTunnelOutlineLayerRenderer extends $LineLayerRenderer {
 class FootwayTunnelLayerRenderer extends $LineLayerRenderer {
   FootwayTunnelLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -8576,10 +10302,10 @@ class FootwayTunnelLayerRenderer extends $LineLayerRenderer {
       tileExtent: tileExtent,
       tileOpacity: tileOpacity,
       footwayTunnelUboWidthStops: width_stops,
-      dasharrayTexture: lineDasharrayTexture!,
-      footwayTunnelUboDasharraySize: Vector2(
-        lineDasharrayTexture!.width.toDouble(),
-        lineDasharrayTexture!.height.toDouble(),
+      dasharrayTexture: dasharrayTexture!,
+      footwayTunnelUboDasharrayTextureSize: Vector2(
+        dasharrayTexture!.width.toDouble(),
+        dasharrayTexture!.height.toDouble(),
       ),
     );
   }
@@ -8588,6 +10314,7 @@ class FootwayTunnelLayerRenderer extends $LineLayerRenderer {
 class PierLayerRenderer extends $FillLayerRenderer {
   PierLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -8644,6 +10371,7 @@ class PierLayerRenderer extends $FillLayerRenderer {
 class PierRoadLayerRenderer extends $LineLayerRenderer {
   PierRoadLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -8727,6 +10455,7 @@ class PierRoadLayerRenderer extends $LineLayerRenderer {
 class BridgeLayerRenderer extends $FillLayerRenderer {
   BridgeLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -8783,6 +10512,7 @@ class BridgeLayerRenderer extends $FillLayerRenderer {
 class MinorRoadOutlineLayerRenderer extends $LineLayerRenderer {
   MinorRoadOutlineLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -8880,6 +10610,7 @@ class MinorRoadOutlineLayerRenderer extends $LineLayerRenderer {
 class MajorRoadOutlineLayerRenderer extends $LineLayerRenderer {
   MajorRoadOutlineLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -8995,6 +10726,7 @@ class MajorRoadOutlineLayerRenderer extends $LineLayerRenderer {
 class HighwayOutlineLayerRenderer extends $LineLayerRenderer {
   HighwayOutlineLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -9110,6 +10842,7 @@ class HighwayOutlineLayerRenderer extends $LineLayerRenderer {
 class RoadUnderConstructionLayerRenderer extends $LineLayerRenderer {
   RoadUnderConstructionLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -9212,10 +10945,10 @@ class RoadUnderConstructionLayerRenderer extends $LineLayerRenderer {
       tileExtent: tileExtent,
       tileOpacity: tileOpacity,
       roadUnderConstructionUboWidthStops: width_stops,
-      dasharrayTexture: lineDasharrayTexture!,
-      roadUnderConstructionUboDasharraySize: Vector2(
-        lineDasharrayTexture!.width.toDouble(),
-        lineDasharrayTexture!.height.toDouble(),
+      dasharrayTexture: dasharrayTexture!,
+      roadUnderConstructionUboDasharrayTextureSize: Vector2(
+        dasharrayTexture!.width.toDouble(),
+        dasharrayTexture!.height.toDouble(),
       ),
     );
   }
@@ -9224,6 +10957,7 @@ class RoadUnderConstructionLayerRenderer extends $LineLayerRenderer {
 class MinorRoadLayerRenderer extends $LineLayerRenderer {
   MinorRoadLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -9328,6 +11062,7 @@ class MinorRoadLayerRenderer extends $LineLayerRenderer {
 class MajorRoadLayerRenderer extends $LineLayerRenderer {
   MajorRoadLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -9423,6 +11158,7 @@ class MajorRoadLayerRenderer extends $LineLayerRenderer {
 class HighwayLayerRenderer extends $LineLayerRenderer {
   HighwayLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -9538,6 +11274,7 @@ class HighwayLayerRenderer extends $LineLayerRenderer {
 class PathOutlineLayerRenderer extends $LineLayerRenderer {
   PathOutlineLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -9621,6 +11358,7 @@ class PathOutlineLayerRenderer extends $LineLayerRenderer {
 class PathLayerRenderer extends $LineLayerRenderer {
   PathLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -9698,10 +11436,10 @@ class PathLayerRenderer extends $LineLayerRenderer {
       tileExtent: tileExtent,
       tileOpacity: tileOpacity,
       pathUboWidthStops: width_stops,
-      dasharrayTexture: lineDasharrayTexture!,
-      pathUboDasharraySize: Vector2(
-        lineDasharrayTexture!.width.toDouble(),
-        lineDasharrayTexture!.height.toDouble(),
+      dasharrayTexture: dasharrayTexture!,
+      pathUboDasharrayTextureSize: Vector2(
+        dasharrayTexture!.width.toDouble(),
+        dasharrayTexture!.height.toDouble(),
       ),
     );
   }
@@ -9710,6 +11448,7 @@ class PathLayerRenderer extends $LineLayerRenderer {
 class MajorRailLayerRenderer extends $LineLayerRenderer {
   MajorRailLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -9818,6 +11557,7 @@ class MajorRailLayerRenderer extends $LineLayerRenderer {
 class MajorRailHatchingLayerRenderer extends $LineLayerRenderer {
   MajorRailHatchingLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -9899,10 +11639,10 @@ class MajorRailHatchingLayerRenderer extends $LineLayerRenderer {
       tileExtent: tileExtent,
       tileOpacity: tileOpacity,
       majorRailHatchingUboWidthStops: width_stops,
-      dasharrayTexture: lineDasharrayTexture!,
-      majorRailHatchingUboDasharraySize: Vector2(
-        lineDasharrayTexture!.width.toDouble(),
-        lineDasharrayTexture!.height.toDouble(),
+      dasharrayTexture: dasharrayTexture!,
+      majorRailHatchingUboDasharrayTextureSize: Vector2(
+        dasharrayTexture!.width.toDouble(),
+        dasharrayTexture!.height.toDouble(),
       ),
     );
   }
@@ -9911,6 +11651,7 @@ class MajorRailHatchingLayerRenderer extends $LineLayerRenderer {
 class MinorRailLayerRenderer extends $LineLayerRenderer {
   MinorRailLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -9994,6 +11735,7 @@ class MinorRailLayerRenderer extends $LineLayerRenderer {
 class MinorRailHatchingLayerRenderer extends $LineLayerRenderer {
   MinorRailHatchingLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -10073,10 +11815,10 @@ class MinorRailHatchingLayerRenderer extends $LineLayerRenderer {
       tileExtent: tileExtent,
       tileOpacity: tileOpacity,
       minorRailHatchingUboWidthStops: width_stops,
-      dasharrayTexture: lineDasharrayTexture!,
-      minorRailHatchingUboDasharraySize: Vector2(
-        lineDasharrayTexture!.width.toDouble(),
-        lineDasharrayTexture!.height.toDouble(),
+      dasharrayTexture: dasharrayTexture!,
+      minorRailHatchingUboDasharrayTextureSize: Vector2(
+        dasharrayTexture!.width.toDouble(),
+        dasharrayTexture!.height.toDouble(),
       ),
     );
   }
@@ -10085,6 +11827,7 @@ class MinorRailHatchingLayerRenderer extends $LineLayerRenderer {
 class BuildingLayerRenderer extends $FillLayerRenderer {
   BuildingLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -10141,6 +11884,7 @@ class BuildingLayerRenderer extends $FillLayerRenderer {
 class AqueductOutlineLayerRenderer extends $LineLayerRenderer {
   AqueductOutlineLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -10224,6 +11968,7 @@ class AqueductOutlineLayerRenderer extends $LineLayerRenderer {
 class AqueductLayerRenderer extends $LineLayerRenderer {
   AqueductLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -10307,6 +12052,7 @@ class AqueductLayerRenderer extends $LineLayerRenderer {
 class CablecarLayerRenderer extends $LineLayerRenderer {
   CablecarLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -10390,6 +12136,7 @@ class CablecarLayerRenderer extends $LineLayerRenderer {
 class CablecarDashLayerRenderer extends $LineLayerRenderer {
   CablecarDashLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -10467,10 +12214,10 @@ class CablecarDashLayerRenderer extends $LineLayerRenderer {
       tileExtent: tileExtent,
       tileOpacity: tileOpacity,
       cablecarDashUboWidthStops: width_stops,
-      dasharrayTexture: lineDasharrayTexture!,
-      cablecarDashUboDasharraySize: Vector2(
-        lineDasharrayTexture!.width.toDouble(),
-        lineDasharrayTexture!.height.toDouble(),
+      dasharrayTexture: dasharrayTexture!,
+      cablecarDashUboDasharrayTextureSize: Vector2(
+        dasharrayTexture!.width.toDouble(),
+        dasharrayTexture!.height.toDouble(),
       ),
     );
   }
@@ -10479,6 +12226,7 @@ class CablecarDashLayerRenderer extends $LineLayerRenderer {
 class OtherBorderLayerRenderer extends $LineLayerRenderer {
   OtherBorderLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -10556,10 +12304,10 @@ class OtherBorderLayerRenderer extends $LineLayerRenderer {
       tileExtent: tileExtent,
       tileOpacity: tileOpacity,
       otherBorderUboWidthStops: width_stops,
-      dasharrayTexture: lineDasharrayTexture!,
-      otherBorderUboDasharraySize: Vector2(
-        lineDasharrayTexture!.width.toDouble(),
-        lineDasharrayTexture!.height.toDouble(),
+      dasharrayTexture: dasharrayTexture!,
+      otherBorderUboDasharrayTextureSize: Vector2(
+        dasharrayTexture!.width.toDouble(),
+        dasharrayTexture!.height.toDouble(),
       ),
     );
   }
@@ -10568,6 +12316,7 @@ class OtherBorderLayerRenderer extends $LineLayerRenderer {
 class DisputedBorderLayerRenderer extends $LineLayerRenderer {
   DisputedBorderLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -10645,10 +12394,10 @@ class DisputedBorderLayerRenderer extends $LineLayerRenderer {
       tileExtent: tileExtent,
       tileOpacity: tileOpacity,
       disputedBorderUboWidthStops: width_stops,
-      dasharrayTexture: lineDasharrayTexture!,
-      disputedBorderUboDasharraySize: Vector2(
-        lineDasharrayTexture!.width.toDouble(),
-        lineDasharrayTexture!.height.toDouble(),
+      dasharrayTexture: dasharrayTexture!,
+      disputedBorderUboDasharrayTextureSize: Vector2(
+        dasharrayTexture!.width.toDouble(),
+        dasharrayTexture!.height.toDouble(),
       ),
     );
   }
@@ -10657,6 +12406,7 @@ class DisputedBorderLayerRenderer extends $LineLayerRenderer {
 class CountryBorderLayerRenderer extends $LineLayerRenderer {
   CountryBorderLayerRenderer({
     required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
@@ -10733,6 +12483,1379 @@ class CountryBorderLayerRenderer extends $LineLayerRenderer {
       tileExtent: tileExtent,
       tileOpacity: tileOpacity,
       countryBorderUboWidthStops: width_stops,
+    );
+  }
+}
+
+class RiverLabelsLayerRenderer extends $SymbolLayerRenderer {
+  RiverLabelsLayerRenderer({
+    required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
+    required super.coordinates,
+    required super.container,
+    required super.specLayer,
+    required super.vtLayer,
+  }) : pipeline = RiverLabelsRenderPipelineBindings(shaderLibraryProvider);
+
+  @override
+  final RiverLabelsRenderPipelineBindings pipeline;
+
+  @override
+  int setFeatureVertices(
+    spec.EvaluationContext eval,
+    vt.PointFeature feature,
+    Iterable<Vector2> anchors,
+    SymbolLayoutData layoutData,
+    int index,
+  ) {
+    final paint = specLayer.paint;
+
+    var vertexIndex = index;
+    for (final glyph in layoutData.glyphs) {
+      final pos0 = Vector2(glyph.x, glyph.y);
+      final pos1 = Vector2(glyph.x + glyph.width, glyph.y);
+      final pos2 = Vector2(glyph.x + glyph.width, glyph.y + glyph.height);
+      final pos3 = Vector2(glyph.x, glyph.y + glyph.height);
+
+      final uv0 = glyph.uv.uv0;
+      final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
+      final uv2 = glyph.uv.uv1;
+      final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
+
+      for (final anchor in anchors) {
+        pipeline.vertex.setVertex(
+          vertexIndex + 0,
+          position: pos0,
+          uv: uv0,
+          anchor: anchor,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 1,
+          position: pos1,
+          uv: uv1,
+          anchor: anchor,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 2,
+          position: pos2,
+          uv: uv2,
+          anchor: anchor,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 3,
+          position: pos3,
+          uv: uv3,
+          anchor: anchor,
+        );
+
+        vertexIndex += 4;
+      }
+    }
+
+    return vertexIndex;
+  }
+
+  @override
+  void setUniforms(
+    RenderContext context,
+    Matrix4 cameraWorldToGl,
+    double cameraZoom,
+    double pixelRatio,
+    Matrix4 tileLocalToGl,
+    double tileSize,
+    double tileExtent,
+    double tileOpacity,
+  ) {
+    final eval = context.eval;
+    final paint = specLayer.paint;
+
+    pipeline.setUniforms(
+      cameraWorldToGl: cameraWorldToGl,
+      cameraZoom: cameraZoom,
+      cameraPixelRatio: pixelRatio,
+      tileLocalToGl: tileLocalToGl,
+      tileSize: tileSize,
+      tileExtent: tileExtent,
+      tileOpacity: tileOpacity,
+      glyphSdfTexture: glyphTexture!,
+      riverLabelsUboGlyphSdfTextureSize: Vector2(
+        glyphTexture!.width.toDouble(),
+        glyphTexture!.height.toDouble(),
+      ),
+    );
+  }
+}
+
+class OceanLabelsLayerRenderer extends $SymbolLayerRenderer {
+  OceanLabelsLayerRenderer({
+    required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
+    required super.coordinates,
+    required super.container,
+    required super.specLayer,
+    required super.vtLayer,
+  }) : pipeline = OceanLabelsRenderPipelineBindings(shaderLibraryProvider);
+
+  @override
+  final OceanLabelsRenderPipelineBindings pipeline;
+
+  @override
+  int setFeatureVertices(
+    spec.EvaluationContext eval,
+    vt.PointFeature feature,
+    Iterable<Vector2> anchors,
+    SymbolLayoutData layoutData,
+    int index,
+  ) {
+    final paint = specLayer.paint;
+    final color_start_value =
+        paint.textColor
+            .evaluate(
+              eval.copyWithZoom(
+                getNearestFloorValue(eval.zoom, const [1.0, 4.0]),
+              ),
+            )
+            .vec;
+    final color_end_value =
+        paint.textColor
+            .evaluate(
+              eval.copyWithZoom(
+                getNearestCeilValue(eval.zoom, const [1.0, 4.0]),
+              ),
+            )
+            .vec;
+    final opacity_start_value =
+        paint.textOpacity
+            .evaluate(
+              eval.copyWithZoom(
+                getNearestFloorValue(eval.zoom, const [1.0, 3.0]),
+              ),
+            )
+            .toDouble();
+    final opacity_end_value =
+        paint.textOpacity
+            .evaluate(
+              eval.copyWithZoom(
+                getNearestCeilValue(eval.zoom, const [1.0, 3.0]),
+              ),
+            )
+            .toDouble();
+
+    var vertexIndex = index;
+    for (final glyph in layoutData.glyphs) {
+      final pos0 = Vector2(glyph.x, glyph.y);
+      final pos1 = Vector2(glyph.x + glyph.width, glyph.y);
+      final pos2 = Vector2(glyph.x + glyph.width, glyph.y + glyph.height);
+      final pos3 = Vector2(glyph.x, glyph.y + glyph.height);
+
+      final uv0 = glyph.uv.uv0;
+      final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
+      final uv2 = glyph.uv.uv1;
+      final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
+
+      for (final anchor in anchors) {
+        pipeline.vertex.setVertex(
+          vertexIndex + 0,
+          position: pos0,
+          uv: uv0,
+          anchor: anchor,
+          colorStartValue: color_start_value,
+          colorEndValue: color_end_value,
+          opacityStartValue: opacity_start_value,
+          opacityEndValue: opacity_end_value,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 1,
+          position: pos1,
+          uv: uv1,
+          anchor: anchor,
+          colorStartValue: color_start_value,
+          colorEndValue: color_end_value,
+          opacityStartValue: opacity_start_value,
+          opacityEndValue: opacity_end_value,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 2,
+          position: pos2,
+          uv: uv2,
+          anchor: anchor,
+          colorStartValue: color_start_value,
+          colorEndValue: color_end_value,
+          opacityStartValue: opacity_start_value,
+          opacityEndValue: opacity_end_value,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 3,
+          position: pos3,
+          uv: uv3,
+          anchor: anchor,
+          colorStartValue: color_start_value,
+          colorEndValue: color_end_value,
+          opacityStartValue: opacity_start_value,
+          opacityEndValue: opacity_end_value,
+        );
+
+        vertexIndex += 4;
+      }
+    }
+
+    return vertexIndex;
+  }
+
+  @override
+  void setUniforms(
+    RenderContext context,
+    Matrix4 cameraWorldToGl,
+    double cameraZoom,
+    double pixelRatio,
+    Matrix4 tileLocalToGl,
+    double tileSize,
+    double tileExtent,
+    double tileOpacity,
+  ) {
+    final eval = context.eval;
+    final paint = specLayer.paint;
+
+    final color_stops = Vector2(
+      getNearestFloorValue(eval.zoom, const [1.0, 4.0]),
+      getNearestCeilValue(eval.zoom, const [1.0, 4.0]),
+    );
+    final opacity_stops = Vector2(
+      getNearestFloorValue(eval.zoom, const [1.0, 3.0]),
+      getNearestCeilValue(eval.zoom, const [1.0, 3.0]),
+    );
+
+    pipeline.setUniforms(
+      cameraWorldToGl: cameraWorldToGl,
+      cameraZoom: cameraZoom,
+      cameraPixelRatio: pixelRatio,
+      tileLocalToGl: tileLocalToGl,
+      tileSize: tileSize,
+      tileExtent: tileExtent,
+      tileOpacity: tileOpacity,
+      oceanLabelsUboColorStops: color_stops,
+      oceanLabelsUboOpacityStops: opacity_stops,
+      glyphSdfTexture: glyphTexture!,
+      oceanLabelsUboGlyphSdfTextureSize: Vector2(
+        glyphTexture!.width.toDouble(),
+        glyphTexture!.height.toDouble(),
+      ),
+    );
+  }
+}
+
+class LakeLabelsLayerRenderer extends $SymbolLayerRenderer {
+  LakeLabelsLayerRenderer({
+    required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
+    required super.coordinates,
+    required super.container,
+    required super.specLayer,
+    required super.vtLayer,
+  }) : pipeline = LakeLabelsRenderPipelineBindings(shaderLibraryProvider);
+
+  @override
+  final LakeLabelsRenderPipelineBindings pipeline;
+
+  @override
+  int setFeatureVertices(
+    spec.EvaluationContext eval,
+    vt.PointFeature feature,
+    Iterable<Vector2> anchors,
+    SymbolLayoutData layoutData,
+    int index,
+  ) {
+    final paint = specLayer.paint;
+
+    var vertexIndex = index;
+    for (final glyph in layoutData.glyphs) {
+      final pos0 = Vector2(glyph.x, glyph.y);
+      final pos1 = Vector2(glyph.x + glyph.width, glyph.y);
+      final pos2 = Vector2(glyph.x + glyph.width, glyph.y + glyph.height);
+      final pos3 = Vector2(glyph.x, glyph.y + glyph.height);
+
+      final uv0 = glyph.uv.uv0;
+      final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
+      final uv2 = glyph.uv.uv1;
+      final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
+
+      for (final anchor in anchors) {
+        pipeline.vertex.setVertex(
+          vertexIndex + 0,
+          position: pos0,
+          uv: uv0,
+          anchor: anchor,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 1,
+          position: pos1,
+          uv: uv1,
+          anchor: anchor,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 2,
+          position: pos2,
+          uv: uv2,
+          anchor: anchor,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 3,
+          position: pos3,
+          uv: uv3,
+          anchor: anchor,
+        );
+
+        vertexIndex += 4;
+      }
+    }
+
+    return vertexIndex;
+  }
+
+  @override
+  void setUniforms(
+    RenderContext context,
+    Matrix4 cameraWorldToGl,
+    double cameraZoom,
+    double pixelRatio,
+    Matrix4 tileLocalToGl,
+    double tileSize,
+    double tileExtent,
+    double tileOpacity,
+  ) {
+    final eval = context.eval;
+    final paint = specLayer.paint;
+
+    pipeline.setUniforms(
+      cameraWorldToGl: cameraWorldToGl,
+      cameraZoom: cameraZoom,
+      cameraPixelRatio: pixelRatio,
+      tileLocalToGl: tileLocalToGl,
+      tileSize: tileSize,
+      tileExtent: tileExtent,
+      tileOpacity: tileOpacity,
+      glyphSdfTexture: glyphTexture!,
+      lakeLabelsUboGlyphSdfTextureSize: Vector2(
+        glyphTexture!.width.toDouble(),
+        glyphTexture!.height.toDouble(),
+      ),
+    );
+  }
+}
+
+class HousenumberLayerRenderer extends $SymbolLayerRenderer {
+  HousenumberLayerRenderer({
+    required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
+    required super.coordinates,
+    required super.container,
+    required super.specLayer,
+    required super.vtLayer,
+  }) : pipeline = HousenumberRenderPipelineBindings(shaderLibraryProvider);
+
+  @override
+  final HousenumberRenderPipelineBindings pipeline;
+
+  @override
+  int setFeatureVertices(
+    spec.EvaluationContext eval,
+    vt.PointFeature feature,
+    Iterable<Vector2> anchors,
+    SymbolLayoutData layoutData,
+    int index,
+  ) {
+    final paint = specLayer.paint;
+
+    var vertexIndex = index;
+    for (final glyph in layoutData.glyphs) {
+      final pos0 = Vector2(glyph.x, glyph.y);
+      final pos1 = Vector2(glyph.x + glyph.width, glyph.y);
+      final pos2 = Vector2(glyph.x + glyph.width, glyph.y + glyph.height);
+      final pos3 = Vector2(glyph.x, glyph.y + glyph.height);
+
+      final uv0 = glyph.uv.uv0;
+      final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
+      final uv2 = glyph.uv.uv1;
+      final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
+
+      for (final anchor in anchors) {
+        pipeline.vertex.setVertex(
+          vertexIndex + 0,
+          position: pos0,
+          uv: uv0,
+          anchor: anchor,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 1,
+          position: pos1,
+          uv: uv1,
+          anchor: anchor,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 2,
+          position: pos2,
+          uv: uv2,
+          anchor: anchor,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 3,
+          position: pos3,
+          uv: uv3,
+          anchor: anchor,
+        );
+
+        vertexIndex += 4;
+      }
+    }
+
+    return vertexIndex;
+  }
+
+  @override
+  void setUniforms(
+    RenderContext context,
+    Matrix4 cameraWorldToGl,
+    double cameraZoom,
+    double pixelRatio,
+    Matrix4 tileLocalToGl,
+    double tileSize,
+    double tileExtent,
+    double tileOpacity,
+  ) {
+    final eval = context.eval;
+    final paint = specLayer.paint;
+
+    pipeline.setUniforms(
+      cameraWorldToGl: cameraWorldToGl,
+      cameraZoom: cameraZoom,
+      cameraPixelRatio: pixelRatio,
+      tileLocalToGl: tileLocalToGl,
+      tileSize: tileSize,
+      tileExtent: tileExtent,
+      tileOpacity: tileOpacity,
+      glyphSdfTexture: glyphTexture!,
+      housenumberUboGlyphSdfTextureSize: Vector2(
+        glyphTexture!.width.toDouble(),
+        glyphTexture!.height.toDouble(),
+      ),
+    );
+  }
+}
+
+class GondolaLayerRenderer extends $SymbolLayerRenderer {
+  GondolaLayerRenderer({
+    required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
+    required super.coordinates,
+    required super.container,
+    required super.specLayer,
+    required super.vtLayer,
+  }) : pipeline = GondolaRenderPipelineBindings(shaderLibraryProvider);
+
+  @override
+  final GondolaRenderPipelineBindings pipeline;
+
+  @override
+  int setFeatureVertices(
+    spec.EvaluationContext eval,
+    vt.PointFeature feature,
+    Iterable<Vector2> anchors,
+    SymbolLayoutData layoutData,
+    int index,
+  ) {
+    final paint = specLayer.paint;
+
+    var vertexIndex = index;
+    for (final glyph in layoutData.glyphs) {
+      final pos0 = Vector2(glyph.x, glyph.y);
+      final pos1 = Vector2(glyph.x + glyph.width, glyph.y);
+      final pos2 = Vector2(glyph.x + glyph.width, glyph.y + glyph.height);
+      final pos3 = Vector2(glyph.x, glyph.y + glyph.height);
+
+      final uv0 = glyph.uv.uv0;
+      final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
+      final uv2 = glyph.uv.uv1;
+      final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
+
+      for (final anchor in anchors) {
+        pipeline.vertex.setVertex(
+          vertexIndex + 0,
+          position: pos0,
+          uv: uv0,
+          anchor: anchor,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 1,
+          position: pos1,
+          uv: uv1,
+          anchor: anchor,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 2,
+          position: pos2,
+          uv: uv2,
+          anchor: anchor,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 3,
+          position: pos3,
+          uv: uv3,
+          anchor: anchor,
+        );
+
+        vertexIndex += 4;
+      }
+    }
+
+    return vertexIndex;
+  }
+
+  @override
+  void setUniforms(
+    RenderContext context,
+    Matrix4 cameraWorldToGl,
+    double cameraZoom,
+    double pixelRatio,
+    Matrix4 tileLocalToGl,
+    double tileSize,
+    double tileExtent,
+    double tileOpacity,
+  ) {
+    final eval = context.eval;
+    final paint = specLayer.paint;
+
+    pipeline.setUniforms(
+      cameraWorldToGl: cameraWorldToGl,
+      cameraZoom: cameraZoom,
+      cameraPixelRatio: pixelRatio,
+      tileLocalToGl: tileLocalToGl,
+      tileSize: tileSize,
+      tileExtent: tileExtent,
+      tileOpacity: tileOpacity,
+      glyphSdfTexture: glyphTexture!,
+      gondolaUboGlyphSdfTextureSize: Vector2(
+        glyphTexture!.width.toDouble(),
+        glyphTexture!.height.toDouble(),
+      ),
+    );
+  }
+}
+
+class FerryLayerRenderer extends $SymbolLayerRenderer {
+  FerryLayerRenderer({
+    required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
+    required super.coordinates,
+    required super.container,
+    required super.specLayer,
+    required super.vtLayer,
+  }) : pipeline = FerryRenderPipelineBindings(shaderLibraryProvider);
+
+  @override
+  final FerryRenderPipelineBindings pipeline;
+
+  @override
+  int setFeatureVertices(
+    spec.EvaluationContext eval,
+    vt.PointFeature feature,
+    Iterable<Vector2> anchors,
+    SymbolLayoutData layoutData,
+    int index,
+  ) {
+    final paint = specLayer.paint;
+
+    var vertexIndex = index;
+    for (final glyph in layoutData.glyphs) {
+      final pos0 = Vector2(glyph.x, glyph.y);
+      final pos1 = Vector2(glyph.x + glyph.width, glyph.y);
+      final pos2 = Vector2(glyph.x + glyph.width, glyph.y + glyph.height);
+      final pos3 = Vector2(glyph.x, glyph.y + glyph.height);
+
+      final uv0 = glyph.uv.uv0;
+      final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
+      final uv2 = glyph.uv.uv1;
+      final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
+
+      for (final anchor in anchors) {
+        pipeline.vertex.setVertex(
+          vertexIndex + 0,
+          position: pos0,
+          uv: uv0,
+          anchor: anchor,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 1,
+          position: pos1,
+          uv: uv1,
+          anchor: anchor,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 2,
+          position: pos2,
+          uv: uv2,
+          anchor: anchor,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 3,
+          position: pos3,
+          uv: uv3,
+          anchor: anchor,
+        );
+
+        vertexIndex += 4;
+      }
+    }
+
+    return vertexIndex;
+  }
+
+  @override
+  void setUniforms(
+    RenderContext context,
+    Matrix4 cameraWorldToGl,
+    double cameraZoom,
+    double pixelRatio,
+    Matrix4 tileLocalToGl,
+    double tileSize,
+    double tileExtent,
+    double tileOpacity,
+  ) {
+    final eval = context.eval;
+    final paint = specLayer.paint;
+
+    pipeline.setUniforms(
+      cameraWorldToGl: cameraWorldToGl,
+      cameraZoom: cameraZoom,
+      cameraPixelRatio: pixelRatio,
+      tileLocalToGl: tileLocalToGl,
+      tileSize: tileSize,
+      tileExtent: tileExtent,
+      tileOpacity: tileOpacity,
+      glyphSdfTexture: glyphTexture!,
+      ferryUboGlyphSdfTextureSize: Vector2(
+        glyphTexture!.width.toDouble(),
+        glyphTexture!.height.toDouble(),
+      ),
+    );
+  }
+}
+
+class RoadLabelsLayerRenderer extends $SymbolLayerRenderer {
+  RoadLabelsLayerRenderer({
+    required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
+    required super.coordinates,
+    required super.container,
+    required super.specLayer,
+    required super.vtLayer,
+  }) : pipeline = RoadLabelsRenderPipelineBindings(shaderLibraryProvider);
+
+  @override
+  final RoadLabelsRenderPipelineBindings pipeline;
+
+  @override
+  int setFeatureVertices(
+    spec.EvaluationContext eval,
+    vt.PointFeature feature,
+    Iterable<Vector2> anchors,
+    SymbolLayoutData layoutData,
+    int index,
+  ) {
+    final paint = specLayer.paint;
+
+    var vertexIndex = index;
+    for (final glyph in layoutData.glyphs) {
+      final pos0 = Vector2(glyph.x, glyph.y);
+      final pos1 = Vector2(glyph.x + glyph.width, glyph.y);
+      final pos2 = Vector2(glyph.x + glyph.width, glyph.y + glyph.height);
+      final pos3 = Vector2(glyph.x, glyph.y + glyph.height);
+
+      final uv0 = glyph.uv.uv0;
+      final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
+      final uv2 = glyph.uv.uv1;
+      final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
+
+      for (final anchor in anchors) {
+        pipeline.vertex.setVertex(
+          vertexIndex + 0,
+          position: pos0,
+          uv: uv0,
+          anchor: anchor,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 1,
+          position: pos1,
+          uv: uv1,
+          anchor: anchor,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 2,
+          position: pos2,
+          uv: uv2,
+          anchor: anchor,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 3,
+          position: pos3,
+          uv: uv3,
+          anchor: anchor,
+        );
+
+        vertexIndex += 4;
+      }
+    }
+
+    return vertexIndex;
+  }
+
+  @override
+  void setUniforms(
+    RenderContext context,
+    Matrix4 cameraWorldToGl,
+    double cameraZoom,
+    double pixelRatio,
+    Matrix4 tileLocalToGl,
+    double tileSize,
+    double tileExtent,
+    double tileOpacity,
+  ) {
+    final eval = context.eval;
+    final paint = specLayer.paint;
+
+    pipeline.setUniforms(
+      cameraWorldToGl: cameraWorldToGl,
+      cameraZoom: cameraZoom,
+      cameraPixelRatio: pixelRatio,
+      tileLocalToGl: tileLocalToGl,
+      tileSize: tileSize,
+      tileExtent: tileExtent,
+      tileOpacity: tileOpacity,
+      glyphSdfTexture: glyphTexture!,
+      roadLabelsUboGlyphSdfTextureSize: Vector2(
+        glyphTexture!.width.toDouble(),
+        glyphTexture!.height.toDouble(),
+      ),
+    );
+  }
+}
+
+class PlaceLabelsLayerRenderer extends $SymbolLayerRenderer {
+  PlaceLabelsLayerRenderer({
+    required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
+    required super.coordinates,
+    required super.container,
+    required super.specLayer,
+    required super.vtLayer,
+  }) : pipeline = PlaceLabelsRenderPipelineBindings(shaderLibraryProvider);
+
+  @override
+  final PlaceLabelsRenderPipelineBindings pipeline;
+
+  @override
+  int setFeatureVertices(
+    spec.EvaluationContext eval,
+    vt.PointFeature feature,
+    Iterable<Vector2> anchors,
+    SymbolLayoutData layoutData,
+    int index,
+  ) {
+    final paint = specLayer.paint;
+    final opacity_start_value =
+        paint.textOpacity
+            .evaluate(
+              eval.copyWithZoom(
+                getNearestFloorValue(eval.zoom, const [8.0, 9.0]),
+              ),
+            )
+            .toDouble();
+    final opacity_end_value =
+        paint.textOpacity
+            .evaluate(
+              eval.copyWithZoom(
+                getNearestCeilValue(eval.zoom, const [8.0, 9.0]),
+              ),
+            )
+            .toDouble();
+
+    var vertexIndex = index;
+    for (final glyph in layoutData.glyphs) {
+      final pos0 = Vector2(glyph.x, glyph.y);
+      final pos1 = Vector2(glyph.x + glyph.width, glyph.y);
+      final pos2 = Vector2(glyph.x + glyph.width, glyph.y + glyph.height);
+      final pos3 = Vector2(glyph.x, glyph.y + glyph.height);
+
+      final uv0 = glyph.uv.uv0;
+      final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
+      final uv2 = glyph.uv.uv1;
+      final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
+
+      for (final anchor in anchors) {
+        pipeline.vertex.setVertex(
+          vertexIndex + 0,
+          position: pos0,
+          uv: uv0,
+          anchor: anchor,
+          opacityStartValue: opacity_start_value,
+          opacityEndValue: opacity_end_value,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 1,
+          position: pos1,
+          uv: uv1,
+          anchor: anchor,
+          opacityStartValue: opacity_start_value,
+          opacityEndValue: opacity_end_value,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 2,
+          position: pos2,
+          uv: uv2,
+          anchor: anchor,
+          opacityStartValue: opacity_start_value,
+          opacityEndValue: opacity_end_value,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 3,
+          position: pos3,
+          uv: uv3,
+          anchor: anchor,
+          opacityStartValue: opacity_start_value,
+          opacityEndValue: opacity_end_value,
+        );
+
+        vertexIndex += 4;
+      }
+    }
+
+    return vertexIndex;
+  }
+
+  @override
+  void setUniforms(
+    RenderContext context,
+    Matrix4 cameraWorldToGl,
+    double cameraZoom,
+    double pixelRatio,
+    Matrix4 tileLocalToGl,
+    double tileSize,
+    double tileExtent,
+    double tileOpacity,
+  ) {
+    final eval = context.eval;
+    final paint = specLayer.paint;
+
+    final opacity_stops = Vector2(
+      getNearestFloorValue(eval.zoom, const [8.0, 9.0]),
+      getNearestCeilValue(eval.zoom, const [8.0, 9.0]),
+    );
+
+    pipeline.setUniforms(
+      cameraWorldToGl: cameraWorldToGl,
+      cameraZoom: cameraZoom,
+      cameraPixelRatio: pixelRatio,
+      tileLocalToGl: tileLocalToGl,
+      tileSize: tileSize,
+      tileExtent: tileExtent,
+      tileOpacity: tileOpacity,
+      placeLabelsUboOpacityStops: opacity_stops,
+      glyphSdfTexture: glyphTexture!,
+      placeLabelsUboGlyphSdfTextureSize: Vector2(
+        glyphTexture!.width.toDouble(),
+        glyphTexture!.height.toDouble(),
+      ),
+    );
+  }
+}
+
+class AirportGateLayerRenderer extends $SymbolLayerRenderer {
+  AirportGateLayerRenderer({
+    required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
+    required super.coordinates,
+    required super.container,
+    required super.specLayer,
+    required super.vtLayer,
+  }) : pipeline = AirportGateRenderPipelineBindings(shaderLibraryProvider);
+
+  @override
+  final AirportGateRenderPipelineBindings pipeline;
+
+  @override
+  int setFeatureVertices(
+    spec.EvaluationContext eval,
+    vt.PointFeature feature,
+    Iterable<Vector2> anchors,
+    SymbolLayoutData layoutData,
+    int index,
+  ) {
+    final paint = specLayer.paint;
+
+    var vertexIndex = index;
+    for (final glyph in layoutData.glyphs) {
+      final pos0 = Vector2(glyph.x, glyph.y);
+      final pos1 = Vector2(glyph.x + glyph.width, glyph.y);
+      final pos2 = Vector2(glyph.x + glyph.width, glyph.y + glyph.height);
+      final pos3 = Vector2(glyph.x, glyph.y + glyph.height);
+
+      final uv0 = glyph.uv.uv0;
+      final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
+      final uv2 = glyph.uv.uv1;
+      final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
+
+      for (final anchor in anchors) {
+        pipeline.vertex.setVertex(
+          vertexIndex + 0,
+          position: pos0,
+          uv: uv0,
+          anchor: anchor,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 1,
+          position: pos1,
+          uv: uv1,
+          anchor: anchor,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 2,
+          position: pos2,
+          uv: uv2,
+          anchor: anchor,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 3,
+          position: pos3,
+          uv: uv3,
+          anchor: anchor,
+        );
+
+        vertexIndex += 4;
+      }
+    }
+
+    return vertexIndex;
+  }
+
+  @override
+  void setUniforms(
+    RenderContext context,
+    Matrix4 cameraWorldToGl,
+    double cameraZoom,
+    double pixelRatio,
+    Matrix4 tileLocalToGl,
+    double tileSize,
+    double tileExtent,
+    double tileOpacity,
+  ) {
+    final eval = context.eval;
+    final paint = specLayer.paint;
+
+    pipeline.setUniforms(
+      cameraWorldToGl: cameraWorldToGl,
+      cameraZoom: cameraZoom,
+      cameraPixelRatio: pixelRatio,
+      tileLocalToGl: tileLocalToGl,
+      tileSize: tileSize,
+      tileExtent: tileExtent,
+      tileOpacity: tileOpacity,
+      glyphSdfTexture: glyphTexture!,
+      airportGateUboGlyphSdfTextureSize: Vector2(
+        glyphTexture!.width.toDouble(),
+        glyphTexture!.height.toDouble(),
+      ),
+    );
+  }
+}
+
+class StateLabelsLayerRenderer extends $SymbolLayerRenderer {
+  StateLabelsLayerRenderer({
+    required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
+    required super.coordinates,
+    required super.container,
+    required super.specLayer,
+    required super.vtLayer,
+  }) : pipeline = StateLabelsRenderPipelineBindings(shaderLibraryProvider);
+
+  @override
+  final StateLabelsRenderPipelineBindings pipeline;
+
+  @override
+  int setFeatureVertices(
+    spec.EvaluationContext eval,
+    vt.PointFeature feature,
+    Iterable<Vector2> anchors,
+    SymbolLayoutData layoutData,
+    int index,
+  ) {
+    final paint = specLayer.paint;
+    final opacity_start_value =
+        paint.textOpacity
+            .evaluate(
+              eval.copyWithZoom(
+                getNearestFloorValue(eval.zoom, const [3.0, 8.0]),
+              ),
+            )
+            .toDouble();
+    final opacity_end_value =
+        paint.textOpacity
+            .evaluate(
+              eval.copyWithZoom(
+                getNearestCeilValue(eval.zoom, const [3.0, 8.0]),
+              ),
+            )
+            .toDouble();
+
+    var vertexIndex = index;
+    for (final glyph in layoutData.glyphs) {
+      final pos0 = Vector2(glyph.x, glyph.y);
+      final pos1 = Vector2(glyph.x + glyph.width, glyph.y);
+      final pos2 = Vector2(glyph.x + glyph.width, glyph.y + glyph.height);
+      final pos3 = Vector2(glyph.x, glyph.y + glyph.height);
+
+      final uv0 = glyph.uv.uv0;
+      final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
+      final uv2 = glyph.uv.uv1;
+      final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
+
+      for (final anchor in anchors) {
+        pipeline.vertex.setVertex(
+          vertexIndex + 0,
+          position: pos0,
+          uv: uv0,
+          anchor: anchor,
+          opacityStartValue: opacity_start_value,
+          opacityEndValue: opacity_end_value,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 1,
+          position: pos1,
+          uv: uv1,
+          anchor: anchor,
+          opacityStartValue: opacity_start_value,
+          opacityEndValue: opacity_end_value,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 2,
+          position: pos2,
+          uv: uv2,
+          anchor: anchor,
+          opacityStartValue: opacity_start_value,
+          opacityEndValue: opacity_end_value,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 3,
+          position: pos3,
+          uv: uv3,
+          anchor: anchor,
+          opacityStartValue: opacity_start_value,
+          opacityEndValue: opacity_end_value,
+        );
+
+        vertexIndex += 4;
+      }
+    }
+
+    return vertexIndex;
+  }
+
+  @override
+  void setUniforms(
+    RenderContext context,
+    Matrix4 cameraWorldToGl,
+    double cameraZoom,
+    double pixelRatio,
+    Matrix4 tileLocalToGl,
+    double tileSize,
+    double tileExtent,
+    double tileOpacity,
+  ) {
+    final eval = context.eval;
+    final paint = specLayer.paint;
+
+    final opacity_stops = Vector2(
+      getNearestFloorValue(eval.zoom, const [3.0, 8.0]),
+      getNearestCeilValue(eval.zoom, const [3.0, 8.0]),
+    );
+
+    pipeline.setUniforms(
+      cameraWorldToGl: cameraWorldToGl,
+      cameraZoom: cameraZoom,
+      cameraPixelRatio: pixelRatio,
+      tileLocalToGl: tileLocalToGl,
+      tileSize: tileSize,
+      tileExtent: tileExtent,
+      tileOpacity: tileOpacity,
+      stateLabelsUboOpacityStops: opacity_stops,
+      glyphSdfTexture: glyphTexture!,
+      stateLabelsUboGlyphSdfTextureSize: Vector2(
+        glyphTexture!.width.toDouble(),
+        glyphTexture!.height.toDouble(),
+      ),
+    );
+  }
+}
+
+class CountryLabelsLayerRenderer extends $SymbolLayerRenderer {
+  CountryLabelsLayerRenderer({
+    required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
+    required super.coordinates,
+    required super.container,
+    required super.specLayer,
+    required super.vtLayer,
+  }) : pipeline = CountryLabelsRenderPipelineBindings(shaderLibraryProvider);
+
+  @override
+  final CountryLabelsRenderPipelineBindings pipeline;
+
+  @override
+  int setFeatureVertices(
+    spec.EvaluationContext eval,
+    vt.PointFeature feature,
+    Iterable<Vector2> anchors,
+    SymbolLayoutData layoutData,
+    int index,
+  ) {
+    final paint = specLayer.paint;
+    final opacity_start_value =
+        paint.textOpacity
+            .evaluate(
+              eval.copyWithZoom(
+                getNearestFloorValue(eval.zoom, const [4.0, 5.9, 6.0]),
+              ),
+            )
+            .toDouble();
+    final opacity_end_value =
+        paint.textOpacity
+            .evaluate(
+              eval.copyWithZoom(
+                getNearestCeilValue(eval.zoom, const [4.0, 5.9, 6.0]),
+              ),
+            )
+            .toDouble();
+
+    var vertexIndex = index;
+    for (final glyph in layoutData.glyphs) {
+      final pos0 = Vector2(glyph.x, glyph.y);
+      final pos1 = Vector2(glyph.x + glyph.width, glyph.y);
+      final pos2 = Vector2(glyph.x + glyph.width, glyph.y + glyph.height);
+      final pos3 = Vector2(glyph.x, glyph.y + glyph.height);
+
+      final uv0 = glyph.uv.uv0;
+      final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
+      final uv2 = glyph.uv.uv1;
+      final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
+
+      for (final anchor in anchors) {
+        pipeline.vertex.setVertex(
+          vertexIndex + 0,
+          position: pos0,
+          uv: uv0,
+          anchor: anchor,
+          opacityStartValue: opacity_start_value,
+          opacityEndValue: opacity_end_value,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 1,
+          position: pos1,
+          uv: uv1,
+          anchor: anchor,
+          opacityStartValue: opacity_start_value,
+          opacityEndValue: opacity_end_value,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 2,
+          position: pos2,
+          uv: uv2,
+          anchor: anchor,
+          opacityStartValue: opacity_start_value,
+          opacityEndValue: opacity_end_value,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 3,
+          position: pos3,
+          uv: uv3,
+          anchor: anchor,
+          opacityStartValue: opacity_start_value,
+          opacityEndValue: opacity_end_value,
+        );
+
+        vertexIndex += 4;
+      }
+    }
+
+    return vertexIndex;
+  }
+
+  @override
+  void setUniforms(
+    RenderContext context,
+    Matrix4 cameraWorldToGl,
+    double cameraZoom,
+    double pixelRatio,
+    Matrix4 tileLocalToGl,
+    double tileSize,
+    double tileExtent,
+    double tileOpacity,
+  ) {
+    final eval = context.eval;
+    final paint = specLayer.paint;
+
+    final opacity_stops = Vector2(
+      getNearestFloorValue(eval.zoom, const [4.0, 5.9, 6.0]),
+      getNearestCeilValue(eval.zoom, const [4.0, 5.9, 6.0]),
+    );
+
+    pipeline.setUniforms(
+      cameraWorldToGl: cameraWorldToGl,
+      cameraZoom: cameraZoom,
+      cameraPixelRatio: pixelRatio,
+      tileLocalToGl: tileLocalToGl,
+      tileSize: tileSize,
+      tileExtent: tileExtent,
+      tileOpacity: tileOpacity,
+      countryLabelsUboOpacityStops: opacity_stops,
+      glyphSdfTexture: glyphTexture!,
+      countryLabelsUboGlyphSdfTextureSize: Vector2(
+        glyphTexture!.width.toDouble(),
+        glyphTexture!.height.toDouble(),
+      ),
+    );
+  }
+}
+
+class ContinentLabelsLayerRenderer extends $SymbolLayerRenderer {
+  ContinentLabelsLayerRenderer({
+    required ShaderLibraryProvider shaderLibraryProvider,
+    required super.orchestrator,
+    required super.coordinates,
+    required super.container,
+    required super.specLayer,
+    required super.vtLayer,
+  }) : pipeline = ContinentLabelsRenderPipelineBindings(shaderLibraryProvider);
+
+  @override
+  final ContinentLabelsRenderPipelineBindings pipeline;
+
+  @override
+  int setFeatureVertices(
+    spec.EvaluationContext eval,
+    vt.PointFeature feature,
+    Iterable<Vector2> anchors,
+    SymbolLayoutData layoutData,
+    int index,
+  ) {
+    final paint = specLayer.paint;
+
+    var vertexIndex = index;
+    for (final glyph in layoutData.glyphs) {
+      final pos0 = Vector2(glyph.x, glyph.y);
+      final pos1 = Vector2(glyph.x + glyph.width, glyph.y);
+      final pos2 = Vector2(glyph.x + glyph.width, glyph.y + glyph.height);
+      final pos3 = Vector2(glyph.x, glyph.y + glyph.height);
+
+      final uv0 = glyph.uv.uv0;
+      final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
+      final uv2 = glyph.uv.uv1;
+      final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
+
+      for (final anchor in anchors) {
+        pipeline.vertex.setVertex(
+          vertexIndex + 0,
+          position: pos0,
+          uv: uv0,
+          anchor: anchor,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 1,
+          position: pos1,
+          uv: uv1,
+          anchor: anchor,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 2,
+          position: pos2,
+          uv: uv2,
+          anchor: anchor,
+        );
+
+        pipeline.vertex.setVertex(
+          vertexIndex + 3,
+          position: pos3,
+          uv: uv3,
+          anchor: anchor,
+        );
+
+        vertexIndex += 4;
+      }
+    }
+
+    return vertexIndex;
+  }
+
+  @override
+  void setUniforms(
+    RenderContext context,
+    Matrix4 cameraWorldToGl,
+    double cameraZoom,
+    double pixelRatio,
+    Matrix4 tileLocalToGl,
+    double tileSize,
+    double tileExtent,
+    double tileOpacity,
+  ) {
+    final eval = context.eval;
+    final paint = specLayer.paint;
+
+    pipeline.setUniforms(
+      cameraWorldToGl: cameraWorldToGl,
+      cameraZoom: cameraZoom,
+      cameraPixelRatio: pixelRatio,
+      tileLocalToGl: tileLocalToGl,
+      tileSize: tileSize,
+      tileExtent: tileExtent,
+      tileOpacity: tileOpacity,
+      glyphSdfTexture: glyphTexture!,
+      continentLabelsUboGlyphSdfTextureSize: Vector2(
+        glyphTexture!.width.toDouble(),
+        glyphTexture!.height.toDouble(),
+      ),
     );
   }
 }

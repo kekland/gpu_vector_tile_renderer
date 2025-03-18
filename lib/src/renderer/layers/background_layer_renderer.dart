@@ -6,6 +6,7 @@ import 'package:vector_math/vector_math_64.dart';
 
 abstract class $BackgroundLayerRenderer extends SingleTileLayerRenderer<spec.LayerBackground> {
   $BackgroundLayerRenderer({
+    required super.orchestrator,
     required super.coordinates,
     required super.container,
     required super.specLayer,
