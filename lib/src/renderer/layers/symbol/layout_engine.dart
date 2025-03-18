@@ -107,10 +107,10 @@ class SymbolLayoutEngine {
         layoutGlyphs.add(
           GlyphLayoutData(
             rune: rune,
-            x: x,
-            y: y,
-            width: width,
-            height: height,
+            x: x + glyph.left,
+            y: y - glyph.top,
+            width: glyph.width.toDouble(),
+            height: glyph.height.toDouble(),
             uv: uv,
           ),
         );

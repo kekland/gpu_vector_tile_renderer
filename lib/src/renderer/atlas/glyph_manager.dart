@@ -126,8 +126,8 @@ class GlyphManager extends Atlas<GlyphAtlasKey, glyphs.glyph> {
       final y = _cursor.$2.toDouble();
 
       _uv[key] = AtlasUv(
-        uv0: Vector2(x / _textureWidth, y / _textureHeight),
-        uv1: Vector2((x + width) / _textureWidth, (y + height) / _textureHeight),
+        uv0: Vector2((x + glyphPadding) / _textureWidth, (y + glyphPadding) / _textureHeight),
+        uv1: Vector2((x + width - glyphPadding) / _textureWidth, (y + height - glyphPadding) / _textureHeight),
       );
     }
 

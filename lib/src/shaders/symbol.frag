@@ -15,7 +15,8 @@ void main() {
   #pragma prop: resolve(...)
   
   // Sample the glyph texture
-  float alpha = texture(glyph_sdf_texture, v_uv).r;
+  float dist = texture(glyph_sdf_texture, v_uv).r;
+  if (dist < 0.75) discard;
 
-  f_color = vec4(1.0, 1.0, 1.0, alpha * color.a);
+  f_color = vec4(color.rgb, color.a * opacity);
 }

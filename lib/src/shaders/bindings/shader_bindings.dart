@@ -119,11 +119,13 @@ class UniformSamplerBindings {
   void bind(gpu.GpuContext context, gpu.RenderPass pass) {
     if (_texture == null) return;
 
-    final options =
-        _options ??
+    final options = _options ??
         gpu.SamplerOptions(
-          widthAddressMode: gpu.SamplerAddressMode.repeat,
-          heightAddressMode: gpu.SamplerAddressMode.repeat,
+          widthAddressMode: gpu.SamplerAddressMode.clampToEdge,
+          heightAddressMode: gpu.SamplerAddressMode.clampToEdge,
+          minFilter: gpu.MinMagFilter.linear,
+          magFilter: gpu.MinMagFilter.linear,
+          mipFilter: gpu.MipFilter.linear,
         );
 
     if (_vertexShaderSlot != null) pass.bindTexture(_vertexShaderSlot!, _texture!, sampler: options);
@@ -144,7 +146,7 @@ class UniformSamplerBindings {
 /// Vertex and index buffers (and transient UBO buffers) are automatically managed by the bindings.
 abstract class VertexShaderBindings extends ShaderBindings {
   VertexShaderBindings({required this.bytesPerVertex, required super.shader})
-    : $setVertexData = ByteData(bytesPerVertex);
+      : $setVertexData = ByteData(bytesPerVertex);
 
   /// Number of bytes per vertex.
   final int bytesPerVertex;

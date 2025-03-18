@@ -95,7 +95,7 @@ import 'package:gpu_vector_tile_renderer/src/utils/string_utils.dart';
 
     shaderBundle[key] = {
       'type': shader.type == ShaderType.vertex ? 'vertex' : 'fragment',
-      'file': '${shader.name}.$ext',
+      'file': '${shader.name}${hotReloadSuffix != null ? '_$hotReloadSuffix' : ''}.$ext',
     };
   }
 
@@ -153,9 +153,7 @@ _PrecompileLayerResult _precompileLineLayer(spec.LayerLine layer) {
       'opacity': (paint.lineOpacity, 'lineOpacity', 'opacity'),
       'width': (paint.lineWidth, 'lineWidth', 'width'),
     },
-    uniformSamplers: {
-      if (isDasharray) 'dasharrayTexture': ('dasharrayTexture', 'dasharray_texture'),
-    },
+    uniformSamplers: {if (isDasharray) 'dasharrayTexture': ('dasharrayTexture', 'dasharray_texture')},
   );
 }
 
@@ -178,18 +176,12 @@ _PrecompileLayerResult? _precompileSymbolLayer(spec.LayerSymbol layer) {
       'color': (paint.textColor, 'textColor', 'color'),
       'opacity': (paint.textOpacity, 'textOpacity', 'opacity'),
     },
-    uniformSamplers: {
-      'glyphTexture': ('glyphTexture', 'glyph_sdf_texture'),
-    },
+    uniformSamplers: {'glyphTexture': ('glyphTexture', 'glyph_sdf_texture')},
   );
 }
 
-typedef _PrecompileLayerResult = (
-  ParsedShaderVertex vertexShader,
-  ParsedShaderFragment fragmentShader,
-  String shaderBindings,
-  String layerRenderer
-);
+typedef _PrecompileLayerResult =
+    (ParsedShaderVertex vertexShader, ParsedShaderFragment fragmentShader, String shaderBindings, String layerRenderer);
 
 /// Precompiles the:
 ///
@@ -226,8 +218,9 @@ _PrecompileLayerResult _precompileLayer(
   final shaderClassName = nameToDartClassName(shaderName);
 
   // Read the template shaders
-  var vertexShader = readShader(vertexShaderTemplates[shaderTemplateName]!, name: shaderName, type: ShaderType.vertex)
-      as ParsedShaderVertex;
+  var vertexShader =
+      readShader(vertexShaderTemplates[shaderTemplateName]!, name: shaderName, type: ShaderType.vertex)
+          as ParsedShaderVertex;
 
   var fragmentShader =
       readShader(fragmentShaderTemplates[shaderTemplateName]!, name: shaderName, type: ShaderType.fragment)
@@ -240,12 +233,12 @@ _PrecompileLayerResult _precompileLayer(
     final propName = glslNameMap[key]!;
 
     final vertexPragma = vertexShader.pragmas.whereType<PropDeclarationShaderPragma>().firstWhere(
-          (p) => p.variable.name == propName,
-        );
+      (p) => p.variable.name == propName,
+    );
 
     final fragmentPragma = fragmentShader.pragmas.whereType<PropDeclarationShaderPragma>().firstWhere(
-          (p) => p.variable.name == propName,
-        );
+      (p) => p.variable.name == propName,
+    );
 
     assert(vertexPragma == fragmentPragma);
     return vertexPragma;
@@ -358,7 +351,8 @@ _PrecompileLayerResult _precompileLayer(
       _replacePragma(fragmentShader, pragma, [comment, sampler, '']);
 
       final sizeVariable = ShaderVariable(typeGlsl: ShaderGlslType.vec2, name: '${pragma.variable.name}_size');
-      final sizeResolution = [sizeVariable.copyWith(value: '$propertiesUboInstance.${sizeVariable.name}')];;
+      final sizeResolution = [sizeVariable.copyWith(value: '$propertiesUboInstance.${sizeVariable.name}')];
+      ;
 
       propertiesUbo.variables.add(sizeVariable);
       rendererUniformSetters.add('${nameToDartFieldName(pragma.variable.name)}: $dartPropertyName!');
@@ -575,9 +569,10 @@ _PrecompileLayerResult _precompileLayer(
         _replacePragma(vertexShader, pragma, [comment]);
         _replacePragma(fragmentShader, pragma, [comment]);
 
-        vertexResolutionFn = fragmentResolutionFn = (accessor) {
-          return [pragma.variable.copyWith(value: accessor('$propertiesUboInstance.${pragma.variable.name}'))];
-        };
+        vertexResolutionFn =
+            fragmentResolutionFn = (accessor) {
+              return [pragma.variable.copyWith(value: accessor('$propertiesUboInstance.${pragma.variable.name}'))];
+            };
       }
 
       // Add the Dart-side code.

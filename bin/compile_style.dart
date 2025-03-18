@@ -47,12 +47,12 @@ Future<void> main(List<String> args) async {
     final File file;
 
     if (shader is ParsedShaderVertex) {
-      file = File('${tempDir.path}/${shader.name}.vert');
+      file = File('${tempDir.path}/${shader.name}_$hotReloadSuffix.vert');
     } else {
-      file = File('${tempDir.path}/${shader.name}.frag');
+      file = File('${tempDir.path}/${shader.name}_$hotReloadSuffix.frag');
     }
 
-    file.writeAsStringSync(writeShader(shader));
+    file.writeAsStringSync(writeShader(shader), flush: true);
   }
 
   print('- Wrote shaders to temp directory');

@@ -18,6 +18,6 @@ void main() {
 
   v_uv = uv;
   
-  float scale = 1.0;
+  float scale = tile.extent / tile.size;
   gl_Position = project_tile_position((position * scale) + anchor);
 }
