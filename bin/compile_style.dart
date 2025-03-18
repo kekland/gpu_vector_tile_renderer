@@ -13,11 +13,7 @@ import 'package:gpu_vector_tile_renderer/src/shaders/serializer/shader_writer.da
 import 'package:gpu_vector_tile_renderer/src/shaders/shader_bundle/shader_bundle_impeller.fb.shaderbundle_generated.dart';
 import 'package:gpu_vector_tile_renderer/src/style_precompiler/style_precompiler.dart';
 
-import '../tool/shaders/generate_shaders.dart';
-
 Future<void> main(List<String> args) async {
-  generateShaders(isCallingFromExec: true);
-
   // Args: `compile_style.dart <style_file_path> <out_directory_path>`
   // For now, those are hardcoded.
   final styleFilePath = 'scratchpad/maptiler-streets-v2.json';
@@ -94,12 +90,16 @@ Future<void> main(List<String> args) async {
       final shaderBundleJson = jsonDecode(shaderBundleCode) as Map<String, dynamic>;
       shaderBundleJson.removeWhere((key, _) {
         for (final ignore in shadersToIgnore) {
-          if (key.startsWith(ignore)) return true;
+          if (key.startsWith(ignore)) {
+            print('removed $key');
+            return true;
+          }
         }
 
         return false;
       });
 
+      print(shaderBundleJson);
       shaderBundleCode = jsonEncode(shaderBundleJson);
     }
   }
@@ -124,90 +124,10 @@ Future<void> main(List<String> args) async {
 
     final fbShaders = <ShaderObjectBuilder>[];
 
-    List<ShaderInputObjectBuilder>? _shaderInputObjectBuilderMapper(List<ShaderInput>? inputs) {
-      if (inputs == null) return null;
-
-      return inputs
-          .map(
-            (v) => ShaderInputObjectBuilder(
-              $set: v.$set,
-              binding: v.binding,
-              bitWidth: v.bitWidth,
-              columns: v.columns,
-              location: v.location,
-              name: v.name,
-              offset: v.offset,
-              type: v.type,
-              vecSize: v.vecSize,
-            ),
-          )
-          .toList();
-    }
-
-    List<ShaderUniformStructObjectBuilder>? _shaderUniformStructObjectBuilderMapper(
-      List<ShaderUniformStruct>? structs,
-    ) {
-      if (structs == null) return null;
-
-      return structs
-          .map(
-            (v) => ShaderUniformStructObjectBuilder(
-              name: v.name,
-              $set: v.$set,
-              binding: v.binding,
-              extRes0: v.extRes0,
-              sizeInBytes: v.sizeInBytes,
-              fields: v.fields
-                  ?.map(
-                    (f) => ShaderUniformStructFieldObjectBuilder(
-                      name: f.name,
-                      arrayElements: f.arrayElements,
-                      elementSizeInBytes: f.elementSizeInBytes,
-                      offsetInBytes: f.offsetInBytes,
-                      totalSizeInBytes: f.totalSizeInBytes,
-                      type: f.type,
-                    ),
-                  )
-                  .toList(),
-            ),
-          )
-          .toList();
-    }
-
-    List<ShaderUniformTextureObjectBuilder> _shaderUniformTextureObjectBuilderMapper(
-      List<ShaderUniformTexture>? textures,
-    ) {
-      if (textures == null) return [];
-
-      return textures
-          .map(
-            (v) => ShaderUniformTextureObjectBuilder(
-              name: v.name,
-              binding: v.binding,
-              $set: v.$set,
-              extRes0: v.extRes0,
-            ),
-          )
-          .toList();
-    }
-
-    BackendShaderObjectBuilder _backendShaderObjectBuilderMapper(BackendShader? shader) {
-      if (shader == null) return BackendShaderObjectBuilder();
-
-      return BackendShaderObjectBuilder(
-        entrypoint: shader.entrypoint,
-        inputs: _shaderInputObjectBuilderMapper(shader.inputs),
-        shader: shader.shader,
-        stage: shader.stage,
-        uniformStructs: _shaderUniformStructObjectBuilderMapper(shader.uniformStructs),
-        uniformTextures: _shaderUniformTextureObjectBuilderMapper(shader.uniformTextures),
-      );
-    }
-
     void _addShader(Shader shader, {String? name}) {
       fbShaders.add(
         ShaderObjectBuilder(
-          name: shader.name ?? name,
+          name: name ?? shader.name,
           metalIos: _backendShaderObjectBuilderMapper(shader.metalIos),
           metalDesktop: _backendShaderObjectBuilderMapper(shader.metalDesktop),
           openglDesktop: _backendShaderObjectBuilderMapper(shader.openglDesktop),
@@ -220,14 +140,16 @@ Future<void> main(List<String> args) async {
     for (final oldShaders in oldShaderBundle.shaders!) {
       final t = oldShaders;
       final rawName = t.name!.split('#').first;
+      final newName = '$rawName#$hotReloadSuffix';
 
       if (shadersToIgnore.contains(rawName)) {
         // Update hot reload suffix
-        _addShader(t, name: '${t.name!.split('#').first}#$hotReloadSuffix');
+        _addShader(t, name: newName);
       } else {
+        print('- Using new shader for $rawName: $newName');
         // Use new shader
-        final newShader = newShaderBundle!.shaders!.firstWhere((e) => e.name!.startsWith(rawName));
-        _addShader(newShader);
+        final newShader = newShaderBundle!.shaders!.firstWhere((e) => e.name == newName);
+        _addShader(newShader, name: newName);
       }
     }
 
@@ -261,4 +183,84 @@ Future<void> main(List<String> args) async {
   if (dartfmt.exitCode != 0) {
     throw Exception('Failed to format Dart renderers: ${dartfmt.stderr}\n${dartfmt.stdout}');
   }
+}
+
+List<ShaderInputObjectBuilder>? _shaderInputObjectBuilderMapper(List<ShaderInput>? inputs) {
+  if (inputs == null) return null;
+
+  return inputs
+      .map(
+        (v) => ShaderInputObjectBuilder(
+          $set: v.$set,
+          binding: v.binding,
+          bitWidth: v.bitWidth,
+          columns: v.columns,
+          location: v.location,
+          name: v.name,
+          offset: v.offset,
+          type: v.type,
+          vecSize: v.vecSize,
+        ),
+      )
+      .toList();
+}
+
+List<ShaderUniformStructObjectBuilder>? _shaderUniformStructObjectBuilderMapper(
+  List<ShaderUniformStruct>? structs,
+) {
+  if (structs == null) return null;
+
+  return structs
+      .map(
+        (v) => ShaderUniformStructObjectBuilder(
+          name: v.name,
+          $set: v.$set,
+          binding: v.binding,
+          extRes0: v.extRes0,
+          sizeInBytes: v.sizeInBytes,
+          fields: v.fields
+              ?.map(
+                (f) => ShaderUniformStructFieldObjectBuilder(
+                  name: f.name,
+                  arrayElements: f.arrayElements,
+                  elementSizeInBytes: f.elementSizeInBytes,
+                  offsetInBytes: f.offsetInBytes,
+                  totalSizeInBytes: f.totalSizeInBytes,
+                  type: f.type,
+                ),
+              )
+              .toList(),
+        ),
+      )
+      .toList();
+}
+
+List<ShaderUniformTextureObjectBuilder> _shaderUniformTextureObjectBuilderMapper(
+  List<ShaderUniformTexture>? textures,
+) {
+  if (textures == null) return [];
+
+  return textures
+      .map(
+        (v) => ShaderUniformTextureObjectBuilder(
+          name: v.name,
+          binding: v.binding,
+          $set: v.$set,
+          extRes0: v.extRes0,
+        ),
+      )
+      .toList();
+}
+
+BackendShaderObjectBuilder _backendShaderObjectBuilderMapper(BackendShader? shader) {
+  if (shader == null) return BackendShaderObjectBuilder();
+
+  return BackendShaderObjectBuilder(
+    entrypoint: shader.entrypoint,
+    inputs: _shaderInputObjectBuilderMapper(shader.inputs),
+    shader: shader.shader,
+    stage: shader.stage,
+    uniformStructs: _shaderUniformStructObjectBuilderMapper(shader.uniformStructs),
+    uniformTextures: _shaderUniformTextureObjectBuilderMapper(shader.uniformTextures),
+  );
 }

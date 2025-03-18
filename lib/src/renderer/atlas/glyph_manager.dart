@@ -40,6 +40,7 @@ class GlyphManager extends Atlas<GlyphAtlasKey, glyphs.glyph> {
       _textureWidth,
       _textureHeight,
       format: gpu.PixelFormat.r8UNormInt, // Glyphs are 8-bit SDFs
+      coordinateSystem: gpu.TextureCoordinateSystem.uploadFromHost,
     );
 
     _textureData = ByteData(_textureWidth * _textureHeight);

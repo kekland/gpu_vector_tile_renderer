@@ -171,12 +171,13 @@ out highp vec2 v_uv;
 #pragma prop: declare(highp vec4 color)
 #pragma prop: declare(float opacity)
 
-
 void main() {
   #pragma prop: resolve(...)
 
   v_uv = uv;
-  gl_Position = project_tile_position(position + anchor);
+  
+  float scale = 2.0;
+  gl_Position = project_tile_position((position * scale) + anchor);
 }
 ''',
 };
@@ -235,7 +236,7 @@ void main() {
   // Sample the glyph texture
   float alpha = texture(glyph_sdf_texture, v_uv).r;
 
-  f_color = vec4(alpha);
+  f_color = vec4(1.0, 1.0, 1.0, alpha * color.a);
 }
 ''',
 'line-dashed': '''

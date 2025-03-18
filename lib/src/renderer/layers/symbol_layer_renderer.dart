@@ -114,8 +114,8 @@ abstract class $SymbolLayerRenderer extends SingleTileLayerRenderer<spec.LayerSy
       indexBuffer[i + 1] = b + 1;
       indexBuffer[i + 2] = b + 2;
       indexBuffer[i + 3] = b + 2;
-      indexBuffer[i + 4] = b + 1;
-      indexBuffer[i + 5] = b + 3;
+      indexBuffer[i + 4] = b + 3;
+      indexBuffer[i + 5] = b + 0;
     }
 
     pipeline.vertex.allocateIndicesDirect(gpuContext, indexBuffer);
@@ -146,10 +146,7 @@ abstract class $SymbolLayerRenderer extends SingleTileLayerRenderer<spec.LayerSy
     context.setTileScissor(context.pass, coordinates);
     pipeline.bind(gpuContext, context.pass);
 
-    print('layer ${specLayer.id} draw');
     context.pass.draw();
-    print('layer ${specLayer.id} draw done');
-
     context.pass.clearBindings();
   }
 }

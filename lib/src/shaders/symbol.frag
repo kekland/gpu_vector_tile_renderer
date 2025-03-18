@@ -17,5 +17,5 @@ void main() {
   // Sample the glyph texture
   float alpha = texture(glyph_sdf_texture, v_uv).r;
 
-  f_color = vec4(alpha);
+  f_color = vec4(1.0, 1.0, 1.0, alpha * color.a);
 }

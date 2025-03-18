@@ -77,5 +77,5 @@ void generateShaders({bool isCallingFromExec = false}) {
   code.writeln('};');
   code.writeln('');
 
-  outputFile.writeAsStringSync(code.toString());
+  outputFile.writeAsStringSync(code.toString(), flush: true);
 }
