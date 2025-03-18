@@ -74,25 +74,15 @@ Future<void> main(List<String> args) async {
     oldShaderBundle = ShaderBundle(shaderbundleOutFile.readAsBytesSync());
     final shaderHashes = shaderbundleHashOutFile.readAsStringSync().split('\n');
 
-    if (shaderHashes.length != shaders.length) {
-      print('Shader count mismatch: ${shaderHashes.length} != ${shaders.length}. Proceeding with full compilation.');
-    } else {
-      for (final shader in shaders) {
-        final oldHash = shaderHashes.firstWhereOrNull(
-          (element) => element.startsWith('${shader.name}${shader.type.fileExtension}:'),
-        );
+    for (final shader in shaders) {
+      final oldHash = shaderHashes.firstWhereOrNull(
+        (element) => element.startsWith('${shader.name}${shader.type.fileExtension}:'),
+      );
 
-        if (oldHash == null) {
-          print('Shader ${shader.name} not found in old hash list. Proceeding with full compilation.');
-          shadersToIgnore.clear();
-          break;
-        }
-
-        final newHash = '${shader.name}${shader.type.fileExtension}:${writeShader(shader).hashCode}';
-        if (oldHash == newHash) {
-          final ext = shader.type == ShaderType.vertex ? 'vert' : 'frag';
-          shadersToIgnore.add('${shader.name}_$ext');
-        }
+      final newHash = '${shader.name}${shader.type.fileExtension}:${writeShader(shader).hashCode}';
+      if (oldHash == newHash) {
+        final ext = shader.type == ShaderType.vertex ? 'vert' : 'frag';
+        shadersToIgnore.add('${shader.name}_$ext');
       }
     }
 
@@ -132,30 +122,120 @@ Future<void> main(List<String> args) async {
     final newShaderBundle =
         shadersToIgnore.length == shaders.length ? null : ShaderBundle(tempShaderbundleOutFile.readAsBytesSync());
 
-    final fbShaders = <ShaderT>[];
+    final fbShaders = <ShaderObjectBuilder>[];
+
+    List<ShaderInputObjectBuilder>? _shaderInputObjectBuilderMapper(List<ShaderInput>? inputs) {
+      if (inputs == null) return null;
+
+      return inputs
+          .map(
+            (v) => ShaderInputObjectBuilder(
+              $set: v.$set,
+              binding: v.binding,
+              bitWidth: v.bitWidth,
+              columns: v.columns,
+              location: v.location,
+              name: v.name,
+              offset: v.offset,
+              type: v.type,
+              vecSize: v.vecSize,
+            ),
+          )
+          .toList();
+    }
+
+    List<ShaderUniformStructObjectBuilder>? _shaderUniformStructObjectBuilderMapper(
+      List<ShaderUniformStruct>? structs,
+    ) {
+      if (structs == null) return null;
+
+      return structs
+          .map(
+            (v) => ShaderUniformStructObjectBuilder(
+              name: v.name,
+              $set: v.$set,
+              binding: v.binding,
+              extRes0: v.extRes0,
+              sizeInBytes: v.sizeInBytes,
+              fields: v.fields
+                  ?.map(
+                    (f) => ShaderUniformStructFieldObjectBuilder(
+                      name: f.name,
+                      arrayElements: f.arrayElements,
+                      elementSizeInBytes: f.elementSizeInBytes,
+                      offsetInBytes: f.offsetInBytes,
+                      totalSizeInBytes: f.totalSizeInBytes,
+                      type: f.type,
+                    ),
+                  )
+                  .toList(),
+            ),
+          )
+          .toList();
+    }
+
+    List<ShaderUniformTextureObjectBuilder> _shaderUniformTextureObjectBuilderMapper(
+      List<ShaderUniformTexture>? textures,
+    ) {
+      if (textures == null) return [];
+
+      return textures
+          .map(
+            (v) => ShaderUniformTextureObjectBuilder(
+              name: v.name,
+              binding: v.binding,
+              $set: v.$set,
+              extRes0: v.extRes0,
+            ),
+          )
+          .toList();
+    }
+
+    BackendShaderObjectBuilder _backendShaderObjectBuilderMapper(BackendShader? shader) {
+      if (shader == null) return BackendShaderObjectBuilder();
+
+      return BackendShaderObjectBuilder(
+        entrypoint: shader.entrypoint,
+        inputs: _shaderInputObjectBuilderMapper(shader.inputs),
+        shader: shader.shader,
+        stage: shader.stage,
+        uniformStructs: _shaderUniformStructObjectBuilderMapper(shader.uniformStructs),
+        uniformTextures: _shaderUniformTextureObjectBuilderMapper(shader.uniformTextures),
+      );
+    }
+
+    void _addShader(Shader shader, {String? name}) {
+      fbShaders.add(
+        ShaderObjectBuilder(
+          name: shader.name ?? name,
+          metalIos: _backendShaderObjectBuilderMapper(shader.metalIos),
+          metalDesktop: _backendShaderObjectBuilderMapper(shader.metalDesktop),
+          openglDesktop: _backendShaderObjectBuilderMapper(shader.openglDesktop),
+          openglEs: _backendShaderObjectBuilderMapper(shader.openglEs),
+          vulkan: _backendShaderObjectBuilderMapper(shader.vulkan),
+        ),
+      );
+    }
 
     for (final oldShaders in oldShaderBundle.shaders!) {
-      final t = oldShaders.unpack();
+      final t = oldShaders;
       final rawName = t.name!.split('#').first;
 
       if (shadersToIgnore.contains(rawName)) {
         // Update hot reload suffix
-        t.name = '${t.name!.split('#').first}#$hotReloadSuffix';
-        fbShaders.add(t);
+        _addShader(t, name: '${t.name!.split('#').first}#$hotReloadSuffix');
       } else {
         // Use new shader
         final newShader = newShaderBundle!.shaders!.firstWhere((e) => e.name!.startsWith(rawName));
-        fbShaders.add(newShader.unpack());
+        _addShader(newShader);
       }
     }
 
     print('- Merged ${fbShaders.length} shaders');
 
-    final t = ShaderBundleT();
+    final t = ShaderBundleObjectBuilder(shaders: fbShaders);
     final fbb = Builder();
-
-    t.shaders = fbShaders;
-    fbb.finish(t.pack(fbb));
+    fbb.finish(t.finish(fbb), 'IPSB');
 
     shaderbundleOutFile.writeAsBytesSync(fbb.buffer);
     print('- Merged shaderbundle written to ${shaderbundleOutFile.absolute.path}');
