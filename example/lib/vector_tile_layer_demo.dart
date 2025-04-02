@@ -30,6 +30,7 @@ class _DemoPageState extends State<VectorTileLayerDemo> {
     'Zero': (LatLng(0.0, 0.0), 0.0),
     'Europe': (LatLng(51.1657, 10.4515), 4.0),
     'London': (LatLng(51.5074, -0.1278), 13.0),
+    'Paris': (LatLng(48.8566, 2.3522), 13.0),
     'Almaty': (LatLng(43.2220, 76.8512), 13.0),
     'New York': (LatLng(40.7128, -74.0060), 13.0),
     'Sydney': (LatLng(-33.8688, 151.2093), 13.0),

@@ -23,7 +23,7 @@ void main(List<String> args) async {
     );
 
     for (final builder in nativeBuilders) {
-      await builder.run(config: config, output: output, logger: logger);
+      await builder.run(input: config, output: output, logger: logger);
     }
     
     // TODO: Copy libc++_shared.so from NDK automatically. Currently I just bundled those under jniLibs.

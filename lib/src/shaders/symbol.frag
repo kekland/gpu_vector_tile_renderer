@@ -11,12 +11,14 @@ in highp vec2 v_uv;
 
 out highp vec4 f_color;
 
+const float inner_edge = 0.75;
+const float smoothing = 1.0 / 16.0;
+
 void main() {
   #pragma prop: resolve(...)
   
-  // Sample the glyph texture
   float dist = texture(glyph_sdf_texture, v_uv).r;
-  if (dist < 0.75) discard;
+  float alpha = smoothstep(inner_edge - smoothing, inner_edge + smoothing, dist);
 
-  f_color = vec4(color.rgb, color.a * opacity);
+  f_color = vec4(1.0, 0.0, 0.0, 1.0) * alpha;
 }

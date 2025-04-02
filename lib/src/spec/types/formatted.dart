@@ -70,6 +70,36 @@ class Formatted with EquatableMixin {
     return Formatted(sections: [FormattedSection.text(text: unformatted)]);
   }
 
+  Formatted applyTransform(LayoutSymbol$TextTransform transform) {
+    final newSections = <FormattedSection>[];
+
+    for (final section in sections) {
+      if (section.text != null) {
+        final newText = switch (transform) {
+          LayoutSymbol$TextTransform.uppercase => section.text!.toUpperCase(),
+          LayoutSymbol$TextTransform.lowercase => section.text!.toLowerCase(),
+          LayoutSymbol$TextTransform.none => section.text!,
+        };
+
+        newSections.add(FormattedSection.text(
+          text: newText,
+          scale: section.scale,
+          fontStack: section.fontStack,
+          textColor: section.textColor,
+        ));
+      } else {
+        newSections.add(FormattedSection.image(
+          image: section.image!,
+          scale: section.scale,
+          fontStack: section.fontStack,
+          textColor: section.textColor,
+        ));
+      }
+    }
+
+    return Formatted(sections: newSections);
+  }
+
   @override
   List<Object?> get props => [sections];
 }

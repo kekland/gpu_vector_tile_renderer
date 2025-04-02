@@ -7,6 +7,7 @@ import 'package:gpu_vector_tile_renderer/_glyphs.dart' as glyphs;
 import 'package:vector_math/vector_math_64.dart';
 
 typedef GlyphAtlasKey = (String fontStacks, int codePoint);
+typedef GlyphData = (glyphs.glyph, AtlasUv);
 
 // TODO: Support for different fontstacks.
 class GlyphManager extends Atlas<GlyphAtlasKey, glyphs.glyph> {
@@ -62,7 +63,7 @@ class GlyphManager extends Atlas<GlyphAtlasKey, glyphs.glyph> {
   }
 
   @override
-  (glyphs.glyph, AtlasUv) get(GlyphAtlasKey key) {
+  GlyphData get(GlyphAtlasKey key) {
     return (_iterateFontStacks(key.$1, (stack) => (_glyphs[(stack, key.$2)]!, _uv[(stack, key.$2)]!)))!;
   }
 
@@ -126,8 +127,8 @@ class GlyphManager extends Atlas<GlyphAtlasKey, glyphs.glyph> {
       final y = _cursor.$2.toDouble();
 
       _uv[key] = AtlasUv(
-        uv0: Vector2((x + glyphPadding) / _textureWidth, (y + glyphPadding) / _textureHeight),
-        uv1: Vector2((x + width - glyphPadding) / _textureWidth, (y + height - glyphPadding) / _textureHeight),
+        uv0: Vector2(x / _textureWidth, y / _textureHeight),
+        uv1: Vector2((x + width) / _textureWidth, (y + height) / _textureHeight),
       );
     }
 

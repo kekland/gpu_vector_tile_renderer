@@ -85,7 +85,7 @@ class VectorTileLayerRenderOrchestrator with ChangeNotifier {
     await futures.wait;
   }
 
-  FutureOr<List<(glyphs_pb.glyph, AtlasUv)>> loadGlyphs(spec.Formatted formatted, String font) {
+  FutureOr<List<GlyphData>> loadGlyphs(spec.Formatted formatted, String font) {
     final missingGlyphs = <(String fontStack, int blockStart)>{};
 
     for (final section in formatted.sections) {

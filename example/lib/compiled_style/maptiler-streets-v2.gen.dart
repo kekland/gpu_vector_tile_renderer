@@ -12503,26 +12503,36 @@ class RiverLabelsLayerRenderer extends $SymbolLayerRenderer {
   @override
   int setFeatureVertices(
     spec.EvaluationContext eval,
-    vt.PointFeature feature,
-    Iterable<Vector2> anchors,
-    SymbolLayoutData layoutData,
+    vt.Feature feature,
+    List<SymbolLayoutData> layoutData,
     int index,
   ) {
+    const sdfPadding = 3.0;
     final paint = specLayer.paint;
 
     var vertexIndex = index;
-    for (final glyph in layoutData.glyphs) {
-      final pos0 = Vector2(glyph.x, glyph.y);
-      final pos1 = Vector2(glyph.x + glyph.width, glyph.y);
-      final pos2 = Vector2(glyph.x + glyph.width, glyph.y + glyph.height);
-      final pos3 = Vector2(glyph.x, glyph.y + glyph.height);
+    for (final placement in layoutData) {
+      final anchor = placement.anchor.vec2;
 
-      final uv0 = glyph.uv.uv0;
-      final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
-      final uv2 = glyph.uv.uv1;
-      final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
+      for (final glyph in placement.glyphs) {
+        final pos0 = Vector2(glyph.x - sdfPadding, glyph.y - sdfPadding);
+        final pos1 = Vector2(
+          glyph.x + glyph.width + sdfPadding,
+          glyph.y - sdfPadding,
+        );
+        final pos2 = Vector2(
+          glyph.x + glyph.width + sdfPadding,
+          glyph.y + glyph.height + sdfPadding,
+        );
+        final pos3 = Vector2(
+          glyph.x - sdfPadding,
+          glyph.y + glyph.height + sdfPadding,
+        );
 
-      for (final anchor in anchors) {
+        final uv0 = glyph.uv.uv0;
+        final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
+        final uv2 = glyph.uv.uv1;
+        final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
         pipeline.vertex.setVertex(
           vertexIndex + 0,
           position: pos0,
@@ -12605,11 +12615,11 @@ class OceanLabelsLayerRenderer extends $SymbolLayerRenderer {
   @override
   int setFeatureVertices(
     spec.EvaluationContext eval,
-    vt.PointFeature feature,
-    Iterable<Vector2> anchors,
-    SymbolLayoutData layoutData,
+    vt.Feature feature,
+    List<SymbolLayoutData> layoutData,
     int index,
   ) {
+    const sdfPadding = 3.0;
     final paint = specLayer.paint;
     final color_start_value =
         paint.textColor
@@ -12645,18 +12655,28 @@ class OceanLabelsLayerRenderer extends $SymbolLayerRenderer {
             .toDouble();
 
     var vertexIndex = index;
-    for (final glyph in layoutData.glyphs) {
-      final pos0 = Vector2(glyph.x, glyph.y);
-      final pos1 = Vector2(glyph.x + glyph.width, glyph.y);
-      final pos2 = Vector2(glyph.x + glyph.width, glyph.y + glyph.height);
-      final pos3 = Vector2(glyph.x, glyph.y + glyph.height);
+    for (final placement in layoutData) {
+      final anchor = placement.anchor.vec2;
 
-      final uv0 = glyph.uv.uv0;
-      final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
-      final uv2 = glyph.uv.uv1;
-      final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
+      for (final glyph in placement.glyphs) {
+        final pos0 = Vector2(glyph.x - sdfPadding, glyph.y - sdfPadding);
+        final pos1 = Vector2(
+          glyph.x + glyph.width + sdfPadding,
+          glyph.y - sdfPadding,
+        );
+        final pos2 = Vector2(
+          glyph.x + glyph.width + sdfPadding,
+          glyph.y + glyph.height + sdfPadding,
+        );
+        final pos3 = Vector2(
+          glyph.x - sdfPadding,
+          glyph.y + glyph.height + sdfPadding,
+        );
 
-      for (final anchor in anchors) {
+        final uv0 = glyph.uv.uv0;
+        final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
+        final uv2 = glyph.uv.uv1;
+        final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
         pipeline.vertex.setVertex(
           vertexIndex + 0,
           position: pos0,
@@ -12766,26 +12786,36 @@ class LakeLabelsLayerRenderer extends $SymbolLayerRenderer {
   @override
   int setFeatureVertices(
     spec.EvaluationContext eval,
-    vt.PointFeature feature,
-    Iterable<Vector2> anchors,
-    SymbolLayoutData layoutData,
+    vt.Feature feature,
+    List<SymbolLayoutData> layoutData,
     int index,
   ) {
+    const sdfPadding = 3.0;
     final paint = specLayer.paint;
 
     var vertexIndex = index;
-    for (final glyph in layoutData.glyphs) {
-      final pos0 = Vector2(glyph.x, glyph.y);
-      final pos1 = Vector2(glyph.x + glyph.width, glyph.y);
-      final pos2 = Vector2(glyph.x + glyph.width, glyph.y + glyph.height);
-      final pos3 = Vector2(glyph.x, glyph.y + glyph.height);
+    for (final placement in layoutData) {
+      final anchor = placement.anchor.vec2;
 
-      final uv0 = glyph.uv.uv0;
-      final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
-      final uv2 = glyph.uv.uv1;
-      final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
+      for (final glyph in placement.glyphs) {
+        final pos0 = Vector2(glyph.x - sdfPadding, glyph.y - sdfPadding);
+        final pos1 = Vector2(
+          glyph.x + glyph.width + sdfPadding,
+          glyph.y - sdfPadding,
+        );
+        final pos2 = Vector2(
+          glyph.x + glyph.width + sdfPadding,
+          glyph.y + glyph.height + sdfPadding,
+        );
+        final pos3 = Vector2(
+          glyph.x - sdfPadding,
+          glyph.y + glyph.height + sdfPadding,
+        );
 
-      for (final anchor in anchors) {
+        final uv0 = glyph.uv.uv0;
+        final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
+        final uv2 = glyph.uv.uv1;
+        final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
         pipeline.vertex.setVertex(
           vertexIndex + 0,
           position: pos0,
@@ -12868,26 +12898,36 @@ class HousenumberLayerRenderer extends $SymbolLayerRenderer {
   @override
   int setFeatureVertices(
     spec.EvaluationContext eval,
-    vt.PointFeature feature,
-    Iterable<Vector2> anchors,
-    SymbolLayoutData layoutData,
+    vt.Feature feature,
+    List<SymbolLayoutData> layoutData,
     int index,
   ) {
+    const sdfPadding = 3.0;
     final paint = specLayer.paint;
 
     var vertexIndex = index;
-    for (final glyph in layoutData.glyphs) {
-      final pos0 = Vector2(glyph.x, glyph.y);
-      final pos1 = Vector2(glyph.x + glyph.width, glyph.y);
-      final pos2 = Vector2(glyph.x + glyph.width, glyph.y + glyph.height);
-      final pos3 = Vector2(glyph.x, glyph.y + glyph.height);
+    for (final placement in layoutData) {
+      final anchor = placement.anchor.vec2;
 
-      final uv0 = glyph.uv.uv0;
-      final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
-      final uv2 = glyph.uv.uv1;
-      final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
+      for (final glyph in placement.glyphs) {
+        final pos0 = Vector2(glyph.x - sdfPadding, glyph.y - sdfPadding);
+        final pos1 = Vector2(
+          glyph.x + glyph.width + sdfPadding,
+          glyph.y - sdfPadding,
+        );
+        final pos2 = Vector2(
+          glyph.x + glyph.width + sdfPadding,
+          glyph.y + glyph.height + sdfPadding,
+        );
+        final pos3 = Vector2(
+          glyph.x - sdfPadding,
+          glyph.y + glyph.height + sdfPadding,
+        );
 
-      for (final anchor in anchors) {
+        final uv0 = glyph.uv.uv0;
+        final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
+        final uv2 = glyph.uv.uv1;
+        final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
         pipeline.vertex.setVertex(
           vertexIndex + 0,
           position: pos0,
@@ -12970,26 +13010,36 @@ class GondolaLayerRenderer extends $SymbolLayerRenderer {
   @override
   int setFeatureVertices(
     spec.EvaluationContext eval,
-    vt.PointFeature feature,
-    Iterable<Vector2> anchors,
-    SymbolLayoutData layoutData,
+    vt.Feature feature,
+    List<SymbolLayoutData> layoutData,
     int index,
   ) {
+    const sdfPadding = 3.0;
     final paint = specLayer.paint;
 
     var vertexIndex = index;
-    for (final glyph in layoutData.glyphs) {
-      final pos0 = Vector2(glyph.x, glyph.y);
-      final pos1 = Vector2(glyph.x + glyph.width, glyph.y);
-      final pos2 = Vector2(glyph.x + glyph.width, glyph.y + glyph.height);
-      final pos3 = Vector2(glyph.x, glyph.y + glyph.height);
+    for (final placement in layoutData) {
+      final anchor = placement.anchor.vec2;
 
-      final uv0 = glyph.uv.uv0;
-      final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
-      final uv2 = glyph.uv.uv1;
-      final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
+      for (final glyph in placement.glyphs) {
+        final pos0 = Vector2(glyph.x - sdfPadding, glyph.y - sdfPadding);
+        final pos1 = Vector2(
+          glyph.x + glyph.width + sdfPadding,
+          glyph.y - sdfPadding,
+        );
+        final pos2 = Vector2(
+          glyph.x + glyph.width + sdfPadding,
+          glyph.y + glyph.height + sdfPadding,
+        );
+        final pos3 = Vector2(
+          glyph.x - sdfPadding,
+          glyph.y + glyph.height + sdfPadding,
+        );
 
-      for (final anchor in anchors) {
+        final uv0 = glyph.uv.uv0;
+        final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
+        final uv2 = glyph.uv.uv1;
+        final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
         pipeline.vertex.setVertex(
           vertexIndex + 0,
           position: pos0,
@@ -13072,26 +13122,36 @@ class FerryLayerRenderer extends $SymbolLayerRenderer {
   @override
   int setFeatureVertices(
     spec.EvaluationContext eval,
-    vt.PointFeature feature,
-    Iterable<Vector2> anchors,
-    SymbolLayoutData layoutData,
+    vt.Feature feature,
+    List<SymbolLayoutData> layoutData,
     int index,
   ) {
+    const sdfPadding = 3.0;
     final paint = specLayer.paint;
 
     var vertexIndex = index;
-    for (final glyph in layoutData.glyphs) {
-      final pos0 = Vector2(glyph.x, glyph.y);
-      final pos1 = Vector2(glyph.x + glyph.width, glyph.y);
-      final pos2 = Vector2(glyph.x + glyph.width, glyph.y + glyph.height);
-      final pos3 = Vector2(glyph.x, glyph.y + glyph.height);
+    for (final placement in layoutData) {
+      final anchor = placement.anchor.vec2;
 
-      final uv0 = glyph.uv.uv0;
-      final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
-      final uv2 = glyph.uv.uv1;
-      final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
+      for (final glyph in placement.glyphs) {
+        final pos0 = Vector2(glyph.x - sdfPadding, glyph.y - sdfPadding);
+        final pos1 = Vector2(
+          glyph.x + glyph.width + sdfPadding,
+          glyph.y - sdfPadding,
+        );
+        final pos2 = Vector2(
+          glyph.x + glyph.width + sdfPadding,
+          glyph.y + glyph.height + sdfPadding,
+        );
+        final pos3 = Vector2(
+          glyph.x - sdfPadding,
+          glyph.y + glyph.height + sdfPadding,
+        );
 
-      for (final anchor in anchors) {
+        final uv0 = glyph.uv.uv0;
+        final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
+        final uv2 = glyph.uv.uv1;
+        final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
         pipeline.vertex.setVertex(
           vertexIndex + 0,
           position: pos0,
@@ -13174,26 +13234,36 @@ class RoadLabelsLayerRenderer extends $SymbolLayerRenderer {
   @override
   int setFeatureVertices(
     spec.EvaluationContext eval,
-    vt.PointFeature feature,
-    Iterable<Vector2> anchors,
-    SymbolLayoutData layoutData,
+    vt.Feature feature,
+    List<SymbolLayoutData> layoutData,
     int index,
   ) {
+    const sdfPadding = 3.0;
     final paint = specLayer.paint;
 
     var vertexIndex = index;
-    for (final glyph in layoutData.glyphs) {
-      final pos0 = Vector2(glyph.x, glyph.y);
-      final pos1 = Vector2(glyph.x + glyph.width, glyph.y);
-      final pos2 = Vector2(glyph.x + glyph.width, glyph.y + glyph.height);
-      final pos3 = Vector2(glyph.x, glyph.y + glyph.height);
+    for (final placement in layoutData) {
+      final anchor = placement.anchor.vec2;
 
-      final uv0 = glyph.uv.uv0;
-      final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
-      final uv2 = glyph.uv.uv1;
-      final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
+      for (final glyph in placement.glyphs) {
+        final pos0 = Vector2(glyph.x - sdfPadding, glyph.y - sdfPadding);
+        final pos1 = Vector2(
+          glyph.x + glyph.width + sdfPadding,
+          glyph.y - sdfPadding,
+        );
+        final pos2 = Vector2(
+          glyph.x + glyph.width + sdfPadding,
+          glyph.y + glyph.height + sdfPadding,
+        );
+        final pos3 = Vector2(
+          glyph.x - sdfPadding,
+          glyph.y + glyph.height + sdfPadding,
+        );
 
-      for (final anchor in anchors) {
+        final uv0 = glyph.uv.uv0;
+        final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
+        final uv2 = glyph.uv.uv1;
+        final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
         pipeline.vertex.setVertex(
           vertexIndex + 0,
           position: pos0,
@@ -13276,11 +13346,11 @@ class PlaceLabelsLayerRenderer extends $SymbolLayerRenderer {
   @override
   int setFeatureVertices(
     spec.EvaluationContext eval,
-    vt.PointFeature feature,
-    Iterable<Vector2> anchors,
-    SymbolLayoutData layoutData,
+    vt.Feature feature,
+    List<SymbolLayoutData> layoutData,
     int index,
   ) {
+    const sdfPadding = 3.0;
     final paint = specLayer.paint;
     final opacity_start_value =
         paint.textOpacity
@@ -13300,18 +13370,28 @@ class PlaceLabelsLayerRenderer extends $SymbolLayerRenderer {
             .toDouble();
 
     var vertexIndex = index;
-    for (final glyph in layoutData.glyphs) {
-      final pos0 = Vector2(glyph.x, glyph.y);
-      final pos1 = Vector2(glyph.x + glyph.width, glyph.y);
-      final pos2 = Vector2(glyph.x + glyph.width, glyph.y + glyph.height);
-      final pos3 = Vector2(glyph.x, glyph.y + glyph.height);
+    for (final placement in layoutData) {
+      final anchor = placement.anchor.vec2;
 
-      final uv0 = glyph.uv.uv0;
-      final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
-      final uv2 = glyph.uv.uv1;
-      final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
+      for (final glyph in placement.glyphs) {
+        final pos0 = Vector2(glyph.x - sdfPadding, glyph.y - sdfPadding);
+        final pos1 = Vector2(
+          glyph.x + glyph.width + sdfPadding,
+          glyph.y - sdfPadding,
+        );
+        final pos2 = Vector2(
+          glyph.x + glyph.width + sdfPadding,
+          glyph.y + glyph.height + sdfPadding,
+        );
+        final pos3 = Vector2(
+          glyph.x - sdfPadding,
+          glyph.y + glyph.height + sdfPadding,
+        );
 
-      for (final anchor in anchors) {
+        final uv0 = glyph.uv.uv0;
+        final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
+        final uv2 = glyph.uv.uv1;
+        final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
         pipeline.vertex.setVertex(
           vertexIndex + 0,
           position: pos0,
@@ -13408,26 +13488,36 @@ class AirportGateLayerRenderer extends $SymbolLayerRenderer {
   @override
   int setFeatureVertices(
     spec.EvaluationContext eval,
-    vt.PointFeature feature,
-    Iterable<Vector2> anchors,
-    SymbolLayoutData layoutData,
+    vt.Feature feature,
+    List<SymbolLayoutData> layoutData,
     int index,
   ) {
+    const sdfPadding = 3.0;
     final paint = specLayer.paint;
 
     var vertexIndex = index;
-    for (final glyph in layoutData.glyphs) {
-      final pos0 = Vector2(glyph.x, glyph.y);
-      final pos1 = Vector2(glyph.x + glyph.width, glyph.y);
-      final pos2 = Vector2(glyph.x + glyph.width, glyph.y + glyph.height);
-      final pos3 = Vector2(glyph.x, glyph.y + glyph.height);
+    for (final placement in layoutData) {
+      final anchor = placement.anchor.vec2;
 
-      final uv0 = glyph.uv.uv0;
-      final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
-      final uv2 = glyph.uv.uv1;
-      final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
+      for (final glyph in placement.glyphs) {
+        final pos0 = Vector2(glyph.x - sdfPadding, glyph.y - sdfPadding);
+        final pos1 = Vector2(
+          glyph.x + glyph.width + sdfPadding,
+          glyph.y - sdfPadding,
+        );
+        final pos2 = Vector2(
+          glyph.x + glyph.width + sdfPadding,
+          glyph.y + glyph.height + sdfPadding,
+        );
+        final pos3 = Vector2(
+          glyph.x - sdfPadding,
+          glyph.y + glyph.height + sdfPadding,
+        );
 
-      for (final anchor in anchors) {
+        final uv0 = glyph.uv.uv0;
+        final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
+        final uv2 = glyph.uv.uv1;
+        final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
         pipeline.vertex.setVertex(
           vertexIndex + 0,
           position: pos0,
@@ -13510,11 +13600,11 @@ class StateLabelsLayerRenderer extends $SymbolLayerRenderer {
   @override
   int setFeatureVertices(
     spec.EvaluationContext eval,
-    vt.PointFeature feature,
-    Iterable<Vector2> anchors,
-    SymbolLayoutData layoutData,
+    vt.Feature feature,
+    List<SymbolLayoutData> layoutData,
     int index,
   ) {
+    const sdfPadding = 3.0;
     final paint = specLayer.paint;
     final opacity_start_value =
         paint.textOpacity
@@ -13534,18 +13624,28 @@ class StateLabelsLayerRenderer extends $SymbolLayerRenderer {
             .toDouble();
 
     var vertexIndex = index;
-    for (final glyph in layoutData.glyphs) {
-      final pos0 = Vector2(glyph.x, glyph.y);
-      final pos1 = Vector2(glyph.x + glyph.width, glyph.y);
-      final pos2 = Vector2(glyph.x + glyph.width, glyph.y + glyph.height);
-      final pos3 = Vector2(glyph.x, glyph.y + glyph.height);
+    for (final placement in layoutData) {
+      final anchor = placement.anchor.vec2;
 
-      final uv0 = glyph.uv.uv0;
-      final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
-      final uv2 = glyph.uv.uv1;
-      final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
+      for (final glyph in placement.glyphs) {
+        final pos0 = Vector2(glyph.x - sdfPadding, glyph.y - sdfPadding);
+        final pos1 = Vector2(
+          glyph.x + glyph.width + sdfPadding,
+          glyph.y - sdfPadding,
+        );
+        final pos2 = Vector2(
+          glyph.x + glyph.width + sdfPadding,
+          glyph.y + glyph.height + sdfPadding,
+        );
+        final pos3 = Vector2(
+          glyph.x - sdfPadding,
+          glyph.y + glyph.height + sdfPadding,
+        );
 
-      for (final anchor in anchors) {
+        final uv0 = glyph.uv.uv0;
+        final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
+        final uv2 = glyph.uv.uv1;
+        final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
         pipeline.vertex.setVertex(
           vertexIndex + 0,
           position: pos0,
@@ -13642,11 +13742,11 @@ class CountryLabelsLayerRenderer extends $SymbolLayerRenderer {
   @override
   int setFeatureVertices(
     spec.EvaluationContext eval,
-    vt.PointFeature feature,
-    Iterable<Vector2> anchors,
-    SymbolLayoutData layoutData,
+    vt.Feature feature,
+    List<SymbolLayoutData> layoutData,
     int index,
   ) {
+    const sdfPadding = 3.0;
     final paint = specLayer.paint;
     final opacity_start_value =
         paint.textOpacity
@@ -13666,18 +13766,28 @@ class CountryLabelsLayerRenderer extends $SymbolLayerRenderer {
             .toDouble();
 
     var vertexIndex = index;
-    for (final glyph in layoutData.glyphs) {
-      final pos0 = Vector2(glyph.x, glyph.y);
-      final pos1 = Vector2(glyph.x + glyph.width, glyph.y);
-      final pos2 = Vector2(glyph.x + glyph.width, glyph.y + glyph.height);
-      final pos3 = Vector2(glyph.x, glyph.y + glyph.height);
+    for (final placement in layoutData) {
+      final anchor = placement.anchor.vec2;
 
-      final uv0 = glyph.uv.uv0;
-      final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
-      final uv2 = glyph.uv.uv1;
-      final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
+      for (final glyph in placement.glyphs) {
+        final pos0 = Vector2(glyph.x - sdfPadding, glyph.y - sdfPadding);
+        final pos1 = Vector2(
+          glyph.x + glyph.width + sdfPadding,
+          glyph.y - sdfPadding,
+        );
+        final pos2 = Vector2(
+          glyph.x + glyph.width + sdfPadding,
+          glyph.y + glyph.height + sdfPadding,
+        );
+        final pos3 = Vector2(
+          glyph.x - sdfPadding,
+          glyph.y + glyph.height + sdfPadding,
+        );
 
-      for (final anchor in anchors) {
+        final uv0 = glyph.uv.uv0;
+        final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
+        final uv2 = glyph.uv.uv1;
+        final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
         pipeline.vertex.setVertex(
           vertexIndex + 0,
           position: pos0,
@@ -13774,26 +13884,36 @@ class ContinentLabelsLayerRenderer extends $SymbolLayerRenderer {
   @override
   int setFeatureVertices(
     spec.EvaluationContext eval,
-    vt.PointFeature feature,
-    Iterable<Vector2> anchors,
-    SymbolLayoutData layoutData,
+    vt.Feature feature,
+    List<SymbolLayoutData> layoutData,
     int index,
   ) {
+    const sdfPadding = 3.0;
     final paint = specLayer.paint;
 
     var vertexIndex = index;
-    for (final glyph in layoutData.glyphs) {
-      final pos0 = Vector2(glyph.x, glyph.y);
-      final pos1 = Vector2(glyph.x + glyph.width, glyph.y);
-      final pos2 = Vector2(glyph.x + glyph.width, glyph.y + glyph.height);
-      final pos3 = Vector2(glyph.x, glyph.y + glyph.height);
+    for (final placement in layoutData) {
+      final anchor = placement.anchor.vec2;
 
-      final uv0 = glyph.uv.uv0;
-      final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
-      final uv2 = glyph.uv.uv1;
-      final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
+      for (final glyph in placement.glyphs) {
+        final pos0 = Vector2(glyph.x - sdfPadding, glyph.y - sdfPadding);
+        final pos1 = Vector2(
+          glyph.x + glyph.width + sdfPadding,
+          glyph.y - sdfPadding,
+        );
+        final pos2 = Vector2(
+          glyph.x + glyph.width + sdfPadding,
+          glyph.y + glyph.height + sdfPadding,
+        );
+        final pos3 = Vector2(
+          glyph.x - sdfPadding,
+          glyph.y + glyph.height + sdfPadding,
+        );
 
-      for (final anchor in anchors) {
+        final uv0 = glyph.uv.uv0;
+        final uv1 = Vector2(glyph.uv.uv1.x, glyph.uv.uv0.y);
+        final uv2 = glyph.uv.uv1;
+        final uv3 = Vector2(glyph.uv.uv0.x, glyph.uv.uv1.y);
         pipeline.vertex.setVertex(
           vertexIndex + 0,
           position: pos0,

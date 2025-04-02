@@ -5,9 +5,9 @@ Future<void> showGpuTextureDebugSheet(
   BuildContext context, {
   required gpu.Texture texture,
 }) async {
-  await showModalBottomSheet(
+  await showDialog(
     context: context,
-    builder: (context) => _GpuTextureDebugSheet(texture: texture),
+    builder: (context) => Dialog.fullscreen(child: _GpuTextureDebugSheet(texture: texture)),
   );
 }
 
@@ -18,11 +18,32 @@ class _GpuTextureDebugSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: texture.width / texture.height,
-      child: CustomPaint(
-        painter: _GpuTextureDebugPainter(texture: texture),
-        child: SizedBox.expand(),
+    return InteractiveViewer(
+      maxScale: 100.0,
+      child: AspectRatio(
+        aspectRatio: texture.width / texture.height,
+        child: FittedBox(
+          fit: BoxFit.contain,
+          child: SizedBox(
+            width: texture.width.toDouble(),
+            height: texture.height.toDouble(),
+            child: Stack(
+              children: [
+                CustomPaint(
+                  painter: _GpuTextureDebugPainter(texture: texture),
+                  child: SizedBox.expand(),
+                ),
+                Positioned.fill(
+                  child: GridPaper(
+                    color: Colors.blue.withAlpha(36),
+                    divisions: 100,
+                    subdivisions: 1,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -36,10 +57,6 @@ class _GpuTextureDebugPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final image = texture.asImage();
-
-    final scale = size.width / image.width;
-
-    canvas.scale(scale);
     canvas.drawImage(image, Offset.zero, Paint());
   }
 

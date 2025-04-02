@@ -25,9 +25,8 @@ abstract class $SymbolLayerRenderer extends SingleTileLayerRenderer<spec.LayerSy
 
   int setFeatureVertices(
     spec.EvaluationContext eval,
-    vt.PointFeature feature,
-    Iterable<Vector2> anchors,
-    SymbolLayoutData layoutData,
+    vt.Feature feature,
+    List<SymbolLayoutData> layoutData,
     int index,
   );
 
@@ -45,25 +44,26 @@ abstract class $SymbolLayerRenderer extends SingleTileLayerRenderer<spec.LayerSy
   @override
   Future<void> prepare(PrepareContext context) async {
     final layout = specLayer.layout;
+    final placement = layout.symbolPlacement.evaluate(context.eval);
+    final allowedFeatureTypes = switch (placement) {
+      spec.LayoutSymbol$SymbolPlacement.point => const [vt.PointFeature, vt.LineStringFeature, vt.PolygonFeature],
+      spec.LayoutSymbol$SymbolPlacement.line => const [vt.LineStringFeature, vt.PolygonFeature],
+      spec.LayoutSymbol$SymbolPlacement.lineCenter => const [vt.LineStringFeature, vt.PolygonFeature],
+    };
 
     final features = filterFeatures(
       vtLayer,
       specLayer,
       context.eval,
       sortKey: specLayer.layout.symbolSortKey,
+      allowedFeatures: allowedFeatureTypes,
     );
 
-    final layoutDataFutures = <Future<SymbolLayoutData?>>[];
-    final filteredFeatures = <vt.PointFeature>[];
+    final layoutDataFutures = <Future<List<SymbolLayoutData>>>[];
+    final filteredFeatures = <vt.Feature>[];
 
     for (final feature in features) {
       final eval = context.eval.forFeature(feature);
-      final symbolPlacement = layout.symbolPlacement.evaluate(eval);
-
-      // For now, we only support point placement.
-      if (symbolPlacement != spec.LayoutSymbol$SymbolPlacement.point) continue;
-      if (feature is! vt.PointFeature) continue;
-
       filteredFeatures.add(feature);
       layoutDataFutures.add(SymbolLayoutEngine.performLayout(orchestrator, feature, layout, eval));
     }
@@ -73,12 +73,11 @@ abstract class $SymbolLayerRenderer extends SingleTileLayerRenderer<spec.LayerSy
 
     for (var i = 0; i < layoutDatas.length; i++) {
       final layoutData = layoutDatas[i];
-      if (layoutData == null) continue;
 
-      final anchorCount = filteredFeatures[i].points.length;
-
-      // For each anchor, we'll have a [layoutData].
-      vertexCount += anchorCount * (layoutData.glyphs.length * 4);
+      for (final placement in layoutData) {
+        // Each glyph is a quad, so we need 4 vertices per glyph.
+        vertexCount += placement.glyphs.length * 4;
+      }
     }
 
     if (vertexCount == 0) return;
@@ -92,16 +91,12 @@ abstract class $SymbolLayerRenderer extends SingleTileLayerRenderer<spec.LayerSy
     var vertexIndex = 0;
     for (var i = 0; i < layoutDatas.length; i++) {
       final layoutData = layoutDatas[i];
-      if (layoutData == null) continue;
-
       final feature = filteredFeatures[i];
-      final anchors = feature.points;
 
       final featureEval = context.eval.forFeature(feature);
       vertexIndex = setFeatureVertices(
         featureEval,
         feature,
-        anchors.map((v) => v.vec2),
         layoutData,
         vertexIndex,
       );
